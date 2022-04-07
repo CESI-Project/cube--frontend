@@ -1,0 +1,34 @@
+@import "src/assets/styles/core/colors";
+
+.button {
+  width: 8.75rem;
+  height: 2.5rem;
+  border-radius: 0.8rem;
+  border: 0.3rem solid $dark-blue;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.empty {
+  background-color: $light-white;
+  color: $dark-blue;
+
+  &:hover{
+    transition: 0.3s;
+    background-color: $dark-blue;
+    color: $light-white;
+  }
+}
+
+.full {
+  background-color: $dark-blue;
+  color: $light-white;
+
+  &:hover {
+    transition: 0.3s;
+    background-color: $light-white;
+    color: $dark-blue;
+  }
+}
+
+

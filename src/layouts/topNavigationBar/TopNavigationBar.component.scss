@@ -1,0 +1,29 @@
+@import "src/assets/styles/core/colors";
+
+.topNavBar {
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.6rem 0;
+  margin: 1rem 0;
+  border: 1px solid $dark-blue;
+
+  &__left {
+    margin-right: 5rem;
+    a {
+      margin: 1rem 0 1rem 5rem;
+      text-decoration: none;
+      color: $dark-blue;
+    }
+  }
+
+  &__right {
+    margin-left: 5rem;
+    a {
+      margin: 1rem 5rem 1rem 0;
+      text-decoration: none;
+      color: $dark-blue;
+    }
+  }
+}

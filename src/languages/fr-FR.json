@@ -1,0 +1,10 @@
+{
+  "topNavBar.Home": "Accueil",
+  "topNavBar.News": "Informations",
+  "topNavBar.Messages": "Messagerie",
+  "topNavBar.CreateTopic": "Créer un sujet",
+  "topNavBar.Settings": "Paramètres",
+  "headerBar.searchBar": "Recherche",
+  "headerBar.logIn": "Se connecter",
+  "headerBar.signUp": "S'inscrire"
+}

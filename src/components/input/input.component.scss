@@ -1,0 +1,11 @@
+@import "src/assets/styles/core/colors";
+
+input {
+  background-color: $light-white;
+  height: 2.5rem;
+  border-radius: 0.8rem;
+  border: 0.3rem solid $dark-blue;
+  font-size: 1rem;
+  padding-left: 0.6rem;
+  color: $dark-blue_50;
+}
