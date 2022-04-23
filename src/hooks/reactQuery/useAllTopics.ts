@@ -1,12 +1,11 @@
 import { useQuery } from 'react-query';
-import { getTopic } from '../../services/topic.service';
+import { getAllTopics } from '../../services/topic.service';
 
 export const useAllTopics = () => {
   const { data } = useQuery(
     'all-topics',
-    () => getTopic(),
+    getAllTopics,
   );
 
-  console.log(data);
   return { topics: data || [] };
 };

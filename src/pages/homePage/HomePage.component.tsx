@@ -1,28 +1,40 @@
+import { Link } from 'react-router-dom';
+import { defineMessages, useIntl } from 'react-intl';
 import { useAllTopics } from '../../hooks/reactQuery/useAllTopics';
 import { Topic } from '../../models/Topic';
 import './HomePage.component.scss';
 
+const messages = defineMessages({
+  homePage_Topic: {
+    defaultMessage: 'topic',
+    id: 'homePage.Topic',
+  },
+});
+
 export const HomePageComponent = () => {
+  const { formatMessage } = useIntl();
   const { topics } = useAllTopics();
 
   const listTopics = topics.map((topic: Topic) => (
-    <button type="button" key={topic.id} className="home-page__button-topic">
-      <div className="home-page__button-topic__title">
-        {topic.title}
-      </div>
-      <div className="home-page__button-topic__picture">
-        {topic.picture}
-      </div>
-      <div className="home-page__button-topic__react">
-        {topic.react}
-      </div>
-      <div className="home-page__button-topic__view">
-        {topic.view}
-      </div>
-      <div className="home-page__button-topic__comment">
-        {topic.comment}
-      </div>
-    </button>
+    <Link to={`/${formatMessage(messages.homePage_Topic)}/${topic.id}`} key={topic.id}>
+      <button type="button" className="home-page__button-topic">
+        <div className="home-page__button-topic__title">
+          {topic.title}
+        </div>
+        <div className="home-page__button-topic__picture">
+          <img src={topic.picture} alt={`Image :${topic.title}`} />
+        </div>
+        <div className="home-page__button-topic__react">
+          {topic.react}
+        </div>
+        <div className="home-page__button-topic__view">
+          {topic.view}
+        </div>
+        <div className="home-page__button-topic__comment">
+          {topic.comment}
+        </div>
+      </button>
+    </Link>
   ));
 
   return (

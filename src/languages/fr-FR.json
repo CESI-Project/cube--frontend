@@ -6,5 +6,10 @@
   "topNavBar.Settings": "Paramètres",
   "headerBar.searchBar": "Recherche",
   "headerBar.logIn": "Se connecter",
-  "headerBar.signUp": "S'inscrire"
+  "headerBar.signUp": "S'inscrire",
+  "homePage.Topic": "sujet",
+  "topicPage.likeButton": "Aimer",
+  "topicPage.shareButton": "Partager",
+  "topicPage.commentButton": "Commenter",
+  "topicPage.viewCounter": "Compteur de vues :"
 }
