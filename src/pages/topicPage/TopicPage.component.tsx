@@ -30,8 +30,6 @@ export const TopicPageComponent = () => {
   // @ts-ignore
   const { topic }:Topic = useTopicById(parseInt(id, 10));
 
-  console.log(topic);
-
   return (
     <div className="topic-page">
       <div className="topic-page__title">
