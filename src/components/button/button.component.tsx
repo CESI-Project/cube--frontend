@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import './button.component.scss';
 
 type ButtonType = 'submit' | 'reset' | 'button';
@@ -7,6 +7,7 @@ type DesignType = 'empty' | 'full';
 export interface ButtonProps {
     type: ButtonType;
     designType: DesignType;
+    children: ReactNode;
 }
 
 export const ButtonComponent: FC<ButtonProps> = ({

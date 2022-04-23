@@ -1,0 +1,51 @@
+@import "src/assets/styles/core/colors";
+@import "src/assets/styles/core/fonts.scss";
+
+.topic-page {
+  color: $dark-blue;
+  margin: 0 1rem;
+  width: 100%;
+
+  &__title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  &__main{
+    display: flex;
+    width: 100%;
+
+    img {
+      width: 16rem;
+      height: 32rem;
+      margin-right: 1rem;
+    }
+
+    &__text {
+      border: 0.3rem solid $dark-blue;
+      border-radius: 0.8rem;
+      margin-right: 3rem;
+      padding: 1rem;
+      width: 100%;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 14.3rem;
+    left: 17rem;
+    width: 100%;
+
+    &__buttons {
+      button{
+        margin-right: 5rem;
+      }
+    }
+
+    &__view-counter {
+      margin-right: 17.3rem;
+    }
+  }
+}
