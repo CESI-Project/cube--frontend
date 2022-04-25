@@ -7,11 +7,12 @@ type InputSize = 'small' | 'medium' | 'large';
 export interface InputPros {
     type: InputType;
     inputsize: InputSize;
-    placeholder: string,
+    placeholder: string;
+    name: string
 }
 
 export const InputComponent: FC<InputPros> = ({
-  type, placeholder, inputsize,
+  type, placeholder, inputsize, name,
 }) => {
   let inputClassName = 'input';
 
@@ -28,6 +29,7 @@ export const InputComponent: FC<InputPros> = ({
   return (
     <input
       className={inputClassName}
+      name={name}
       type={type}
       placeholder={placeholder}
       data-inputsize={inputsize}

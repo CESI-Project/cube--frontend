@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import './ConnectionPage.component.scss';
 import { InputComponent } from '../../components/input/input.component';
@@ -37,30 +37,38 @@ interface ConnectionPageComponentProps {
   truc: Consumer
 }
 
-export const ConnectionPageComponent: FC<ConnectionPageComponentProps> = ({ truc }) => {
+export const ConnectionPageComponent: FC<ConnectionPageComponentProps> = () => {
   const { formatMessage } = useIntl();
-  const { data, isError } = useConnection(truc.email, truc.password);
+  const { mutate } = useConnection();
+
+  const onConnection = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
+    mutate({ email, password });
+  };
 
   return (
     <div className="connectionPage">
       <h1>{formatMessage(messages.ConnectionPage_connectionTitle)}</h1>
-      <div className="connectionPage__wrapper">
-        <div className="connectionPage__wrapper__mail-input">
+      <form className="connectionPage__wrapper" onSubmit={onConnection}>
+        <div>
           <h2>
             {formatMessage(messages.ConnectionPage_mailTitle)}
           </h2>
-          <InputComponent type="email" inputsize="small" placeholder={formatMessage(messages.ConnectionPage_mailInput)} />
+          <InputComponent name="email" type="email" inputsize="small" placeholder={formatMessage(messages.ConnectionPage_mailInput)} />
         </div>
-        <div className="connectionPage__wrapper__password-input">
+        <div>
           <h2>{formatMessage(messages.ConnectionPage_passwordTitle)}</h2>
-          <InputComponent type="password" inputsize="small" placeholder={formatMessage(messages.ConnectionPage_passwordInput)} />
+          <InputComponent name="password" type="password" inputsize="small" placeholder={formatMessage(messages.ConnectionPage_passwordInput)} />
         </div>
         <div className="connectionPage__wrapper__connection-button">
           <ButtonComponent type="submit" designType="full">
             {formatMessage(messages.ConnectionPage_submitConnection)}
           </ButtonComponent>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

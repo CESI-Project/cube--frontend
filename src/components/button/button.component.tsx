@@ -8,6 +8,7 @@ export interface ButtonProps {
     type: ButtonType;
     designType: DesignType;
     children: ReactNode;
+
 }
 
 export const ButtonComponent: FC<ButtonProps> = ({

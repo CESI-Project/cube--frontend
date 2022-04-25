@@ -1,10 +1,8 @@
-import { useQuery } from 'react-query';
+import { useMutation } from 'react-query';
 import { postConnection } from '../../services/consumer.service';
 
-export const useConnection = (email: string, password: string) => {
-  const { data, isError } = useQuery(
-    'connection',
-    () => postConnection(email, password),
-  );
-  return { consumer: data, isError };
+export const useConnection = () => {
+  const { mutate } = useMutation('connection', postConnection);
+
+  return { mutate };
 };

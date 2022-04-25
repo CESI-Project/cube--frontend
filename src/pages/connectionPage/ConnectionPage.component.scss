@@ -3,7 +3,8 @@
 .connectionPage {
   width: 100%;
   text-align: center;
-  margin-top: 5rem;
+  height: 40.5rem;
+  margin-top: 10rem;
 
   h1 {
     font-size : 3rem;
@@ -23,15 +24,6 @@
 
     input {
       margin-top : 0.5rem;
-      width : 20%;
-    }
-
-    &__mail-input {
-
-    }
-
-    &__password-input {
-
     }
 
     &__connection-button {

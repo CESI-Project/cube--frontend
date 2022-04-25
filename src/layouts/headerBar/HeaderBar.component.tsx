@@ -13,12 +13,16 @@ const messages = defineMessages(
       id: 'headerBar.searchBar',
     },
     headerBar_logIn: {
-      defaultMessage: 'LogIn',
+      defaultMessage: 'Log In',
       id: 'headerBar.logIn',
     },
     headerBar_signUp: {
       defaultMessage: 'SignUp',
       id: 'headerBar.signUp',
+    },
+    headerBar_url: {
+      defaultMessage: 'login',
+      id: 'headerBar.url',
     },
   },
 );
@@ -31,8 +35,8 @@ export const HeaderBarComponent = () => {
       <img src={fullLogo} alt="Full Logo" className="headerBar__logo" />
       <div className="headerBar__right">
         <img src={bellIcon} alt="Bell Icon" className="headerBar__right__icon" />
-        <InputComponent type="search" placeholder={formatMessage(messages.headerBar_searchBar)} inputsize="small" />
-        <Link to={formatMessage(messages.headerBar_logIn).toLowerCase()}>
+        <InputComponent name="search-bar" type="search" placeholder={formatMessage(messages.headerBar_searchBar)} inputsize="small" />
+        <Link to={formatMessage(messages.headerBar_url)}>
           <ButtonComponent type="button" designType="empty">
             {formatMessage(messages.headerBar_logIn)}
           </ButtonComponent>
@@ -40,7 +44,6 @@ export const HeaderBarComponent = () => {
         <ButtonComponent type="button" designType="full">
           {formatMessage(messages.headerBar_signUp)}
         </ButtonComponent>
-
       </div>
     </div>
   );
