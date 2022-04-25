@@ -1,9 +1,9 @@
 export interface Consumer {
-    id: number;
+    id?: number;
     firstName: string;
     name: string
     birthDate: string;
     email: string;
     password: string;
-    age: number;
+    age?: number;
 }

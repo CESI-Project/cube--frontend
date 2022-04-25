@@ -1,23 +1,38 @@
-import { FC, useEffect } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import './signupPage.component.scss';
+import React from 'react';
 import { InputComponent } from '../../components/input/input.component';
 import { ButtonComponent } from '../../components/button/button.component';
-import { useConnection } from '../../hooks/reactQuery/useConnection';
-import { Consumer } from '../../models/Consumer';
+import { useCreationAccount } from '../../hooks/reactQuery/useCreationAccount';
 
 const messages = defineMessages({
   signupPage_mailInput: {
     defaultMessage: 'john.doe@mail.com',
     id: 'signupPage.mailInput',
   },
+  signupPage_firstNameInput: {
+    defaultMessage: 'John',
+    id: 'signupPage.firstNameInput',
+  },
+  signupPage_firstNameTitle: {
+    defaultMessage: 'Your first name',
+    id: 'signupPage.firstNameTitle',
+  },
   signupPage_nameInput: {
-    defaultMessage: 'John Doe',
+    defaultMessage: 'Doe',
     id: 'signupPage.nameInput',
   },
   signupPage_nameTitle: {
-    defaultMessage: 'Name account',
+    defaultMessage: 'Your name',
     id: 'signupPage.nameTitle',
+  },
+  signupPage_birthDateInput: {
+    defaultMessage: '14/02/1980',
+    id: 'signupPage.birthDateInput',
+  },
+  signupPage_birthDateTitle: {
+    defaultMessage: 'Your first name',
+    id: 'signupPage.birthDateTitle',
   },
   signupPage_passwordInput: {
     defaultMessage: 'Your password',
@@ -49,40 +64,57 @@ const messages = defineMessages({
   },
 });
 
-// interface signupPageComponentProps {
-//   truc: Consumer
-// }
-
 export const SignupPageComponent = () => {
   const { formatMessage } = useIntl();
-  // const { data, isError } = useConnection(truc.email, truc.password);
+  const { mutate } = useCreationAccount();
+
+  const onCreationAccount = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const firstName = formData.get('first-name') as string;
+    const name = formData.get('name') as string;
+    const birthDate = formData.get('birth-date') as string;
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
+    mutate({
+      firstName, name, birthDate, email, password,
+    });
+  };
 
   return (
     <div className="signupPage">
       <h1>{formatMessage(messages.signupPage_signupTitle)}</h1>
-      <div className="signupPage__wrapper">
+      <form className="signupPage__wrapper" onSubmit={onCreationAccount}>
         <div className="signupPage__wrapper__mail-input">
           <h2>{formatMessage(messages.signupPage_mailTitle)}</h2>
-          <InputComponent type="email" inputsize="small" placeholder={formatMessage(messages.signupPage_mailInput)} />
+          <InputComponent type="email" name="email" inputsize="small" placeholder={formatMessage(messages.signupPage_mailInput)} />
+        </div>
+        <div className="signupPage__wrapper__first-name-input">
+          <h2>{formatMessage(messages.signupPage_firstNameTitle)}</h2>
+          <InputComponent type="text" name="first-name" inputsize="small" placeholder={formatMessage(messages.signupPage_firstNameInput)} />
         </div>
         <div className="signupPage__wrapper__name-input">
           <h2>{formatMessage(messages.signupPage_nameTitle)}</h2>
-          <InputComponent type="text" inputsize="small" placeholder={formatMessage(messages.signupPage_nameInput)} />
+          <InputComponent type="text" name="name" inputsize="small" placeholder={formatMessage(messages.signupPage_nameInput)} />
+        </div>
+        <div className="signupPage__wrapper__birth-date-input">
+          <h2>{formatMessage(messages.signupPage_birthDateTitle)}</h2>
+          <InputComponent type="text" name="name" inputsize="small" placeholder={formatMessage(messages.signupPage_birthDateInput)} />
         </div>
         <div className="signupPage__wrapper__password-input">
           <h2>{formatMessage(messages.signupPage_passwordTitle)}</h2>
-          <InputComponent type="password" inputsize="small" placeholder={formatMessage(messages.signupPage_passwordInput)} />
+          <InputComponent type="password" name="password" inputsize="small" placeholder={formatMessage(messages.signupPage_passwordInput)} />
         </div>
         <div className="signupPage__wrapper__password-two-input">
           <h2>{formatMessage(messages.signupPage_passwordTwoTitle)}</h2>
-          <InputComponent type="password" inputsize="small" placeholder={formatMessage(messages.signupPage_passwordTwoInput)} />
+          <InputComponent type="password" name="password-two" inputsize="small" placeholder={formatMessage(messages.signupPage_passwordTwoInput)} />
         </div>
         <div className="signupPage__wrapper__signup-button">
           <ButtonComponent type="submit" designType="full">
             {formatMessage(messages.signupPage_submitSignUp)}
           </ButtonComponent>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

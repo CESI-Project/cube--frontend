@@ -1,10 +1,9 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import './ConnectionPage.component.scss';
 import { InputComponent } from '../../components/input/input.component';
 import { ButtonComponent } from '../../components/button/button.component';
 import { useConnection } from '../../hooks/reactQuery/useConnection';
-import { Consumer } from '../../models/Consumer';
 
 const messages = defineMessages({
   ConnectionPage_mailInput: {
@@ -33,11 +32,7 @@ const messages = defineMessages({
   },
 });
 
-interface ConnectionPageComponentProps {
-  truc: Consumer
-}
-
-export const ConnectionPageComponent: FC<ConnectionPageComponentProps> = () => {
+export const ConnectionPageComponent = () => {
   const { formatMessage } = useIntl();
   const { mutate } = useConnection();
 

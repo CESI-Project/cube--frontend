@@ -3,7 +3,8 @@
 .signupPage {
   width: 100%;
   text-align: center;
-  margin-top: 5rem;
+  margin-top: 3rem;
+  height: 48.5rem;
 
   h1 {
     font-size : 3rem;
@@ -18,20 +19,11 @@
     margin-top : 3rem;
 
     h2 {
-      margin-top : 3rem;
+      margin-top : 1.5rem;
     }
 
     input {
       margin-top : 0.5rem;
-      width : 20%;
-    }
-
-    &__mail-input {
-
-    }
-
-    &__password-input {
-
     }
 
     &__signup-button {
