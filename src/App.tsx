@@ -23,7 +23,7 @@ function App() {
         <Route path="/login" element={<ConnectionPageContainer />} />
         <Route path="/connexion" element={<ConnectionPageContainer />} />
         <Route path="/signup" element={<SignupPageContainer />} />
-        <Route path="/s'inscrire" element={<SignupPageContainer />} />
+        <Route path="/inscription" element={<SignupPageContainer />} />
 
         {/* <Route path="/profile" element={<Profile />} /> */}
       </Routes>
