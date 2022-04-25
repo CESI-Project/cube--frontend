@@ -41,9 +41,11 @@ export const HeaderBarComponent = () => {
             {formatMessage(messages.headerBar_logIn)}
           </ButtonComponent>
         </Link>
-        <ButtonComponent type="button" designType="full">
-          {formatMessage(messages.headerBar_signUp)}
-        </ButtonComponent>
+        <Link to={formatMessage(messages.headerBar_signUp).toLowerCase()}>
+          <ButtonComponent type="button" designType="full">
+            {formatMessage(messages.headerBar_signUp)}
+          </ButtonComponent>
+        </Link>
       </div>
     </div>
   );
