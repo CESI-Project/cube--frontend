@@ -5,6 +5,7 @@ import { TopNavigationBarContainer } from './layouts/topNavigationBar/TopNavigat
 import { HeaderBarContainer } from './layouts/headerBar/HeaderBar.container';
 import { HomePageContainer } from './pages/homePage/HomePage.container';
 import { TopicPageContainer } from './pages/topicPage/TopicPage.container';
+import { ConnectionPageContainer } from './pages/connectionPage/ConnectionPage.container';
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
         <Route path="/accueil" element={<HomePageContainer />} />
         <Route path="/topic/:id" element={<TopicPageContainer />} />
         <Route path="/sujet/:id" element={<TopicPageContainer />} />
+        <Route path="/login" element={<ConnectionPageContainer />} />
+        <Route path="/connexion" element={<ConnectionPageContainer />} />
+
         {/* <Route path="/profile" element={<Profile />} /> */}
       </Routes>
     </div>

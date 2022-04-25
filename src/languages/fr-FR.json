@@ -7,9 +7,16 @@
   "headerBar.searchBar": "Recherche",
   "headerBar.logIn": "Se connecter",
   "headerBar.signUp": "S'inscrire",
+  "headerBar.url": "connexion",
   "homePage.Topic": "sujet",
   "topicPage.likeButton": "Aimer",
   "topicPage.shareButton": "Partager",
   "topicPage.commentButton": "Commenter",
-  "topicPage.viewCounter": "Compteur de vues :"
+  "topicPage.viewCounter": "Compteur de vues :",
+  "connectionPage.mailInput": "Votre adresse mail",
+  "connectionPage.passwordInput": "Votre mot de passe",
+  "connectionPage.connectionTitle" : "Se connecter",
+  "connectionPage.mailTitle" : "Votre adresse mail",
+  "connectionPage.passwordTitle": "Votre mot de passe",
+  "connectionPage.submitConnection": "Se connecter"
 }

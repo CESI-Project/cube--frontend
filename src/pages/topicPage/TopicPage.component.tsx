@@ -36,7 +36,7 @@ export const TopicPageComponent = () => {
         {topic.title}
       </div>
       <div className="topic-page__main">
-        <img src={topic.picture} alt={`Image :${topic.title}`} />
+        <img src={topic.picture} alt={topic.title} />
         <div className="topic-page__main__text">
           blabla
         </div>
