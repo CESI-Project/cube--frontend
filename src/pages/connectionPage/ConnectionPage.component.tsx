@@ -50,9 +50,9 @@ export const ConnectionPageComponent: FC<ConnectionPageComponentProps> = ({
       <h1>{formatMessage(messages.connectionPage_connectionTitle)}</h1>
       <form className="connectionPage__wrapper" onSubmit={onConnection}>
         {isError && (
-        <div className="connectionPage__error-input">
-          {formatMessage(messages.connectionPage_errorInput)}
-        </div>
+          <div className="connectionPage__error-input">
+            {formatMessage(messages.connectionPage_errorInput)}
+          </div>
         )}
         <div>
           <h2>

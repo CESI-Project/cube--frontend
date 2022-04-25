@@ -9,6 +9,7 @@ import { ConnectionPageContainer } from './pages/connectionPage/ConnectionPage.c
 import { SignupPageContainer } from './pages/signupPage/SignupPage.container';
 import { FavoritesPageContainer } from './pages/favoritesPage/FavoritesPage.container';
 import { UserInfoProvider } from './context/UserContext.provider';
+import { CreateTopicPageContainer } from './pages/createtopicPage/CreateTopicPage.container';
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
           <Route path="/inscription" element={<SignupPageContainer />} />
           <Route path="/favorites" element={<FavoritesPageContainer />} />
           <Route path="/favoris" element={<FavoritesPageContainer />} />
+          <Route path="/createtopic" element={<CreateTopicPageContainer />} />
+          <Route path="/creersujet" element={<CreateTopicPageContainer />} />
         </Routes>
       </UserInfoProvider>
     </div>

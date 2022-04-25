@@ -4,7 +4,7 @@ We'd love you to contribute to our source code.
 
 ## Found a Bug or request a feature/change ?
 
-You're welcome to summit a Issue, use the according template.
+You're welcome to summit an Issue, use the according template.
 
 ## Branching conventions
 
