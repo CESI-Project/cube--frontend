@@ -19,5 +19,15 @@
   "connectionPage.mailTitle" : "Votre adresse mail",
   "connectionPage.passwordTitle": "Votre mot de passe",
   "connectionPage.submitConnection": "Se connecter",
-  "connectionPage.errorInput": "Votre Mail / Mot de passe n'est pas correct"
+  "connectionPage.errorInput": "Votre Mail / Mot de passe n'est pas correct",
+  "signupPage.signupTitle": "S'inscrire",
+  "signupPage.mailTitle": "Votre adresse mail",
+  "signupPage.mailInput": "votre.adresse@mail.com",
+  "signupPage.nameTitle": "Nom de compte",
+  "signupPage.nameInput": "Jean Pierre",
+  "signupPage.passwordTitle": "Mot de passe",
+  "signupPage.passwordInput": "Votre mot de passe",
+  "signupPage.passwordTwoTitle": "Validation du mot de passe",
+  "signupPage.passwordTwoInput": "Votre mot de passe",
+  "signupPage.submitSignUp": "S'inscrire"
 }
