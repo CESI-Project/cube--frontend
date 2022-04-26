@@ -28,7 +28,7 @@
   "signupPage.nameInput": "Pierre",
   "signupPage.firstNameTitle": "Votre prénom",
   "signupPage.firstNameInput": "Jean",
-  "signupPage.birthDateInput": "14/02/1980",
+  "signupPage.birthDateInput": "1980-04-02",
   "signupPage.birthDateTitle": "Votre date de naissance",
   "signupPage.passwordTitle": "Mot de passe",
   "signupPage.passwordInput": "Votre mot de passe",

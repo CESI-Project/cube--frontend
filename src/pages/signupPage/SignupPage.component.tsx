@@ -27,7 +27,7 @@ const messages = defineMessages({
     id: 'signupPage.nameTitle',
   },
   signupPage_birthDateInput: {
-    defaultMessage: '14/02/1980',
+    defaultMessage: '1980-04-02',
     id: 'signupPage.birthDateInput',
   },
   signupPage_birthDateTitle: {
@@ -80,6 +80,7 @@ export const SignupPageComponent = () => {
     const birthDate = formData.get('birth-date') as string;
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
+
     mutate({
       firstName, name, birthDate, email, password,
     });
