@@ -34,5 +34,6 @@
   "signupPage.passwordInput": "Votre mot de passe",
   "signupPage.passwordTwoTitle": "Validation du mot de passe",
   "signupPage.passwordTwoInput": "Votre mot de passe",
-  "signupPage.submitSignUp": "S'inscrire"
+  "signupPage.submitSignUp": "S'inscrire",
+  "signupPage.errorInput": "Vos informations sont incorrectes ou déjà utilisées"
 }

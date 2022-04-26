@@ -1,4 +1,4 @@
-import { SignupPageComponent } from './signupPage.component';
+import { SignupPageComponent } from './SignupPage.component';
 
 export const SignupPageContainer = () => (
   <SignupPageComponent />

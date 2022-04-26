@@ -1,5 +1,5 @@
 import { defineMessages, useIntl } from 'react-intl';
-import './signupPage.component.scss';
+import './SignupPage.component.scss';
 import React from 'react';
 import { InputComponent } from '../../components/input/input.component';
 import { ButtonComponent } from '../../components/button/button.component';
@@ -62,11 +62,15 @@ const messages = defineMessages({
     defaultMessage: 'Sign Up',
     id: 'signupPage.submitSignUp',
   },
+  signupPage_errorInput: {
+    defaultMessage: 'Your information is incorrect or already used',
+    id: 'signupPage.errorInput',
+  },
 });
 
 export const SignupPageComponent = () => {
   const { formatMessage } = useIntl();
-  const { mutate } = useCreationAccount();
+  const { mutate, isError } = useCreationAccount();
 
   const onCreationAccount = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -85,6 +89,11 @@ export const SignupPageComponent = () => {
     <div className="signupPage">
       <h1>{formatMessage(messages.signupPage_signupTitle)}</h1>
       <form className="signupPage__wrapper" onSubmit={onCreationAccount}>
+        {isError && (
+        <div className="connectionPage__error-input">
+          {formatMessage(messages.signupPage_errorInput)}
+        </div>
+        )}
         <div className="signupPage__wrapper__mail-input">
           <h2>{formatMessage(messages.signupPage_mailTitle)}</h2>
           <InputComponent type="email" name="email" inputsize="small" placeholder={formatMessage(messages.signupPage_mailInput)} />
@@ -99,7 +108,7 @@ export const SignupPageComponent = () => {
         </div>
         <div className="signupPage__wrapper__birth-date-input">
           <h2>{formatMessage(messages.signupPage_birthDateTitle)}</h2>
-          <InputComponent type="text" name="name" inputsize="small" placeholder={formatMessage(messages.signupPage_birthDateInput)} />
+          <InputComponent type="text" name="birth-date" inputsize="small" placeholder={formatMessage(messages.signupPage_birthDateInput)} />
         </div>
         <div className="signupPage__wrapper__password-input">
           <h2>{formatMessage(messages.signupPage_passwordTitle)}</h2>
