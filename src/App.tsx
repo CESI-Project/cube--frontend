@@ -6,6 +6,7 @@ import { HeaderBarContainer } from './layouts/headerBar/HeaderBar.container';
 import { HomePageContainer } from './pages/homePage/HomePage.container';
 import { TopicPageContainer } from './pages/topicPage/TopicPage.container';
 import { ConnectionPageContainer } from './pages/connectionPage/ConnectionPage.container';
+import { SignupPageContainer } from './pages/signupPage/SignupPage.container';
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
         <Route path="/sujet/:id" element={<TopicPageContainer />} />
         <Route path="/login" element={<ConnectionPageContainer />} />
         <Route path="/connexion" element={<ConnectionPageContainer />} />
+        <Route path="/signup" element={<SignupPageContainer />} />
+        <Route path="/inscription" element={<SignupPageContainer />} />
 
         {/* <Route path="/profile" element={<Profile />} /> */}
       </Routes>

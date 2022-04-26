@@ -17,12 +17,16 @@ const messages = defineMessages(
       id: 'headerBar.logIn',
     },
     headerBar_signUp: {
-      defaultMessage: 'SignUp',
+      defaultMessage: 'Sign Up',
       id: 'headerBar.signUp',
     },
-    headerBar_url: {
+    headerBar_urlLogIn: {
       defaultMessage: 'login',
-      id: 'headerBar.url',
+      id: 'headerBar.urlLogIn',
+    },
+    headerBar_urlSignUp: {
+      defaultMessage: 'signup',
+      id: 'headerBar.urlSignUp',
     },
   },
 );
@@ -36,14 +40,16 @@ export const HeaderBarComponent = () => {
       <div className="headerBar__right">
         <img src={bellIcon} alt="Bell Icon" className="headerBar__right__icon" />
         <InputComponent name="search-bar" type="search" placeholder={formatMessage(messages.headerBar_searchBar)} inputsize="small" />
-        <Link to={formatMessage(messages.headerBar_url)}>
+        <Link to={formatMessage(messages.headerBar_urlLogIn)}>
           <ButtonComponent type="button" designType="empty">
             {formatMessage(messages.headerBar_logIn)}
           </ButtonComponent>
         </Link>
-        <ButtonComponent type="button" designType="full">
-          {formatMessage(messages.headerBar_signUp)}
-        </ButtonComponent>
+        <Link to={formatMessage(messages.headerBar_urlSignUp)}>
+          <ButtonComponent type="button" designType="full">
+            {formatMessage(messages.headerBar_signUp)}
+          </ButtonComponent>
+        </Link>
       </div>
     </div>
   );
