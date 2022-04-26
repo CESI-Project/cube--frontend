@@ -18,5 +18,6 @@
   "connectionPage.connectionTitle" : "Se connecter",
   "connectionPage.mailTitle" : "Votre adresse mail",
   "connectionPage.passwordTitle": "Votre mot de passe",
-  "connectionPage.submitConnection": "Se connecter"
+  "connectionPage.submitConnection": "Se connecter",
+  "connectionPage.errorInput": "Votre Mail / Mot de passe n'est pas correct"
 }
