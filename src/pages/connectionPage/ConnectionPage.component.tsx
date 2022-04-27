@@ -6,9 +6,9 @@ import { ButtonComponent } from '../../components/button/button.component';
 import { useConnection } from '../../hooks/reactQuery/useConnection';
 
 const messages = defineMessages({
-  connectionPage_mailInput: {
-    defaultMessage: 'Your email',
-    id: 'connectionPage.mailInput',
+  connectionPage_usernameInput: {
+    defaultMessage: 'Your username',
+    id: 'connectionPage.usernameInput',
   },
   connectionPage_passwordInput: {
     defaultMessage: 'Your password',
@@ -18,9 +18,9 @@ const messages = defineMessages({
     defaultMessage: 'Log In',
     id: 'connectionPage.connectionTitle',
   },
-  connectionPage_mailTitle: {
-    defaultMessage: 'Mail :',
-    id: 'connectionPage.mailTitle',
+  connectionPage_usernameTitle: {
+    defaultMessage: 'Username :',
+    id: 'connectionPage.usernameTitle',
   },
   connectionPage_passwordTitle: {
     defaultMessage: 'Password :',
@@ -43,9 +43,9 @@ export const ConnectionPageComponent = () => {
   const onConnection = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
-    const email = formData.get('email') as string;
+    const username = formData.get('username') as string;
     const password = formData.get('password') as string;
-    mutate({ email, password });
+    mutate({ username, password });
   };
 
   return (
@@ -59,9 +59,9 @@ export const ConnectionPageComponent = () => {
         )}
         <div>
           <h2>
-            {formatMessage(messages.connectionPage_mailTitle)}
+            {formatMessage(messages.connectionPage_usernameTitle)}
           </h2>
-          <InputComponent name="email" type="email" inputsize="small" placeholder={formatMessage(messages.connectionPage_mailInput)} />
+          <InputComponent name="username" type="text" inputsize="small" placeholder={formatMessage(messages.connectionPage_usernameInput)} />
         </div>
         <div>
           <h2>{formatMessage(messages.connectionPage_passwordTitle)}</h2>
