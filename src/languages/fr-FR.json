@@ -14,10 +14,10 @@
   "topicPage.shareButton": "Partager",
   "topicPage.commentButton": "Commenter",
   "topicPage.viewCounter": "Compteur de vues :",
-  "connectionPage.mailInput": "Votre adresse mail",
+  "connectionPage.usernameInput": "Votre pseudo",
   "connectionPage.passwordInput": "Votre mot de passe",
   "connectionPage.connectionTitle" : "Se connecter",
-  "connectionPage.mailTitle" : "Votre adresse mail",
+  "connectionPage.usernameTitle" : "Votre pseudo",
   "connectionPage.passwordTitle": "Votre mot de passe",
   "connectionPage.submitConnection": "Se connecter",
   "connectionPage.errorInput": "Votre Mail / Mot de passe n'est pas correct",
@@ -34,6 +34,8 @@
   "signupPage.passwordInput": "Votre mot de passe",
   "signupPage.passwordTwoTitle": "Validation du mot de passe",
   "signupPage.passwordTwoInput": "Votre mot de passe",
+  "signupPage.usernameTitle": "Votre pseudo",
+  "signupPage.usernameInput": "John33",
   "signupPage.submitSignUp": "S'inscrire",
   "signupPage.errorInput": "Vos informations sont incorrectes ou déjà utilisées"
 }
