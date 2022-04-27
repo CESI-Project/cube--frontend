@@ -7,8 +7,10 @@ interface postConncetionProps {
     password: string
 }
 
-export const postConnection = async ({ email, password }: postConncetionProps) => axios.put(`${BACKEND_URI}/connection/${email}/${password}`).then((response) => response.data);
+export const postConnection = async ({ email, password }: postConncetionProps) => axios.put(`${BACKEND_URI}/user/log-in`, { email, password }).then((response) => response.data);
 
 export const postCreationAccount = async ({
   firstName, name, birthDate, email, password,
-}: Consumer) => axios.put(`${BACKEND_URI}/connection/${email}/${password}/${firstName}/${name}/${birthDate}`).then((response) => response.data);
+}: Consumer) => axios.post(`${BACKEND_URI}/user/sign-up`, {
+  firstName, name, birthDate, email, password,
+}).then((response) => response.data);
