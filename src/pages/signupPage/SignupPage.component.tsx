@@ -38,10 +38,6 @@ const messages = defineMessages({
     defaultMessage: 'Your password',
     id: 'signupPage.passwordInput',
   },
-  signupPage_passwordTwoInput: {
-    defaultMessage: 'Your password',
-    id: 'signupPage.passwordTwoInput',
-  },
   signupPage_signupTitle: {
     defaultMessage: 'Sign Up',
     id: 'signupPage.signupTitle',
@@ -61,10 +57,6 @@ const messages = defineMessages({
   signupPage_passwordTitle: {
     defaultMessage: 'Password :',
     id: 'signupPage.passwordTitle',
-  },
-  signupPage_passwordTwoTitle: {
-    defaultMessage: 'Re-enter your password : ',
-    id: 'signupPage.passwordTwoTitle',
   },
   signupPage_submitSignUp: {
     defaultMessage: 'Sign Up',
@@ -127,10 +119,6 @@ export const SignupPageComponent = () => {
         <div className="signupPage__wrapper__password-input">
           <h2>{formatMessage(messages.signupPage_passwordTitle)}</h2>
           <InputComponent type="password" name="password" inputsize="small" placeholder={formatMessage(messages.signupPage_passwordInput)} />
-        </div>
-        <div className="signupPage__wrapper__password-two-input">
-          <h2>{formatMessage(messages.signupPage_passwordTwoTitle)}</h2>
-          <InputComponent type="password" name="password-two" inputsize="small" placeholder={formatMessage(messages.signupPage_passwordTwoInput)} />
         </div>
         <div className="signupPage__wrapper__signup-button">
           <ButtonComponent type="submit" designType="full">
