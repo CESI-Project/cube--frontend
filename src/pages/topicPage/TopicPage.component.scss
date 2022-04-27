@@ -48,4 +48,13 @@
       margin-right: 17.3rem;
     }
   }
+
+  &__create-comment {
+    margin-top: 2rem;
+    margin-left: 20%;
+
+    textarea {
+      width: 75%;
+    }
+  }
 }

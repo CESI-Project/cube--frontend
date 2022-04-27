@@ -9,7 +9,7 @@
   cursor: pointer;
 }
 
-.empty {
+.empty-button {
   background-color: $light-white;
   color: $dark-blue;
 
@@ -20,7 +20,7 @@
   }
 }
 
-.full {
+.full-button {
   background-color: $dark-blue;
   color: $light-white;
 

@@ -4,28 +4,28 @@ import './button.component.scss';
 type ButtonType = 'submit' | 'reset' | 'button';
 type DesignType = 'empty' | 'full';
 
-export interface ButtonProps {
+interface ButtonProps {
     type: ButtonType;
     designType: DesignType;
     children: ReactNode;
-
+    onClick: () => void;
 }
 
 export const ButtonComponent: FC<ButtonProps> = ({
-  children, type, designType,
+  children, type, designType, onClick,
 }) => {
   let btnClassName = 'button';
 
   if (designType === 'empty') {
-    btnClassName += ' empty';
+    btnClassName += ' empty-button';
   }
   if (designType === 'full') {
-    btnClassName += ' full';
+    btnClassName += ' full-button';
   }
 
   return (
   // eslint-disable-next-line react/button-has-type
-    <button className={btnClassName} type={type}>
+    <button className={btnClassName} type={type} onClick={onClick}>
       {children}
     </button>
   );

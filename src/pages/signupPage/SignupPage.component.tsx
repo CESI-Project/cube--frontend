@@ -121,7 +121,7 @@ export const SignupPageComponent = () => {
           <InputComponent type="password" name="password" inputsize="small" placeholder={formatMessage(messages.signupPage_passwordInput)} />
         </div>
         <div className="signupPage__wrapper__signup-button">
-          <ButtonComponent type="submit" designType="full">
+          <ButtonComponent type="submit" designType="full" onClick={() => {}}>
             {formatMessage(messages.signupPage_submitSignUp)}
           </ButtonComponent>
         </div>
