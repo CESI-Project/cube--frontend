@@ -6,7 +6,7 @@ import { HeaderBarContainer } from './layouts/headerBar/HeaderBar.container';
 import { HomePageContainer } from './pages/homePage/HomePage.container';
 import { TopicPageContainer } from './pages/topicPage/TopicPage.container';
 import { ConnectionPageContainer } from './pages/connectionPage/ConnectionPage.container';
-import { SignupPageContainer } from './pages/signupPage/signupPage.container';
+import { SignupPageContainer } from './pages/signupPage/SignupPage.container';
 
 function App() {
   return (

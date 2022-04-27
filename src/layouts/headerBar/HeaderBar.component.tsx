@@ -17,7 +17,7 @@ const messages = defineMessages(
       id: 'headerBar.logIn',
     },
     headerBar_signUp: {
-      defaultMessage: 'SignUp',
+      defaultMessage: 'Sign Up',
       id: 'headerBar.signUp',
     },
     headerBar_urlLogIn: {
