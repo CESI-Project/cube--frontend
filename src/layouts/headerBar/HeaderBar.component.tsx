@@ -5,6 +5,7 @@ import bellIcon from '../../assets/images/bellIcon.svg';
 import { ButtonComponent } from '../../components/button/button.component';
 import './HeaderBar.component.scss';
 import { InputComponent } from '../../components/input/input.component';
+import { useUserContext } from '../../context/user.context';
 
 const messages = defineMessages(
   {
@@ -33,6 +34,7 @@ const messages = defineMessages(
 
 export const HeaderBarComponent = () => {
   const { formatMessage } = useIntl();
+  const { isAuthenticated, currentUser, logout } = useUserContext();
 
   return (
     <div className="headerBar">
@@ -40,16 +42,30 @@ export const HeaderBarComponent = () => {
       <div className="headerBar__right">
         <img src={bellIcon} alt="Bell Icon" className="headerBar__right__icon" />
         <InputComponent name="search-bar" type="search" placeholder={formatMessage(messages.headerBar_searchBar)} inputsize="small" />
-        <Link to={formatMessage(messages.headerBar_urlLogIn)}>
-          <ButtonComponent type="button" designType="empty" onClick={() => {}}>
-            {formatMessage(messages.headerBar_logIn)}
+        {!isAuthenticated && (
+          <>
+            <Link to={formatMessage(messages.headerBar_urlLogIn)}>
+              <ButtonComponent type="button" designType="empty" onClick={() => {}}>
+                {formatMessage(messages.headerBar_logIn)}
+              </ButtonComponent>
+            </Link>
+            <Link to={formatMessage(messages.headerBar_urlSignUp)}>
+              <ButtonComponent type="button" designType="full" onClick={() => {}}>
+                {formatMessage(messages.headerBar_signUp)}
+              </ButtonComponent>
+            </Link>
+          </>
+        )}
+        {isAuthenticated && (
+        <div className="headerBar__right__button">
+          <div className="headerBar__right__button__account">
+            {currentUser?.username}
+          </div>
+          <ButtonComponent type="button" designType="full" onClick={logout}>
+            Log Out
           </ButtonComponent>
-        </Link>
-        <Link to={formatMessage(messages.headerBar_urlSignUp)}>
-          <ButtonComponent type="button" designType="full" onClick={() => {}}>
-            {formatMessage(messages.headerBar_signUp)}
-          </ButtonComponent>
-        </Link>
+        </div>
+        )}
       </div>
     </div>
   );
