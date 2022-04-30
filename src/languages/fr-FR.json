@@ -1,7 +1,7 @@
 {
   "topNavBar.Home": "Accueil",
-  "topNavBar.News": "Informations",
-  "topNavBar.Messages": "Messagerie",
+  "topNavBar.Categories": "Catégories",
+  "topNavBar.Favorites": "Favoris",
   "topNavBar.CreateTopic": "Créer un sujet",
   "topNavBar.Settings": "Paramètres",
   "headerBar.searchBar": "Recherche",
@@ -20,7 +20,7 @@
   "connectionPage.usernameTitle" : "Votre pseudo",
   "connectionPage.passwordTitle": "Votre mot de passe",
   "connectionPage.submitConnection": "Se connecter",
-  "connectionPage.errorInput": "Votre Mail / Mot de passe n'est pas correct",
+  "connectionPage.errorInput": "Votre Pseudo / Mot de passe n'est pas correct",
   "signupPage.signupTitle": "S'inscrire",
   "signupPage.mailTitle": "Votre adresse mail",
   "signupPage.mailInput": "votre.adresse@mail.com",

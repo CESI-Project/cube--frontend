@@ -8,13 +8,13 @@ const messages = defineMessages(
       defaultMessage: 'Home',
       id: 'topNavBar.Home',
     },
-    topNavBar_News: {
-      defaultMessage: 'News',
-      id: 'topNavBar.News',
+    topNavBar_Categories: {
+      defaultMessage: 'Categories',
+      id: 'topNavBar.Categories',
     },
-    topNavBar_Messages: {
-      defaultMessage: 'Messages',
-      id: 'topNavBar.Messages',
+    topNavBar_Favorites: {
+      defaultMessage: 'Favorites',
+      id: 'topNavBar.Favorites',
     },
     topNavBar_CreateTopic: {
       defaultMessage: 'Create topic',
@@ -36,11 +36,11 @@ export const TopNavigationBarComponent = () => {
         <Link to={formatMessage(messages.topNavBar_Home).toLowerCase()}>
           {formatMessage(messages.topNavBar_Home)}
         </Link>
-        <Link to={formatMessage(messages.topNavBar_News).toLowerCase()}>
-          {formatMessage(messages.topNavBar_News)}
+        <Link to={formatMessage(messages.topNavBar_Categories).toLowerCase()}>
+          {formatMessage(messages.topNavBar_Categories)}
         </Link>
-        <Link to={formatMessage(messages.topNavBar_Messages).toLowerCase()}>
-          {formatMessage(messages.topNavBar_Messages)}
+        <Link to={formatMessage(messages.topNavBar_Favorites).toLowerCase()}>
+          {formatMessage(messages.topNavBar_Favorites)}
         </Link>
       </div>
       <div className="topNavBar__right">

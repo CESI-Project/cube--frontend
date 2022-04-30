@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import './ConnectionPage.component.scss';
 import { InputComponent } from '../../components/input/input.component';
 import { ButtonComponent } from '../../components/button/button.component';
-import { useConnection } from '../../hooks/reactQuery/useConnection';
 
 const messages = defineMessages({
   connectionPage_usernameInput: {
@@ -31,22 +30,20 @@ const messages = defineMessages({
     id: 'connectionPage.submitConnection',
   },
   connectionPage_errorInput: {
-    defaultMessage: 'Your Mail / Password is wrong',
+    defaultMessage: 'Your Username / Password is incorrect',
     id: 'connectionPage.errorInput',
   },
 });
 
-export const ConnectionPageComponent = () => {
-  const { formatMessage } = useIntl();
-  const { mutate, isError } = useConnection();
+interface ConnectionPageComponentProps {
+  isError: boolean;
+  onConnection: (e: React.FormEvent<HTMLFormElement>) => void;
+}
 
-  const onConnection = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-    const username = formData.get('username') as string;
-    const password = formData.get('password') as string;
-    mutate({ username, password });
-  };
+export const ConnectionPageComponent: FC<ConnectionPageComponentProps> = ({
+  isError, onConnection,
+}) => {
+  const { formatMessage } = useIntl();
 
   return (
     <div className="connectionPage">
