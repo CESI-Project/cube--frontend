@@ -30,9 +30,6 @@ export const HomePageComponent = () => {
         <div className="home-page__button-topic__view">
           {topic.view}
         </div>
-        <div className="home-page__button-topic__comment">
-          {topic.comment}
-        </div>
       </button>
     </Link>
   ));

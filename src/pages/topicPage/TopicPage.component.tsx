@@ -1,9 +1,11 @@
 import { defineMessages, useIntl } from 'react-intl';
-import { useParams } from 'react-router-dom';
 import './TopicPage.component.scss';
+import React, { FC } from 'react';
 import { ButtonComponent } from '../../components/button/button.component';
-import { useTopicById } from '../../hooks/reactQuery/useTopicById';
 import { Topic } from '../../models/Topic';
+import { CommentZoneContainer } from './commentZone/CommentZone.container';
+import { TextareaComponent } from '../../components/textarea/textarea.component';
+import { Comment } from '../../models/Comment';
 
 const messages = defineMessages({
   topicPage_likeButton: {
@@ -24,11 +26,20 @@ const messages = defineMessages({
   },
 });
 
-export const TopicPageComponent = () => {
+interface TopicPageComponentProps {
+  topic: Topic,
+  createComment: () => void;
+  // eslint-disable-next-line no-unused-vars
+  onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onComment: () => void;
+  comments: Comment[];
+  isComment: boolean;
+}
+
+export const TopicPageComponent: FC<TopicPageComponentProps> = ({
+  topic, createComment, onChange, onComment, isComment, comments,
+}) => {
   const { formatMessage } = useIntl();
-  const { id } = useParams();
-  // @ts-ignore
-  const { topic }:Topic = useTopicById(parseInt(id, 10));
 
   return (
     <div className="topic-page">
@@ -43,13 +54,13 @@ export const TopicPageComponent = () => {
       </div>
       <div className="topic-page__footer">
         <div className="topic-page__footer__buttons">
-          <ButtonComponent type="button" designType="empty">
+          <ButtonComponent type="button" designType="empty" onClick={() => {}}>
             {formatMessage(messages.topicPage_likeButton)}
           </ButtonComponent>
-          <ButtonComponent type="button" designType="empty">
+          <ButtonComponent type="button" designType="empty" onClick={() => {}}>
             {formatMessage(messages.topicPage_shareButton)}
           </ButtonComponent>
-          <ButtonComponent type="button" designType="empty">
+          <ButtonComponent type="button" designType="empty" onClick={createComment}>
             {formatMessage(messages.topicPage_commentButton)}
           </ButtonComponent>
         </div>
@@ -60,6 +71,20 @@ export const TopicPageComponent = () => {
           </div>
         </div>
       </div>
+      {isComment && (
+      <div className="topic-page__create-comment">
+        <div>
+          <TextareaComponent cols={150} rows={10} onChange={onChange} />
+        </div>
+        <div>
+          <ButtonComponent type="button" designType="full" onClick={onComment}>
+            Commenter
+          </ButtonComponent>
+        </div>
+
+      </div>
+      )}
+      <CommentZoneContainer comments={comments} />
     </div>
   );
 };

@@ -1,0 +1,8 @@
+@import "src/assets/styles/core/colors";
+
+textarea {
+  border: 0.3rem solid $dark-blue;
+  border-radius: 0.8rem;
+  background-color: $light-white;
+  padding: 1rem;
+}

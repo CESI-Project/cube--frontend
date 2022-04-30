@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { BACKEND_URI } from './index';
-import { Consumer } from '../models/Consumer';
+import { User } from '../models/User';
 
 interface postConncetionProps {
     username: string
@@ -10,7 +10,7 @@ interface postConncetionProps {
 export const postConnection = async ({ username, password }: postConncetionProps) => axios.post(`${BACKEND_URI}/user/auth/log-in`, { username, password }).then((response) => response.data);
 
 export const postCreationAccount = async ({
-  username, firstName, name, birthDate, email, password, role = ['user'],
-}: Consumer) => axios.post(`${BACKEND_URI}/user/auth/sign-up`, {
-  username, firstName, name, birthDate, email, password, role,
+  username, birthDate, email, password, role = ['user'],
+}: User) => axios.post(`${BACKEND_URI}/user/auth/sign-up`, {
+  username, birthDate, email, password, role,
 }).then((response) => response.data);

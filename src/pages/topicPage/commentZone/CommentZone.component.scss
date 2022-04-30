@@ -1,0 +1,71 @@
+@import "src/assets/styles/core/colors";
+
+.comment-zone {
+  margin-top: 2rem;
+  width: 100%;
+
+  &__comment{
+    margin-top: 1rem;
+    width: 100%;
+
+    &__self {
+      margin-left: 30%;
+
+      &__main {
+        display: flex;
+        width: 100%;
+        align-items: center;
+
+        &__right {
+          margin-left: 1rem;
+
+          &__created-at{
+            margin-top: 1rem;
+          }
+        }
+
+        &__text {
+          border: 0.3rem solid $dark-blue;
+          border-radius: 0.8rem;
+          padding: 1rem;
+          height: 10rem;
+          width: 50%;
+          background-color: $dark-blue;
+          color: $light-white;
+        }
+      }
+    }
+
+    &__other {
+      margin-left: 15%;
+      margin-right: 15%;
+
+      &__main {
+        display: flex;
+        width: 100%;
+        align-items: center;
+
+        &__left {
+          margin-right: 1rem;
+
+          &__created-at{
+            margin-top: 1rem;
+          }
+        }
+
+        &__text  {
+          border: 0.3rem solid $dark-blue;
+          border-radius: 0.8rem;
+          background-color: $light-white;
+          padding: 1rem;
+          color: $dark-blue;
+          height: 10rem;
+          width: 50%;
+        }
+      }
+    }
+  }
+}
+
+
+

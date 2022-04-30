@@ -1,4 +1,4 @@
-export interface Consumer {
+export interface User {
     id?: number;
     username: string;
     firstName: string;
@@ -7,4 +7,5 @@ export interface Consumer {
     email: string;
     password: string;
     age?: number;
+    role?: [string];
 }
