@@ -1,9 +1,8 @@
 import { defineMessages, useIntl } from 'react-intl';
 import './SignupPage.component.scss';
-import React from 'react';
+import React, { FC } from 'react';
 import { InputComponent } from '../../components/input/input.component';
 import { ButtonComponent } from '../../components/button/button.component';
-import { useCreationAccount } from '../../hooks/reactQuery/useCreationAccount';
 
 const messages = defineMessages({
   signupPage_mailInput: {
@@ -68,24 +67,15 @@ const messages = defineMessages({
   },
 });
 
-export const SignupPageComponent = () => {
+interface SignupPageComponentProps {
+  isError: boolean;
+  onCreationAccount: (e: React.FormEvent<HTMLFormElement>) => void;
+}
+
+export const SignupPageComponent: FC<SignupPageComponentProps> = ({
+  isError, onCreationAccount,
+}) => {
   const { formatMessage } = useIntl();
-  const { mutate, isError } = useCreationAccount();
-
-  const onCreationAccount = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-    const username = formData.get('username') as string;
-    const firstName = formData.get('first-name') as string;
-    const name = formData.get('name') as string;
-    const birthDate = formData.get('birth-date') as string;
-    const email = formData.get('email') as string;
-    const password = formData.get('password') as string;
-
-    mutate({
-      username, firstName, name, birthDate, email, password,
-    });
-  };
 
   return (
     <div className="signupPage">
@@ -103,14 +93,6 @@ export const SignupPageComponent = () => {
         <div className="signupPage__wrapper__username-input">
           <h2>{formatMessage(messages.signupPage_usernameTitle)}</h2>
           <InputComponent type="text" name="username" inputsize="small" placeholder={formatMessage(messages.signupPage_usernameInput)} />
-        </div>
-        <div className="signupPage__wrapper__first-name-input">
-          <h2>{formatMessage(messages.signupPage_firstNameTitle)}</h2>
-          <InputComponent type="text" name="first-name" inputsize="small" placeholder={formatMessage(messages.signupPage_firstNameInput)} />
-        </div>
-        <div className="signupPage__wrapper__name-input">
-          <h2>{formatMessage(messages.signupPage_nameTitle)}</h2>
-          <InputComponent type="text" name="name" inputsize="small" placeholder={formatMessage(messages.signupPage_nameInput)} />
         </div>
         <div className="signupPage__wrapper__birth-date-input">
           <h2>{formatMessage(messages.signupPage_birthDateTitle)}</h2>

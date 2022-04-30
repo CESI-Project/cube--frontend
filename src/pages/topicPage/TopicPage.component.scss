@@ -16,7 +16,7 @@
     width: 100%;
 
     img {
-      width: 16rem;
+      min-width: 14rem;
       height: 32rem;
       margin-right: 1rem;
     }
@@ -34,8 +34,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 1rem 14.3rem;
-    left: 17rem;
+    margin: 1rem 15rem;
     width: 100%;
 
     &__buttons {
@@ -45,7 +44,7 @@
     }
 
     &__view-counter {
-      margin-right: 17.3rem;
+      margin-right: 18rem;
     }
   }
 
