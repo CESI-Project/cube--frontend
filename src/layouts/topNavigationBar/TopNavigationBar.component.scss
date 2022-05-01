@@ -1,8 +1,17 @@
 @import "src/assets/styles/core/colors";
-
+.nav-check {
+  display:none;
+}
+.topNavBar__label, #toggle {
+  display : none;
+}
+.buttonResponsive , .divNavBarResponsive {
+  display : none;
+}
 .topNavBar {
   font-size: 1rem;
-  display: flex;
+  //display: flex;
+  height : 3rem;
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -11,9 +20,13 @@
   border: 1px solid $dark-blue;
   white-space: nowrap;
 
+  input[name="search-bar"] {
+    display:none;
+  }
   &__left {
     margin-right: 5rem;
     a {
+      float : left;
       margin: 1rem 0 1rem 5rem;
       text-decoration: none;
       color: $dark-blue;
@@ -23,9 +36,95 @@
   &__right {
     margin-left: 5rem;
     a {
+      float : right;
       margin: 1rem 5rem 1rem 0;
       text-decoration: none;
       color: $dark-blue;
     }
+  }
+}
+
+@media (max-width:800px) {
+  .topNavBar {
+    height: 100%;
+    z-index:10;
+
+
+    input[name="search-bar"] {
+      display:inline-block;
+      margin-left: 2rem;
+      width : 70%;
+      margin-top: 0.5rem;
+
+    }
+    .responsive {
+      display: flex;
+    }
+  }
+
+  .topNavBar .divNavBarResponsive {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    //height: 40rem;
+    //z-index:10;
+
+  }
+  .topNavBar .divNavBarResponsive a {
+    //display: inline-block;
+    width: 90%;
+    //float: left;
+    margin-top: 2rem;
+    margin-left:2rem;
+    color: darkblue;
+
+
+  }
+  .divNavBarResponsive li {
+    margin-top: 2rem;
+    margin-left: 3rem;
+  }
+  //.topNavBar__label{
+  //
+  //  width: 30px;
+  //  display: flex;
+  //  justify-content: left;
+  //  align-items: center ;
+  //  font-size: 40px;
+  //  color: darkblue;
+  //  cursor: pointer;
+  //  margin-left: 2rem;
+  //
+  //}
+
+  #toggle:checked + .divNavBar {
+    display: flex;
+    position:absolute
+  }
+
+//  #toggle:checked + .search-bar {
+//display: none;
+//    width:75%;
+//  }
+  .divNavBar {
+    display:none;
+  }
+  .buttonResponsive {
+    background-color : #FFFCF5;
+    border: 0;
+    width: 30px;
+    display: flex;
+    justify-content: left;
+    align-items: center ;
+    font-size: 40px;
+    color: darkblue;
+    cursor: pointer;
+    margin-left: 2rem;
+  }
+  .buttonResponsive , .divNavBarResponsive {
+    //display : inline-block;
+  }
+  .topNavBarResponsive {
+    display: flex;
   }
 }

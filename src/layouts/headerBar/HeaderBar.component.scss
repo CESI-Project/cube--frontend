@@ -40,3 +40,13 @@
     }
   }
 }
+
+@media (max-width:800px) {
+  input[name="search-bar"] {
+    display:none;
+  }
+
+  .headerBar__right button{
+    display:none;
+  }
+}
