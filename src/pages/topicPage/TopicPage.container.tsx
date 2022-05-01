@@ -5,8 +5,10 @@ import { Topic } from '../../models/Topic';
 import { useTopicById } from '../../hooks/reactQuery/useTopicById';
 import { useCreateComment } from '../../hooks/reactQuery/useCreateComment';
 import { useAllComments } from '../../hooks/reactQuery/useAllComments';
+import { useAddFavorite } from '../../hooks/reactQuery/useAddFavorite';
 import { useUserContext } from '../../context/user.context';
 import { Comment } from '../../models/Comment';
+import { useIsFavorite } from '../../hooks/reactQuery/useIsFavorite';
 
 export const TopicPageContainer = () => {
   const { id } = useParams();
@@ -16,8 +18,16 @@ export const TopicPageContainer = () => {
   const { comments, refetch } = useAllComments(parseInt(id, 10));
   const [isComment, setIsComment] = useState(false);
   const [commentText, setCommentText] = useState('');
+  const { mutate: mutateComment } = useCreateComment();
+  const { mutate: mutateFavorite } = useAddFavorite();
   const { currentUser } = useUserContext();
-  const { mutate } = useCreateComment();
+  const { isFavorite } = useIsFavorite({
+    id: 1,
+    userId: currentUser?.id,
+    topicId: parseInt(id, 10),
+  });
+
+  console.log(isFavorite);
 
   const createComment = () => (
     setIsComment(true)
@@ -34,10 +44,14 @@ export const TopicPageContainer = () => {
       topicId: topic.id,
       createdAt: '2022-02-12',
     };
-    mutate(comment);
+    mutateComment(comment);
     setIsComment(false);
     setTimeout(refetch, 500);
   };
+
+  const onShare = () => navigator.clipboard.writeText(window.location.href);
+
+  const onFavorite = () => { mutateFavorite({ userId: currentUser?.id, topicId: topic.id }); };
 
   return (
     <TopicPageComponent
@@ -48,6 +62,8 @@ export const TopicPageContainer = () => {
       comments={comments}
       isComment={isComment}
       currentUser={currentUser}
+      onShare={onShare}
+      onFavorite={onFavorite}
       refetchAllComments={refetch}
     />
   );

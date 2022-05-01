@@ -10,7 +10,7 @@
   "headerBar.urlLogIn": "connexion",
   "headerBar.urlSignUp": "inscription",
   "homePage.Topic": "sujet",
-  "topicPage.likeButton": "Aimer",
+  "topicPage.favoritesButton": "Favoris",
   "topicPage.shareButton": "Partager",
   "topicPage.commentButton": "Commenter",
   "topicPage.viewCounter": "Compteur de vues :",
@@ -38,6 +38,7 @@
   "signupPage.usernameInput": "John33",
   "signupPage.submitSignUp": "S'inscrire",
   "signupPage.errorInput": "Vos informations sont incorrectes ou déjà utilisées",
+  "favoritesPage.title": "Mes favoris",
   "signUp.redirectLink": "accueil",
   "login.redirectLink": "accueil"
 }

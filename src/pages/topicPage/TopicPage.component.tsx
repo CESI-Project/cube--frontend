@@ -9,9 +9,9 @@ import { Comment } from '../../models/Comment';
 import { User } from '../../models/User';
 
 const messages = defineMessages({
-  topicPage_likeButton: {
-    defaultMessage: 'Like',
-    id: 'topicPage.likeButton',
+  topicPage_favoritesButton: {
+    defaultMessage: 'Favorite',
+    id: 'topicPage.favoritesButton',
   },
   topicPage_shareButton: {
     defaultMessage: 'Share',
@@ -35,19 +35,14 @@ interface TopicPageComponentProps {
   onComment: () => void;
   comments: Comment[];
   isComment: boolean;
+  onShare: () => void;
+  onFavorite: () => void;
   currentUser: User | undefined;
   refetchAllComments: () => void;
 }
 
 export const TopicPageComponent: FC<TopicPageComponentProps> = ({
-  topic,
-  createComment,
-  onChange,
-  onComment,
-  isComment,
-  comments,
-  currentUser,
-  refetchAllComments,
+  topic, createComment, onChange, onComment, isComment, comments, onShare, onFavorite, currentUser, refetchAllComments,
 }) => {
   const { formatMessage } = useIntl();
 
@@ -64,10 +59,10 @@ export const TopicPageComponent: FC<TopicPageComponentProps> = ({
       </div>
       <div className="topic-page__footer">
         <div className="topic-page__footer__buttons">
-          <ButtonComponent type="button" designType="empty" onClick={() => {}}>
-            {formatMessage(messages.topicPage_likeButton)}
+          <ButtonComponent type="button" designType="empty" onClick={onFavorite}>
+            {formatMessage(messages.topicPage_favoritesButton)}
           </ButtonComponent>
-          <ButtonComponent type="button" designType="empty" onClick={() => {}}>
+          <ButtonComponent type="button" designType="empty" onClick={onShare}>
             {formatMessage(messages.topicPage_shareButton)}
           </ButtonComponent>
           <ButtonComponent type="button" designType="empty" onClick={createComment}>

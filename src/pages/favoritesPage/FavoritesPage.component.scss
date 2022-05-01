@@ -1,0 +1,26 @@
+@import "src/assets/styles/core/colors";
+
+.favorites-page {
+  color: $dark-blue;
+  margin: 0 1rem;
+  width: 100%;
+
+  &__title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  &__table {
+    width: 50%;
+    border: 0.1rem solid $dark-blue;
+
+    td {
+      padding: 1rem;
+    }
+
+    tr:nth-of-type(odd) {
+      background-color:$dark-blue;
+      color: $light-white;
+    }
+  }
+}
