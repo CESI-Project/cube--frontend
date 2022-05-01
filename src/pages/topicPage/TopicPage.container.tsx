@@ -32,8 +32,6 @@ export const TopicPageContainer = () => {
       text: commentText,
       userId: currentUser?.id || 1,
       topicId: topic.id,
-      react: 0,
-      dislike: 0,
       createdAt: '2022-02-12',
     };
     mutate(comment);

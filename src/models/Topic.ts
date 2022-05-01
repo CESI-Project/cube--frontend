@@ -3,7 +3,9 @@ export interface Topic {
     title: string;
     text: string;
     picture: string;
-    react: number;
     view: number;
+    isValidated?: boolean;
     comment: string;
+    favorite?: string[];
+    tags?: string[];
 }
