@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { defineMessages, useIntl } from 'react-intl';
 import './TopNavigationBar.component.scss';
+import { CategoriesMenuContainer } from './catagoriesMenu/CategoriesMenu.container';
 import { useState } from 'react';
 import { InputComponent } from '../../components/input/input.component';
 
@@ -9,10 +10,6 @@ const messages = defineMessages(
     topNavBar_Home: {
       defaultMessage: 'Home',
       id: 'topNavBar.Home',
-    },
-    topNavBar_Categories: {
-      defaultMessage: 'Categories',
-      id: 'topNavBar.Categories',
     },
     topNavBar_Favorites: {
       defaultMessage: 'Favorites',
@@ -52,9 +49,7 @@ export const TopNavigationBarComponent = () => {
                 </Link>
               </li>
               <li>
-                <Link to={formatMessage(messages.topNavBar_Categories).toLowerCase()}>
-                  {formatMessage(messages.topNavBar_Categories)}
-                </Link>
+                  <CategoriesMenuContainer />
               </li>
               <li>
                 <Link to={formatMessage(messages.topNavBar_Favorites).toLowerCase()}>
@@ -81,9 +76,7 @@ export const TopNavigationBarComponent = () => {
           <Link to={formatMessage(messages.topNavBar_Home).toLowerCase()}>
             {formatMessage(messages.topNavBar_Home)}
           </Link>
-          <Link to={formatMessage(messages.topNavBar_Categories).toLowerCase()}>
-            {formatMessage(messages.topNavBar_Categories)}
-          </Link>
+            <CategoriesMenuContainer />
           <Link to={formatMessage(messages.topNavBar_Favorites).toLowerCase()}>
             {formatMessage(messages.topNavBar_Favorites)}
           </Link>

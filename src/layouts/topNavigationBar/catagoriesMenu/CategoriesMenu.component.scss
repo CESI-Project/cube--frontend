@@ -1,0 +1,42 @@
+@import "src/assets/styles/core/colors";
+
+.categoriesButton {
+  color: $dark-blue;
+  margin: -0.05rem 0 0 5rem;
+  cursor: pointer;
+  border: none;
+  background-color: $light-white;
+  padding: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.categoriesMenu {
+  position: absolute;
+  border: 0.1rem solid $dark-blue;
+  background-color: $light-white;
+  width: 25rem;
+  padding: 1rem 2rem 2rem 2rem;
+  top: 9rem;
+  left: 13rem;
+
+  &__family-tag {
+    margin-top: 1rem;
+
+    &__button {
+      border: none;
+      background-color: $light-white;
+      color: $dark-blue;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    &__tag {
+      margin: 0.5rem 0 0 2rem;
+      border: none;
+      background-color: $light-white;
+      color: $dark-blue;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+  }
+}
