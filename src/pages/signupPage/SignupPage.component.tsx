@@ -50,7 +50,7 @@ const messages = defineMessages({
     id: 'signupPage.nameTitle',
   },
   signupPage_birthDateTitle: {
-    defaultMessage: 'Your first name',
+    defaultMessage: 'Your birth date',
     id: 'signupPage.birthDateTitle',
   },
   signupPage_passwordTitle: {
