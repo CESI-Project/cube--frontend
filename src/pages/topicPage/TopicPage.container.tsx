@@ -5,6 +5,8 @@ import { Topic } from '../../models/Topic';
 import { useTopicById } from '../../hooks/reactQuery/useTopicById';
 import { useCreateComment } from '../../hooks/reactQuery/useCreateComment';
 import { useAllComments } from '../../hooks/reactQuery/useAllComments';
+import { useUserContext } from '../../context/user.context';
+import { Comment } from '../../models/Comment';
 
 export const TopicPageContainer = () => {
   const { id } = useParams();
@@ -14,16 +16,8 @@ export const TopicPageContainer = () => {
   const { comments, refetch } = useAllComments(parseInt(id, 10));
   const [isComment, setIsComment] = useState(false);
   const [commentText, setCommentText] = useState('');
+  const { currentUser } = useUserContext();
   const { mutate } = useCreateComment();
-
-  const username = {
-    id: 1,
-    firstName: 'Pierre',
-    name: 'Rocher',
-    birthDate: '2000-04-12',
-    email: 'pierre.rocher@gmail.com',
-    password: '1234',
-  };
 
   const createComment = () => (
     setIsComment(true)
@@ -34,9 +28,15 @@ export const TopicPageContainer = () => {
   };
 
   const onComment = () => {
-    mutate({
-      text: commentText, user: username, topicId: topic.id, react: 0, dislike: 0, createdAt: '2022-02-12',
-    });
+    const comment:Comment = {
+      text: commentText,
+      userId: currentUser?.id || 1,
+      topicId: topic.id,
+      react: 0,
+      dislike: 0,
+      createdAt: '2022-02-12',
+    };
+    mutate(comment);
     setIsComment(false);
     setTimeout(refetch, 500);
   };
@@ -49,6 +49,7 @@ export const TopicPageContainer = () => {
       onComment={onComment}
       comments={comments}
       isComment={isComment}
+      currentUser={currentUser}
     />
   );
 };

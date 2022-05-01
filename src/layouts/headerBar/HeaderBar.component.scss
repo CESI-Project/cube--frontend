@@ -1,3 +1,5 @@
+@import "src/assets/styles/core/colors";
+
 .headerBar{
   display: flex;
   align-items: center;
@@ -17,6 +19,16 @@
     &__icon {
       margin-right: 1rem;
       height: 2.5rem;
+    }
+
+    &__button {
+      display: flex;
+      align-items: center;
+
+      &__account {
+        margin-right: 1rem;
+        color: $dark-blue;
+      }
     }
 
     input {

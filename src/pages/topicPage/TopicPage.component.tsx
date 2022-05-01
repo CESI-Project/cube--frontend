@@ -6,6 +6,7 @@ import { Topic } from '../../models/Topic';
 import { CommentZoneContainer } from './commentZone/CommentZone.container';
 import { TextareaComponent } from '../../components/textarea/textarea.component';
 import { Comment } from '../../models/Comment';
+import { User } from '../../models/User';
 
 const messages = defineMessages({
   topicPage_likeButton: {
@@ -34,10 +35,17 @@ interface TopicPageComponentProps {
   onComment: () => void;
   comments: Comment[];
   isComment: boolean;
+  currentUser: User | undefined;
 }
 
 export const TopicPageComponent: FC<TopicPageComponentProps> = ({
-  topic, createComment, onChange, onComment, isComment, comments,
+  topic,
+  createComment,
+  onChange,
+  onComment,
+  isComment,
+  comments,
+  currentUser,
 }) => {
   const { formatMessage } = useIntl();
 
@@ -71,7 +79,7 @@ export const TopicPageComponent: FC<TopicPageComponentProps> = ({
           </div>
         </div>
       </div>
-      {isComment && (
+      {(isComment && currentUser !== undefined) && (
       <div className="topic-page__create-comment">
         <div>
           <TextareaComponent cols={150} rows={10} onChange={onChange} />
@@ -81,10 +89,12 @@ export const TopicPageComponent: FC<TopicPageComponentProps> = ({
             Commenter
           </ButtonComponent>
         </div>
-
       </div>
       )}
-      <CommentZoneContainer comments={comments} />
+      <CommentZoneContainer
+        comments={comments}
+        currentUser={currentUser}
+      />
     </div>
   );
 };

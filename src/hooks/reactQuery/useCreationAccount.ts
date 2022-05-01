@@ -1,8 +1,4 @@
 import { useMutation } from 'react-query';
-import { postCreationAccount } from '../../services/consumer.service';
+import { postCreationAccount } from '../../services/user.service';
 
-export const useCreationAccount = () => {
-  const { mutate, isError } = useMutation('connection', postCreationAccount);
-
-  return { mutate, isError };
-};
+export const useCreationAccount = () => useMutation('connection', postCreationAccount);

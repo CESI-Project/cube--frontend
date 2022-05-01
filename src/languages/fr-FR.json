@@ -37,5 +37,7 @@
   "signupPage.usernameTitle": "Votre pseudo",
   "signupPage.usernameInput": "John33",
   "signupPage.submitSignUp": "S'inscrire",
-  "signupPage.errorInput": "Vos informations sont incorrectes ou déjà utilisées"
+  "signupPage.errorInput": "Vos informations sont incorrectes ou déjà utilisées",
+  "signUp.redirectLink": "accueil",
+  "login.redirectLink": "accueil"
 }

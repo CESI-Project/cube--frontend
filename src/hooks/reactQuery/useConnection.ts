@@ -1,8 +1,4 @@
 import { useMutation } from 'react-query';
-import { postConnection } from '../../services/consumer.service';
+import { postConnection } from '../../services/user.service';
 
-export const useConnection = () => {
-  const { mutate, isError } = useMutation('connection', postConnection);
-
-  return { mutate, isError };
-};
+export const useConnection = () => useMutation('connection', postConnection);

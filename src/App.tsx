@@ -7,26 +7,27 @@ import { HomePageContainer } from './pages/homePage/HomePage.container';
 import { TopicPageContainer } from './pages/topicPage/TopicPage.container';
 import { ConnectionPageContainer } from './pages/connectionPage/ConnectionPage.container';
 import { SignupPageContainer } from './pages/signupPage/SignupPage.container';
+import { UserInfoProvider } from './context/UserContext.provider';
 
 function App() {
   return (
     <div className="App">
-      <HeaderBarContainer />
-      <TopNavigationBarContainer />
-      <Routes>
-        {/* <Route path="*" element={<NotFound />} /> */}
-        <Route path="/" element={<HomePageContainer />} />
-        <Route path="/home" element={<HomePageContainer />} />
-        <Route path="/accueil" element={<HomePageContainer />} />
-        <Route path="/topic/:id" element={<TopicPageContainer />} />
-        <Route path="/sujet/:id" element={<TopicPageContainer />} />
-        <Route path="/login" element={<ConnectionPageContainer />} />
-        <Route path="/connexion" element={<ConnectionPageContainer />} />
-        <Route path="/signup" element={<SignupPageContainer />} />
-        <Route path="/inscription" element={<SignupPageContainer />} />
+      <UserInfoProvider>
+        <HeaderBarContainer />
+        <TopNavigationBarContainer />
+        <Routes>
+          <Route path="/" element={<HomePageContainer />} />
+          <Route path="/home" element={<HomePageContainer />} />
+          <Route path="/accueil" element={<HomePageContainer />} />
+          <Route path="/topic/:id" element={<TopicPageContainer />} />
+          <Route path="/sujet/:id" element={<TopicPageContainer />} />
+          <Route path="/login" element={<ConnectionPageContainer />} />
+          <Route path="/connexion" element={<ConnectionPageContainer />} />
+          <Route path="/signup" element={<SignupPageContainer />} />
+          <Route path="/inscription" element={<SignupPageContainer />} />
+        </Routes>
+      </UserInfoProvider>
 
-        {/* <Route path="/profile" element={<Profile />} /> */}
-      </Routes>
     </div>
   );
 }

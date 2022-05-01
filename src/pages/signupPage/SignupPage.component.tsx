@@ -43,7 +43,7 @@ const messages = defineMessages({
   },
   signupPage_mailTitle: {
     defaultMessage: 'Mail :',
-    id: 'connectionPage.mailTitle',
+    id: 'signupPage.mailTitle',
   },
   signupPage_nameTitle: {
     defaultMessage: 'Your name',
