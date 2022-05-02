@@ -7,6 +7,6 @@ export const postFavorite = async ({ userId, topicId }: Favorite) => axios.post(
 
 export const getHisFavorite = async (userId: number | undefined) => axios.get(`${BACKEND_URI}/favorite/${userId}`, { headers: authHeader() }).then((response) => response.data);
 
-export const getIsFavorite = async ({ id, userId, topicId }: Favorite) => axios.get(`${BACKEND_URI}/favorite/isFavorite`, { params: { id, userId, topicId } }).then((response) => response.data);
+export const getIsFavorite = async ({ userId, topicId }: Favorite) => axios.get(`${BACKEND_URI}/favorite/isFavorite`, { params: { favorite: { userId, topicId } } }).then((response) => response.data);
 
 export const deleteFavorite = async (favoriteId: number) => axios.delete(`${BACKEND_URI}/favorite/${favoriteId}`, { headers: authHeader() }).then((response) => response.data);
