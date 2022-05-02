@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { defineMessages, useIntl } from 'react-intl';
 import './TopNavigationBar.component.scss';
-import { CategoriesMenuContainer } from './catagoriesMenu/CategoriesMenu.container';
 import { useState } from 'react';
+import { CategoriesMenuContainer } from './catagoriesMenu/CategoriesMenu.container';
 import { InputComponent } from '../../components/input/input.component';
 
 const messages = defineMessages(
@@ -49,7 +49,7 @@ export const TopNavigationBarComponent = () => {
                 </Link>
               </li>
               <li>
-                  <CategoriesMenuContainer />
+                <CategoriesMenuContainer />
               </li>
               <li>
                 <Link to={formatMessage(messages.topNavBar_Favorites).toLowerCase()}>
@@ -76,7 +76,7 @@ export const TopNavigationBarComponent = () => {
           <Link to={formatMessage(messages.topNavBar_Home).toLowerCase()}>
             {formatMessage(messages.topNavBar_Home)}
           </Link>
-            <CategoriesMenuContainer />
+          <CategoriesMenuContainer />
           <Link to={formatMessage(messages.topNavBar_Favorites).toLowerCase()}>
             {formatMessage(messages.topNavBar_Favorites)}
           </Link>
