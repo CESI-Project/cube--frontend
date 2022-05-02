@@ -16,6 +16,10 @@
         width: 100%;
         align-items: center;
 
+        button {
+          margin-right: 1rem;
+        }
+
         &__right {
           margin-left: 1rem;
 
@@ -44,6 +48,11 @@
         display: flex;
         width: 100%;
         align-items: center;
+
+        button {
+          margin-left: 1rem;
+        }
+
 
         &__left {
           margin-right: 1rem;

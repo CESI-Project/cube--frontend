@@ -10,3 +10,5 @@ export const postCreationComment = async ({
 }: Comment) => axios.post(`${BACKEND_URI}/comment`, {
   text, userId, topicId, createdAt,
 }, { headers: authHeader() }).then((response) => response.data);
+
+export const deleteComment = async (id: number | undefined) => axios.delete(`${BACKEND_URI}/comment/${id}`, { headers: authHeader() }).then((response) => response.data);

@@ -48,6 +48,7 @@ export const TopicPageContainer = () => {
       comments={comments}
       isComment={isComment}
       currentUser={currentUser}
+      refetchAllComments={refetch}
     />
   );
 };
