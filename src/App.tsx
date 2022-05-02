@@ -7,6 +7,7 @@ import { HomePageContainer } from './pages/homePage/HomePage.container';
 import { TopicPageContainer } from './pages/topicPage/TopicPage.container';
 import { ConnectionPageContainer } from './pages/connectionPage/ConnectionPage.container';
 import { SignupPageContainer } from './pages/signupPage/SignupPage.container';
+import { FavoritesPageContainer } from './pages/favoritesPage/FavoritesPage.container';
 import { UserInfoProvider } from './context/UserContext.provider';
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
           <Route path="/connexion" element={<ConnectionPageContainer />} />
           <Route path="/signup" element={<SignupPageContainer />} />
           <Route path="/inscription" element={<SignupPageContainer />} />
+            <Route path="/favorites" element={<FavoritesPageContainer />} />
+            <Route path="/favoris" element={<FavoritesPageContainer />} />
         </Routes>
       </UserInfoProvider>
 
