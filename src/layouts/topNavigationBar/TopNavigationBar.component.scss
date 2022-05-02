@@ -24,9 +24,10 @@
   }
   &__left {
     margin-right: 5rem;
+    display: flex;
     a {
       float : left;
-      margin: 1rem 0 1rem 5rem;
+      margin-left: 5rem;
       text-decoration: none;
       color: $dark-blue;
     }
@@ -36,7 +37,7 @@
     margin-left: 5rem;
     a {
       float : right;
-      margin: 1rem 5rem 1rem 0;
+      margin-right: 5rem;
       text-decoration: none;
       color: $dark-blue;
     }
