@@ -6,6 +6,5 @@ export interface Topic {
     view: number;
     isValidated?: boolean;
     comment: string;
-    favorite?: string[];
     tags?: string[];
 }

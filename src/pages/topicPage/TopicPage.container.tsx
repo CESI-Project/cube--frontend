@@ -12,15 +12,16 @@ import { Comment } from '../../models/Comment';
 
 export const TopicPageContainer = () => {
   const { id } = useParams();
+  const { currentUser } = useUserContext();
   // @ts-ignore
-  const { topic }:Topic = useTopicById(parseInt(id, 10));
+  const { topic }:Topic = useTopicById({ topicId: parseInt(id, 10), userId: currentUser?.id });
   // @ts-ignore
   const { comments, refetch } = useAllComments(parseInt(id, 10));
   const [isComment, setIsComment] = useState(false);
   const [commentText, setCommentText] = useState('');
   const { mutate: mutateComment } = useCreateComment();
   const { mutate: mutateFavorite } = useAddFavorite();
-  const { currentUser } = useUserContext();
+
   // const { isFavorite } = useIsFavorite({
   //   id: 1,
   //   userId: currentUser?.id,

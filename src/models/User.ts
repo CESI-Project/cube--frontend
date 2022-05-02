@@ -8,6 +8,5 @@ export interface User {
     password: string;
     comment?: Comment[];
     age?: number;
-    favorite?: string[];
     role?: string[];
 }
