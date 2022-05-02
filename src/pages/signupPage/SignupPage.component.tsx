@@ -86,6 +86,9 @@ export const SignupPageComponent: FC<SignupPageComponentProps> = ({
           {formatMessage(messages.signupPage_errorInput)}
         </div>
         )}
+        <div className="signupPage__wrapper__file-input">
+          <input type="file" name="file" />
+        </div>
         <div className="signupPage__wrapper__mail-input">
           <h2>{formatMessage(messages.signupPage_mailTitle)}</h2>
           <InputComponent type="email" name="email" inputsize="small" placeholder={formatMessage(messages.signupPage_mailInput)} />

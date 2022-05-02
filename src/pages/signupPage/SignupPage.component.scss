@@ -29,5 +29,11 @@
     &__signup-button {
       margin-top : 2rem;
     }
+
+    &__file-input {
+      input{
+        text-align: center;
+      }
+    }
   }
 }
