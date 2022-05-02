@@ -36,6 +36,7 @@ interface TopicPageComponentProps {
   comments: Comment[];
   isComment: boolean;
   currentUser: User | undefined;
+  refetchAllComments: () => void;
 }
 
 export const TopicPageComponent: FC<TopicPageComponentProps> = ({
@@ -46,6 +47,7 @@ export const TopicPageComponent: FC<TopicPageComponentProps> = ({
   isComment,
   comments,
   currentUser,
+  refetchAllComments,
 }) => {
   const { formatMessage } = useIntl();
 
@@ -94,6 +96,7 @@ export const TopicPageComponent: FC<TopicPageComponentProps> = ({
       <CommentZoneContainer
         comments={comments}
         currentUser={currentUser}
+        refetchAllComments={refetchAllComments}
       />
     </div>
   );
