@@ -5,6 +5,9 @@ export const useAllFavoritesByUser = (userId: number | undefined) => {
   const { data } = useQuery(
     'all-favorites-by-user',
     () => getHisFavorite(userId),
+    {
+      enabled: !!userId,
+    },
   );
 
   return { favorites: data || [] };

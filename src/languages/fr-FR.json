@@ -5,6 +5,7 @@
   "topNavBar.CreateTopic": "Créer un sujet",
   "topNavBar.Settings": "Paramètres",
   "headerBar.searchBar": "Recherche",
+  "topNavBar.searchBar": "Recherche",
   "headerBar.logIn": "Se connecter",
   "headerBar.signUp": "S'inscrire",
   "headerBar.urlLogIn": "connexion",

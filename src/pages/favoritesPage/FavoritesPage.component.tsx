@@ -20,7 +20,7 @@ export const FavoritesPageComponent = () => {
   const { favorites } = useAllFavoritesByUser(currentUser?.id);
 
   const listFavorites = favorites.map((favorite: Favorite) => (
-    <tr className="favorites-page__table__item">
+    <tr className="favorites-page__table__item" key={favorite.id}>
       <td>
         {favorite.topicId}
       </td>
@@ -38,7 +38,9 @@ export const FavoritesPageComponent = () => {
         {formatMessage(messages.favoritesPage_title)}
       </div>
       <table className="favorites-page__table">
-        {listFavorites}
+        <tbody>
+          {listFavorites}
+        </tbody>
       </table>
     </div>
   );

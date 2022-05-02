@@ -8,7 +8,7 @@ import { useAllComments } from '../../hooks/reactQuery/useAllComments';
 import { useAddFavorite } from '../../hooks/reactQuery/useAddFavorite';
 import { useUserContext } from '../../context/user.context';
 import { Comment } from '../../models/Comment';
-import { useIsFavorite } from '../../hooks/reactQuery/useIsFavorite';
+// import { useIsFavorite } from '../../hooks/reactQuery/useIsFavorite';
 
 export const TopicPageContainer = () => {
   const { id } = useParams();
@@ -21,13 +21,11 @@ export const TopicPageContainer = () => {
   const { mutate: mutateComment } = useCreateComment();
   const { mutate: mutateFavorite } = useAddFavorite();
   const { currentUser } = useUserContext();
-  const { isFavorite } = useIsFavorite({
-    id: 1,
-    userId: currentUser?.id,
-    topicId: parseInt(id, 10),
-  });
-
-  console.log(isFavorite);
+  // const { isFavorite } = useIsFavorite({
+  //   id: 1,
+  //   userId: currentUser?.id,
+  //   topicId: parseInt(id, 10),
+  // });
 
   const createComment = () => (
     setIsComment(true)

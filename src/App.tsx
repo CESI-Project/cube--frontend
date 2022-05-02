@@ -26,11 +26,10 @@ function App() {
           <Route path="/connexion" element={<ConnectionPageContainer />} />
           <Route path="/signup" element={<SignupPageContainer />} />
           <Route path="/inscription" element={<SignupPageContainer />} />
-            <Route path="/favorites" element={<FavoritesPageContainer />} />
-            <Route path="/favoris" element={<FavoritesPageContainer />} />
+          <Route path="/favorites" element={<FavoritesPageContainer />} />
+          <Route path="/favoris" element={<FavoritesPageContainer />} />
         </Routes>
       </UserInfoProvider>
-
     </div>
   );
 }
