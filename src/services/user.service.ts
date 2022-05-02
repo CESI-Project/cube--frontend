@@ -25,4 +25,4 @@ export const postCreationAccount = async ({
   return response.data;
 });
 
-export const getUserById = async (id:number | undefined) => axios.get(`${BACKEND_URI}/user/${id}`).then((response) => response.data);
+export const getUserById = async (id: number) => axios.get(`${BACKEND_URI}/user/${id}`).then((response) => response.data);

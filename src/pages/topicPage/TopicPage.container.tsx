@@ -7,6 +7,8 @@ import { useCreateComment } from '../../hooks/reactQuery/useCreateComment';
 import { useAllComments } from '../../hooks/reactQuery/useAllComments';
 import { useUserContext } from '../../context/user.context';
 import { Comment } from '../../models/Comment';
+import { User } from '../../models/User';
+import { useUserById } from '../../hooks/reactQuery/useUserById';
 
 export const TopicPageContainer = () => {
   const { id } = useParams();
@@ -18,6 +20,7 @@ export const TopicPageContainer = () => {
   const [commentText, setCommentText] = useState('');
   const { currentUser } = useUserContext();
   const { mutate } = useCreateComment();
+  const { user }:User = useUserById(comments.map((comment: Comment) => comment.userId));
 
   const createComment = () => (
     setIsComment(true)
@@ -48,6 +51,7 @@ export const TopicPageContainer = () => {
       comments={comments}
       isComment={isComment}
       currentUser={currentUser}
+      otherUser={user}
     />
   );
 };

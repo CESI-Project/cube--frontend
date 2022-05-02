@@ -6,10 +6,11 @@ import { User } from '../../../models/User';
 interface CommentZoneComponentProps {
   comments: Comment[];
   currentUser: User | undefined;
+  otherUser: User;
 }
 
 export const CommentZoneComponent: FC<CommentZoneComponentProps> = ({
-  comments, currentUser,
+  comments, currentUser, otherUser,
 }) => {
   const listComments = comments.map((comment: Comment) => (
     <div key={comment.id} className="comment-zone__comment">
@@ -23,7 +24,7 @@ export const CommentZoneComponent: FC<CommentZoneComponentProps> = ({
               </div>
               <div className="comment-zone__comment__self__main__right">
                 <div>
-                  {comment.id}
+                  {otherUser.userName}
                 </div>
                 <div className="comment-zone__comment__self__main__right__created-at">
                   {comment.createdAt}
@@ -36,7 +37,7 @@ export const CommentZoneComponent: FC<CommentZoneComponentProps> = ({
             <div className="comment-zone__comment__other__main">
               <div className="comment-zone__comment__other__main__left">
                 <div>
-                  {comment.userId}
+                  {otherUser.userName}
                 </div>
                 <div className="comment-zone__comment__other__main__left__created-at">
                   {comment.createdAt}
