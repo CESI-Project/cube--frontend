@@ -19,6 +19,10 @@ const messages = defineMessages(
       defaultMessage: 'Create topic',
       id: 'topNavBar.CreateTopic',
     },
+    topNavBar_CreateTopicUrl: {
+      defaultMessage: 'createtopic',
+      id: 'topNavBar.CreateTopicUrl',
+    },
     topNavBar_Settings: {
       defaultMessage: 'Settings',
       id: 'topNavBar.Settings',
@@ -57,7 +61,7 @@ export const TopNavigationBarComponent = () => {
                 </Link>
               </li>
               <li>
-                <Link to={formatMessage(messages.topNavBar_CreateTopic).toLowerCase()}>
+                <Link to={formatMessage(messages.topNavBar_CreateTopicUrl)}>
                   {formatMessage(messages.topNavBar_CreateTopic)}
                 </Link>
               </li>
@@ -82,7 +86,7 @@ export const TopNavigationBarComponent = () => {
           </Link>
         </div>
         <div className="topNavBar__right">
-          <Link to={formatMessage(messages.topNavBar_CreateTopic).toLowerCase()}>
+          <Link to={formatMessage(messages.topNavBar_CreateTopicUrl).toLowerCase()}>
             {formatMessage(messages.topNavBar_CreateTopic)}
           </Link>
           <Link to={formatMessage(messages.topNavBar_Settings).toLowerCase()}>

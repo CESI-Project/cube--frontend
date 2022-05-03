@@ -43,18 +43,18 @@ export const HeaderBarComponent = () => {
         <img src={bellIcon} alt="Bell Icon" className="headerBar__right__icon" />
         <InputComponent name="search-bar" type="search" placeholder={formatMessage(messages.headerBar_searchBar)} inputsize="small" />
         {!isAuthenticated && (
-          <>
-            <Link to={formatMessage(messages.headerBar_urlLogIn)}>
-              <ButtonComponent type="button" designType="empty" onClick={() => {}}>
-                {formatMessage(messages.headerBar_logIn)}
-              </ButtonComponent>
-            </Link>
-            <Link to={formatMessage(messages.headerBar_urlSignUp)}>
-              <ButtonComponent type="button" designType="full" onClick={() => {}}>
-                {formatMessage(messages.headerBar_signUp)}
-              </ButtonComponent>
-            </Link>
-          </>
+        <>
+          <Link to={formatMessage(messages.headerBar_urlLogIn)}>
+            <ButtonComponent type="button" designType="empty" onClick={() => {}}>
+              {formatMessage(messages.headerBar_logIn)}
+            </ButtonComponent>
+          </Link>
+          <Link to={formatMessage(messages.headerBar_urlSignUp)}>
+            <ButtonComponent type="button" designType="full" onClick={() => {}}>
+              {formatMessage(messages.headerBar_signUp)}
+            </ButtonComponent>
+          </Link>
+        </>
         )}
         {isAuthenticated && (
         <div className="headerBar__right__button">

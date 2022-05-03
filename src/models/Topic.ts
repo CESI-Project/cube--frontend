@@ -1,11 +1,11 @@
 export interface Topic {
-    id: number;
+    id?: number;
     title: string;
     text: string;
-    picture: string;
-    view: number;
+    picture: any;
+    view?: number;
     isValidated?: boolean;
-    comment: string;
+    comment?: string;
     favorite?: string[];
     tags?: string[];
 }

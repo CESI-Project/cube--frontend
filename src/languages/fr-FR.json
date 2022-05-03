@@ -4,6 +4,7 @@
   "topNavBar.Favorites": "Favoris",
   "topNavBar.CreateTopic": "Créer un sujet",
   "topNavBar.Settings": "Paramètres",
+  "topNavBar.CreateTopicUrl": "creersujet",
   "headerBar.searchBar": "Recherche",
   "topNavBar.searchBar": "Recherche",
   "headerBar.logIn": "Se connecter",
@@ -41,5 +42,13 @@
   "signupPage.errorInput": "Vos informations sont incorrectes ou déjà utilisées",
   "favoritesPage.title": "Mes favoris",
   "signUp.redirectLink": "accueil",
-  "login.redirectLink": "accueil"
+  "login.redirectLink": "accueil",
+  "createtopicPage.createtopicNameTitle": "Nom du sujet",
+  "createtopicPage.createtopicImageInput": "Parcourir...",
+  "createtopicPage.createtopicTitle": "Créer un sujet",
+  "createtopicPage.createtopicTags": "Mots-clés",
+  "createtopicPage.createtopicMessageTitle": "Message",
+  "createtopicPage.createtopicLanguage": "Langue",
+  "createtopicPage.createtopicButton": "Valider",
+  "createtopicPage.createtopicSelect": "Selectionner..."
 }
