@@ -1,18 +1,43 @@
-import { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { Comment } from '../../../models/Comment';
 import './CommentZone.component.scss';
 import { User } from '../../../models/User';
 import { ButtonComponent } from '../../../components/button/button.component';
+import { SubCommentZoneContainer } from './subCommentZone/SubCommentZone.container';
+import { deleteComment } from '../../../services/comment.service';
+import { TextareaComponent } from '../../../components/textarea/textarea.component';
 
 interface CommentZoneComponentProps {
   comments: Comment[];
   currentUser: User | undefined;
   onDeleteComment: (id: number | undefined) => void;
+  setCurrentComment: (prevState: number | undefined) => void;
+  onSubComment: () => void;
+  isSubComment: boolean;
+  setIsSubComment: (prevState: boolean) => void;
+  onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  currentResponse: number | undefined;
+  setCurrentResponse: (prevState: number | undefined) => void;
 }
 
 export const CommentZoneComponent: FC<CommentZoneComponentProps> = ({
-  comments, currentUser, onDeleteComment,
+  comments,
+  currentUser,
+  onDeleteComment,
+  onSubComment,
+  isSubComment,
+  setIsSubComment,
+  onChange,
+  setCurrentComment,
+  setCurrentResponse,
+  currentResponse,
 }) => {
+  const onSubCommentWrapper = (commentId: number | undefined) => {
+    setCurrentResponse(commentId);
+    setCurrentComment(commentId);
+    setIsSubComment(!isSubComment);
+  };
+
   const listComments = comments.map((comment: Comment) => (
     <div key={comment.id} className="comment-zone__comment">
       {currentUser !== undefined && (
@@ -20,6 +45,9 @@ export const CommentZoneComponent: FC<CommentZoneComponentProps> = ({
         {comment.userId === currentUser.id ? (
           <div className="comment-zone__comment__self">
             <div className="comment-zone__comment__self__main">
+              <ButtonComponent type="button" designType="empty" onClick={() => { onSubCommentWrapper(comment.id); }}>
+                Repondre
+              </ButtonComponent>
               <ButtonComponent type="button" designType="empty" onClick={() => { onDeleteComment(comment.id); }}>
                 Delete
               </ButtonComponent>
@@ -35,6 +63,19 @@ export const CommentZoneComponent: FC<CommentZoneComponentProps> = ({
                 </div>
               </div>
             </div>
+            <SubCommentZoneContainer commentId={comment.id} currentUser={currentUser} />
+            {(isSubComment && currentResponse === comment.id) && (
+            <div className="topic-page__create-comment">
+              <div>
+                <TextareaComponent cols={150} rows={10} onChange={onChange} />
+              </div>
+              <div>
+                <ButtonComponent type="button" designType="full" onClick={() => { onSubComment(); }}>
+                  Commenter
+                </ButtonComponent>
+              </div>
+            </div>
+            )}
           </div>
         ) : (
           <div className="comment-zone__comment__other">
@@ -50,10 +91,26 @@ export const CommentZoneComponent: FC<CommentZoneComponentProps> = ({
               <div className="comment-zone__comment__other__main__text">
                 {comment.text}
               </div>
-              <ButtonComponent type="button" designType="empty" onClick={() => { deleteComment(comment.id); }}>
+              <ButtonComponent type="button" designType="empty" onClick={() => { onSubCommentWrapper(comment.id); }}>
+                Repondre
+              </ButtonComponent>
+              <ButtonComponent type="button" designType="empty" onClick={() => { onDeleteComment(comment.id); }}>
                 Delete
               </ButtonComponent>
             </div>
+            <SubCommentZoneContainer commentId={comment.id} currentUser={currentUser} />
+            {(isSubComment && currentResponse === comment.id) && (
+            <div className="topic-page__create-comment">
+              <div>
+                <TextareaComponent cols={150} rows={10} onChange={onChange} />
+              </div>
+              <div>
+                <ButtonComponent type="button" designType="full" onClick={() => { onSubComment(); }}>
+                  Commenter
+                </ButtonComponent>
+              </div>
+            </div>
+            )}
           </div>
         )}
       </div>

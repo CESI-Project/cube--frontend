@@ -1,0 +1,52 @@
+@import "src/assets/styles/core/colors";
+
+.sub-comment {
+  width: 85%;
+  text-align: center;
+
+
+  &__button {
+    border: none;
+    background-color: $light-white;
+    font-size: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: $dark-blue;
+    cursor: pointer;
+  }
+
+  &__content {
+
+    &__self {
+      margin-top: 1rem;
+      width: 100%;
+      margin-left: 50%;
+      display: flex;
+
+      &__text{
+        border: 0.3rem solid $dark-blue;
+        border-radius: 0.8rem;
+        padding: 1rem;
+        height: 10rem;
+        width: 50%;
+        background-color: $dark-blue;
+        color: $light-white;
+      }
+    }
+
+    &__other {
+      margin-top: 1rem;
+      display: flex;
+
+      &__text {
+        border: 0.3rem solid $dark-blue;
+        border-radius: 0.8rem;
+        background-color: $light-white;
+        padding: 1rem;
+        color: $dark-blue;
+        height: 10rem;
+        width: 50%;
+      }
+    }
+  }
+}
