@@ -58,10 +58,28 @@
   }
 }
 @media (max-width:800px) {
-  .topic-page__main {
-    display: flex;
+  .topic-page {
+
+width : 100%;
+  &__main {
+    display: block;
   }
-  .topic-page__main img {
-    width : 15rem;
+  &__main img {
+    width : 21.5rem;
+  }
+    &__main__text {
+      width : 80%;
+      margin-bottom: 2rem;
+
+    }
+    &__footer {
+      display: block;
+  text-align : center;
+  margin:0;
+
+    }
+    &__footer__view-counter {
+    width:100%;
+    }
   }
 }
