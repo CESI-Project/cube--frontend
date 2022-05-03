@@ -4,7 +4,8 @@
   display: flex;
 
   img {
-    width : 15rem;
+    width : 100%;
+    height:100%;
     object-fit: fill;
   }
   &__button-topic {
@@ -28,7 +29,7 @@
 }
 
 .home-page__button-topic:hover {
-  background: black;
+  background: darkblue;
   color: beige;
   font-size : 2rem;
 }
@@ -36,6 +37,7 @@
 @media (max-width:800px) {
   .home-page{
     width: 100%;
+    display: block;
 
   &__button-topic{
     width: 90%;
