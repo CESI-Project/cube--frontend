@@ -26,7 +26,7 @@ const messages = defineMessages({
     id: 'dashboardPage.dashboardTitle',
   },
   dashboardPage_viewCounterTitle: {
-    defaultMessage: 'My view counter',
+    defaultMessage: 'My views counter : ',
     id: 'dashboardPage.viewCounterTitle',
   },
   dashboardPage_totalTopicTitle: {
@@ -132,8 +132,12 @@ export const DashboardPageComponent = () => {
             </table>
           </div>
         </div>
-        {formatMessage(messages.dashboardPage_viewCounterTitle)}
-        {views}
+        <div className="dashboard-page__wrapper__right">
+          <p>
+            {formatMessage(messages.dashboardPage_viewCounterTitle)}
+            {views}
+          </p>
+        </div>
       </div>
       )}
       {(currentUser?.roles?.join() === 'ROLE_ADMIN' || currentUser?.roles?.join() === 'ROLE_SUPERADMIN') && (

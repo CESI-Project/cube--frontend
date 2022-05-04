@@ -47,6 +47,10 @@ const messages = defineMessages({
     defaultMessage: 'home',
     id: 'createTopic.redirectLink',
   },
+  createTopic_privateTopic: {
+    defaultMessage: 'Topic is private',
+    id: 'createTopic.privateTopic',
+  },
 });
 
 export const CreateTopicPageComponent = () => {
@@ -100,6 +104,10 @@ export const CreateTopicPageComponent = () => {
       <form className="create-topic-page__content" onSubmit={onCreateTopic}>
         <div className="create-topic-page__content__left">
           <input type="file" name="file" />
+          <div className="create-topic-page__content__left__checkbox">
+            <input type="checkbox" name="private" onChange={() => {}} />
+            {formatMessage(messages.createTopic_privateTopic)}
+          </div>
         </div>
         <div className="create-topic-page__content__right">
           <h2>{formatMessage(messages.createtopicPage_createtopicNameTitle)}</h2>

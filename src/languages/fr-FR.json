@@ -54,11 +54,12 @@
   "createTopic.redirectLink": "accueil",
   "dashboardPage.delete": "Supprimer",
   "dashboardPage.favoritesTitle": "Mes favoris",
-  "dashboardPage.viewCounterTitle": "Compteur de vue",
+  "dashboardPage.viewCounterTitle": "Compteur de vues : ",
   "dashboardPage.listTopicTitle": "Liste de sujets :",
   "dashboardPage.totalTopicCounter": "Total de sujets : ",
   "dashboardPage.listAccount": "Liste de comptes : ",
   "dashboardPage.totalViewCounter": "Total de vues : ",
   "dashboardPage.totalUserCounter": "Total de comptes : ",
-  "dashboardPage.deactivated": "Désactivation"
+  "dashboardPage.deactivated": "Désactivation",
+  "createTopic.privateTopic": "Le sujet est privée"
 }

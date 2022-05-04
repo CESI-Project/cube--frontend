@@ -23,6 +23,11 @@
 
     &__left {
       margin-top: 2.5rem;
+       &__checkbox {
+         margin-top: 1rem;
+         display: flex;
+         align-items: center;
+       }
     }
 
     &__right {
