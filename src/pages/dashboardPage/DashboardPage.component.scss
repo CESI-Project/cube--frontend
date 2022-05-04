@@ -37,6 +37,21 @@
       &__table-content {
         width: 100%;
         margin-top: 1rem;
+        text-align: center;
+
+        &__button{
+          margin-top: 1rem;
+        }
+
+        &__checkbox {
+          margin: 1rem 25%;
+          display: flex;
+          align-items: center;
+
+          input {
+            margin-left: 0.5rem;
+          }
+        }
 
         table {
           width: 100%;

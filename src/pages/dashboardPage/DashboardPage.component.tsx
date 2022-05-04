@@ -15,15 +15,12 @@ import { useTotalUsers } from '../../hooks/reactQuery/useTotalUsers';
 import { useAllUsers } from '../../hooks/reactQuery/useAllUsers';
 import { User } from '../../models/User';
 import { useDeactivatedAccount } from '../../hooks/reactQuery/useDeactivatedAccount';
+import { InputComponent } from '../../components/input/input.component';
 
 const messages = defineMessages({
   dashboardPage_title: {
     defaultMessage: 'My dashboard',
     id: 'dashboardPage.title',
-  },
-  dashboardPage_dashboardTitle: {
-    defaultMessage: 'My dashboard',
-    id: 'dashboardPage.dashboardTitle',
   },
   dashboardPage_viewCounterTitle: {
     defaultMessage: 'My views counter : ',
@@ -60,6 +57,26 @@ const messages = defineMessages({
   dashboardPage_deactivated: {
     defaultMessage: 'Deactivated',
     id: 'dashboardPage.deactivated',
+  },
+  dashboardPage_usernameInput: {
+    defaultMessage: 'username',
+    id: 'dashboardPage.usernameInput',
+  },
+  dashboardPage_passwordInput: {
+    defaultMessage: 'password',
+    id: 'dashboardPage.passwordInput',
+  },
+  dashboardPage_usernameTitle: {
+    defaultMessage: 'Username :',
+    id: 'dashboardPage.usernameTitle',
+  },
+  dashboardPage_passwordTitle: {
+    defaultMessage: 'Password :',
+    id: 'dashboardPage.passwordTitle',
+  },
+  dashboardPage_submitConnection: {
+    defaultMessage: 'Add User',
+    id: 'dashboardPage.submitConnection',
   },
 });
 
@@ -123,7 +140,7 @@ export const DashboardPageComponent = () => {
       {(currentUser?.roles?.join() === 'ROLE_USER' || currentUser?.roles?.join() === 'ROLE_MODERATOR') && (
       <div className="dashboard-page__wrapper">
         <div className="dashboard-page__wrapper__table">
-          {formatMessage(messages.dashboardPage_dashboardTitle)}
+          {formatMessage(messages.dashboardPage_title)}
           <div className="dashboard-page__wrapper__table__table-content">
             <table>
               <tbody>
@@ -140,7 +157,7 @@ export const DashboardPageComponent = () => {
         </div>
       </div>
       )}
-      {(currentUser?.roles?.join() === 'ROLE_ADMIN' || currentUser?.roles?.join() === 'ROLE_SUPERADMIN') && (
+      {(currentUser?.roles?.join() === 'ROLE_USER' || currentUser?.roles?.join() === 'ROLE_SUPERADMIN') && (
       <div className="dashboard-page__wrapper">
         <div className="dashboard-page__wrapper__table">
           <h2>
@@ -163,6 +180,33 @@ export const DashboardPageComponent = () => {
               </tbody>
             </table>
           </div>
+          <form className="dashboard-page__wrapper__table__table-content" onSubmit={() => {}}>
+            <div>
+              <h2>
+                {formatMessage(messages.dashboardPage_usernameTitle)}
+              </h2>
+              <InputComponent name="username" type="text" inputsize="small" placeholder={formatMessage(messages.dashboardPage_usernameInput)} />
+            </div>
+            <div>
+              <h2>{formatMessage(messages.dashboardPage_passwordTitle)}</h2>
+              <InputComponent name="password" type="password" inputsize="small" placeholder={formatMessage(messages.dashboardPage_passwordInput)} />
+            </div>
+            <div>
+              <div className="dashboard-page__wrapper__table__table-content__checkbox">
+                <input type="checkbox" name="private" onChange={() => {}} />
+                admin
+                <input type="checkbox" name="private" onChange={() => {}} />
+                modo
+                <input type="checkbox" name="private" onChange={() => {}} />
+                Super-Admin
+              </div>
+            </div>
+            <div className="dashboard-page__wrapper__table__table-content__button">
+              <ButtonComponent type="submit" designType="full" onClick={() => {}}>
+                {formatMessage(messages.dashboardPage_submitConnection)}
+              </ButtonComponent>
+            </div>
+          </form>
         </div>
         <div className="dashboard-page__wrapper__right">
           <p>

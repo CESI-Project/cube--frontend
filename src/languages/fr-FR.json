@@ -61,5 +61,10 @@
   "dashboardPage.totalViewCounter": "Total de vues : ",
   "dashboardPage.totalUserCounter": "Total de comptes : ",
   "dashboardPage.deactivated": "Désactivation",
-  "createTopic.privateTopic": "Le sujet est privée"
+  "createTopic.privateTopic": "Le sujet est privée",
+  "dashboardPage.usernameTitle": "Son Pseudo",
+  "dashboardPage.passwordTitle": "Son mot de passe",
+  "dashboardPage.submitConnection": "Ajouter l'utilisateur",
+  "dashboardPage.usernameInput": "pseudo",
+  "dashboardPage.passwordInput": "mot de passe"
 }
