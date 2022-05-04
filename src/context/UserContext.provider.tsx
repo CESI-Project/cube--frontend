@@ -11,6 +11,7 @@ interface UserContextProviderProps {
 export const UserInfoProvider: FC<UserContextProviderProps> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<User>();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [currentTag, setCurrentTag] = useState<string>('');
 
   const user = JSON.parse(localStorage.getItem('user') || '{}');
 
@@ -36,7 +37,14 @@ export const UserInfoProvider: FC<UserContextProviderProps> = ({ children }) => 
   }, [isAuthenticated]);
 
   const context = {
-    currentUser, setCurrentUser, checkLogin, logout, isAuthenticated, setIsAuthenticated,
+    currentUser,
+    setCurrentUser,
+    checkLogin,
+    logout,
+    isAuthenticated,
+    setIsAuthenticated,
+    currentTag,
+    setCurrentTag,
   };
 
   return <UserContextProvider value={context}>{children}</UserContextProvider>;

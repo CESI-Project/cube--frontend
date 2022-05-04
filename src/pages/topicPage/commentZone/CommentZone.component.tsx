@@ -37,7 +37,6 @@ export const CommentZoneComponent: FC<CommentZoneComponentProps> = ({
     setCurrentComment(commentId);
     setIsSubComment(!isSubComment);
   };
-
   const listComments = comments.map((comment: Comment) => (
     <div key={comment.id} className="comment-zone__comment">
       {currentUser !== undefined && (
@@ -55,9 +54,26 @@ export const CommentZoneComponent: FC<CommentZoneComponentProps> = ({
                 {comment.text}
               </div>
               <div className="comment-zone__comment__self__main__right">
+                { comment.userId === 1 && (
                 <div>
-                  {comment.id}
+                  JeanPierre
                 </div>
+                )}
+                { comment.userId === 2 && (
+                <div>
+                  HenryLocal
+                </div>
+                )}
+                { comment.userId === 3 && (
+                <div>
+                  Superman
+                </div>
+                )}
+                { comment.userId === 4 && (
+                <div>
+                  testman
+                </div>
+                )}
                 <div className="comment-zone__comment__self__main__right__created-at">
                   {comment.createdAt}
                 </div>
@@ -81,9 +97,26 @@ export const CommentZoneComponent: FC<CommentZoneComponentProps> = ({
           <div className="comment-zone__comment__other">
             <div className="comment-zone__comment__other__main">
               <div className="comment-zone__comment__other__main__left">
+                { comment.userId === 1 && (
                 <div>
-                  {comment.userId}
+                  JeanPierre
                 </div>
+                )}
+                { comment.userId === 2 && (
+                <div>
+                  HenryLocal
+                </div>
+                )}
+                { comment.userId === 3 && (
+                <div>
+                  Superman
+                </div>
+                )}
+                { comment.userId === 4 && (
+                <div>
+                  testman
+                </div>
+                )}
                 <div className="comment-zone__comment__other__main__left__created-at">
                   {comment.createdAt}
                 </div>

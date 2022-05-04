@@ -5,5 +5,5 @@ export interface Tag {
     nameEn: string;
     nameFr: string;
     familyTagId: number;
-    topics: Topic[];
+    topics?: Topic[];
 }

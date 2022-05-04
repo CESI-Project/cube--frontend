@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TopicPageComponent } from './TopicPage.component';
 import { Topic } from '../../models/Topic';
 import { useTopicById } from '../../hooks/reactQuery/useTopicById';
@@ -8,6 +8,7 @@ import { useAllComments } from '../../hooks/reactQuery/useAllComments';
 import { useAddFavorite } from '../../hooks/reactQuery/useAddFavorite';
 import { useUserContext } from '../../context/user.context';
 import { Comment } from '../../models/Comment';
+import { useViewByTopic } from '../../hooks/reactQuery/useViewByTopic';
 // import { useIsFavorite } from '../../hooks/reactQuery/useIsFavorite';
 
 export const TopicPageContainer = () => {
@@ -18,14 +19,11 @@ export const TopicPageContainer = () => {
   const { comments, refetch } = useAllComments(parseInt(id, 10));
   const [isComment, setIsComment] = useState(false);
   const [commentText, setCommentText] = useState('');
+  const [isLiked, setIsLiked] = useState(false);
   const { mutate: mutateComment } = useCreateComment();
   const { mutate: mutateFavorite } = useAddFavorite();
+  const { mutate: mutateView } = useViewByTopic();
   const { currentUser } = useUserContext();
-  // const { isFavorite } = useIsFavorite({
-  //   id: 1,
-  //   userId: currentUser?.id,
-  //   topicId: parseInt(id, 10),
-  // });
 
   const createComment = () => (
     setIsComment(true)
@@ -49,7 +47,16 @@ export const TopicPageContainer = () => {
 
   const onShare = () => navigator.clipboard.writeText(window.location.href);
 
-  const onFavorite = () => { mutateFavorite({ userId: currentUser?.id, topicId: topic.id }); };
+  const onFavorite = () => {
+    setIsLiked(!isLiked);
+    mutateFavorite({ userId: currentUser?.id, topicId: topic.id });
+  };
+
+  const bla = { topicId: topic.id, userId: currentUser?.id };
+
+  useEffect(() => (
+    mutateView(bla)
+  ), []);
 
   return (
     <TopicPageComponent
@@ -63,6 +70,7 @@ export const TopicPageContainer = () => {
       onShare={onShare}
       onFavorite={onFavorite}
       refetchAllComments={refetch}
+      isLiked={isLiked}
     />
   );
 };

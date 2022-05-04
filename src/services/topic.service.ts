@@ -7,5 +7,7 @@ export const getAllTopics = async () => axios.get(`${BACKEND_URI}/topic`).then((
 export const getTopicById = async (id: number) => axios.get(`${BACKEND_URI}/topic/${id}`).then((response) => response.data);
 
 export const postCreationTopic = async ({
-  title, picture, tags, text,
-}: Topic) => axios.post(`${BACKEND_URI}/topic/`, { topic: { title, tags, text }, file: picture }).then((response) => response.data);
+  title, tags, text,
+}: Topic) => axios.post(`${BACKEND_URI}/topic`, { title, text, tags: [tags] }).then((response) => response.data);
+
+export const getTotalTopics = async () => axios.get(`${BACKEND_URI}/topic/admin/count`).then((response) => response.data);

@@ -2,6 +2,7 @@ import { defineMessages, useIntl } from 'react-intl';
 import './CreateTopicPage.component.scss';
 import Select, { OnChangeValue, OptionsOrGroups } from 'react-select';
 import React, { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import { InputComponent } from '../../components/input/input.component';
 import { ButtonComponent } from '../../components/button/button.component';
 import { TextareaComponent } from '../../components/textarea/textarea.component';
@@ -42,6 +43,10 @@ const messages = defineMessages({
     defaultMessage: 'Select...',
     id: 'createtopicPage.createtopicSelect',
   },
+  createTopic_redirectLink: {
+    defaultMessage: 'home',
+    id: 'createTopic.redirectLink',
+  },
 });
 
 export const CreateTopicPageComponent = () => {
@@ -50,7 +55,7 @@ export const CreateTopicPageComponent = () => {
   const { tags } = useAllTags(familyTags.map((familyTag: FamilyTag) => familyTag.id));
   const [changeTopicText, setChangeTopicText] = useState<string>('');
   const [changeTopicTags, setChangeTopicTags] = useState<string[]>();
-  const { mutate } = useCreateTopic();
+  const { mutate, isSuccess } = useCreateTopic();
 
   type TagOptionType = { label: string, value: string }
 
@@ -69,20 +74,25 @@ export const CreateTopicPageComponent = () => {
   const onCreateTopic = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
-    const file = formData.get('file');
     const topicTitle = formData.get('topicTitle') as string;
 
     const topic: Topic = {
-      picture: file,
       title: topicTitle,
-      tags: changeTopicTags,
+      tags: {
+        id: 2,
+        nameFr: 'Enfance',
+        nameEn: 'Childhood',
+        familyTagId: 1,
+      },
       text: changeTopicText,
     };
 
-    console.log(topic);
-
     mutate(topic);
   };
+
+  if (isSuccess) {
+    return <Navigate to={`/${formatMessage(messages.createTopic_redirectLink)}`} replace />;
+  }
 
   return (
     <div className="create-topic-page">

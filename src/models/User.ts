@@ -9,5 +9,5 @@ export interface User {
     comment?: Comment[];
     age?: number;
     favorite?: string[];
-    role?: string[];
+    roles?: string[];
 }

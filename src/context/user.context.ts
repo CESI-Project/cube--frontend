@@ -8,6 +8,8 @@ export interface UserInfo {
   logout: () => void;
   isAuthenticated: boolean;
   setIsAuthenticated: (prevState: boolean) => void;
+  currentTag: string
+  setCurrentTag: (prevState: string) => void;
 }
 
 export const userContext = createContext<UserInfo>({} as any);

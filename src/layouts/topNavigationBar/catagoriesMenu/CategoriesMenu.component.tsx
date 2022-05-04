@@ -5,6 +5,7 @@ import { useAllTags } from '../../../hooks/reactQuery/useAllTags';
 import { Tag } from '../../../models/Tag';
 import { FamilyTag } from '../../../models/FamilyTag';
 import { useAllFamilyTags } from '../../../hooks/reactQuery/useAllFamilyTags';
+import { useUserContext } from '../../../context/user.context';
 
 const messages = defineMessages(
   {
@@ -20,6 +21,7 @@ export const CategoriesMenuComponent = () => {
   const [showCategories, setShowCategories] = useState(false);
   const { familyTags } = useAllFamilyTags();
   const { tags } = useAllTags(familyTags.map((familyTag: FamilyTag) => (familyTag.id)));
+  const { setCurrentTag } = useUserContext();
 
   const onShowCategories = () => {
     setShowCategories(!showCategories);
@@ -29,7 +31,7 @@ export const CategoriesMenuComponent = () => {
     const listTags = tags.map((tag: Tag) => (
       <div key={tag.id}>
         { familyTag.id === tag.familyTagId && (
-        <button type="button" className="categoriesMenu__family-tag__tag">
+        <button type="button" className="categoriesMenu__family-tag__tag" onClick={() => { setCurrentTag(tag.nameFr); }}>
           { tag.nameFr }
         </button>
         )}
@@ -38,7 +40,7 @@ export const CategoriesMenuComponent = () => {
 
     return (
       <div key={familyTag.id} className="categoriesMenu__family-tag">
-        <button type="button" className="categoriesMenu__family-tag__button">
+        <button type="button" className="categoriesMenu__family-tag__button" onClick={() => { setCurrentTag(familyTag.nameFr); }}>
           {familyTag.nameFr}
         </button>
         <div>
