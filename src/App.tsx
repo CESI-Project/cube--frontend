@@ -7,7 +7,7 @@ import { HomePageContainer } from './pages/homePage/HomePage.container';
 import { TopicPageContainer } from './pages/topicPage/TopicPage.container';
 import { ConnectionPageContainer } from './pages/connectionPage/ConnectionPage.container';
 import { SignupPageContainer } from './pages/signupPage/SignupPage.container';
-import { FavoritesPageContainer } from './pages/favoritesPage/FavoritesPage.container';
+import { DashboardPageContainer } from './pages/dashboardPage/DashboardPage.container';
 import { UserInfoProvider } from './context/UserContext.provider';
 import { CreateTopicPageContainer } from './pages/createtopicPage/CreateTopicPage.container';
 
@@ -27,8 +27,8 @@ function App() {
           <Route path="/connexion" element={<ConnectionPageContainer />} />
           <Route path="/signup" element={<SignupPageContainer />} />
           <Route path="/inscription" element={<SignupPageContainer />} />
-          <Route path="/favorites" element={<FavoritesPageContainer />} />
-          <Route path="/favoris" element={<FavoritesPageContainer />} />
+          <Route path="/favorites" element={<DashboardPageContainer />} />
+          <Route path="/favoris" element={<DashboardPageContainer />} />
           <Route path="/createtopic" element={<CreateTopicPageContainer />} />
           <Route path="/creersujet" element={<CreateTopicPageContainer />} />
         </Routes>

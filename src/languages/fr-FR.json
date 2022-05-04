@@ -40,7 +40,7 @@
   "signupPage.usernameInput": "John33",
   "signupPage.submitSignUp": "S'inscrire",
   "signupPage.errorInput": "Vos informations sont incorrectes ou déjà utilisées",
-  "favoritesPage.title": "Mes favoris",
+  "dashboardPage.title": "Mon tableau de bord",
   "signUp.redirectLink": "accueil",
   "login.redirectLink": "accueil",
   "createtopicPage.createtopicNameTitle": "Nom du sujet",
@@ -50,5 +50,15 @@
   "createtopicPage.createtopicMessageTitle": "Message",
   "createtopicPage.createtopicLanguage": "Langue",
   "createtopicPage.createtopicButton": "Valider",
-  "createtopicPage.createtopicSelect": "Selectionner..."
+  "createtopicPage.createtopicSelect": "Selectionner...",
+  "createTopic.redirectLink": "accueil",
+  "dashboardPage.delete": "Supprimer",
+  "dashboardPage.favoritesTitle": "Mes favoris",
+  "dashboardPage.viewCounterTitle": "Compteur de vue",
+  "dashboardPage.listTopicTitle": "Liste de sujets :",
+  "dashboardPage.totalTopicCounter": "Total de sujets : ",
+  "dashboardPage.listAccount": "Liste de comptes : ",
+  "dashboardPage.totalViewCounter": "Total de vues : ",
+  "dashboardPage.totalUserCounter": "Total de comptes : ",
+  "dashboardPage.deactivated": "Désactivation"
 }

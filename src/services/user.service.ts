@@ -15,9 +15,9 @@ export const postConnection = async ({ userName, password }: postConncetionProps
 });
 
 export const postCreationAccount = async ({
-  userName, birthDate, email, password, role = ['user'],
+  userName, birthDate, email, password, roles = ['user'],
 }: User) => axios.post(`${BACKEND_URI}/user/auth/sign-up`, {
-  username: userName, birthDate, email, password, role,
+  username: userName, birthDate, email, password, roles,
 }).then((response) => {
   if (response.data.accessToken) {
     localStorage.setItem('user', JSON.stringify(response.data));
@@ -26,3 +26,9 @@ export const postCreationAccount = async ({
 });
 
 export const getUserById = async (id:number | undefined) => axios.get(`${BACKEND_URI}/user/${id}`).then((response) => response.data);
+
+export const getTotalUsers = async () => axios.get(`${BACKEND_URI}/user/admin/count`).then((response) => response.data);
+
+export const getAllUsers = async (id: number | undefined) => axios.get(`${BACKEND_URI}/user/admin/${id}`).then((response) => response.data);
+
+export const putDeactivatedUser = async (id: number | undefined) => axios.put(`${BACKEND_URI}/user/${id}/desactivation`).then((response) => response.data);

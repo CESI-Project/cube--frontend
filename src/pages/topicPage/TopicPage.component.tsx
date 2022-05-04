@@ -39,10 +39,11 @@ interface TopicPageComponentProps {
   onFavorite: () => void;
   currentUser: User | undefined;
   refetchAllComments: () => void;
+  isLiked: boolean;
 }
 
 export const TopicPageComponent: FC<TopicPageComponentProps> = ({
-  topic, createComment, onChange, onComment, isComment, comments, onShare, onFavorite, currentUser, refetchAllComments,
+  topic, createComment, onChange, onComment, isComment, comments, onShare, onFavorite, currentUser, refetchAllComments, isLiked,
 }) => {
   const { formatMessage } = useIntl();
 
@@ -59,9 +60,16 @@ export const TopicPageComponent: FC<TopicPageComponentProps> = ({
       </div>
       <div className="topic-page__footer">
         <div className="topic-page__footer__buttons">
+          {isLiked && (
+          <ButtonComponent type="button" designType="full" onClick={onFavorite}>
+            {formatMessage(messages.topicPage_favoritesButton)}
+          </ButtonComponent>
+          )}
+          {!isLiked && (
           <ButtonComponent type="button" designType="empty" onClick={onFavorite}>
             {formatMessage(messages.topicPage_favoritesButton)}
           </ButtonComponent>
+          )}
           <ButtonComponent type="button" designType="empty" onClick={onShare}>
             {formatMessage(messages.topicPage_shareButton)}
           </ButtonComponent>

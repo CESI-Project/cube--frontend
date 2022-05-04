@@ -4,7 +4,6 @@
   width: 85%;
   text-align: center;
 
-
   &__button {
     border: none;
     background-color: $light-white;
@@ -22,6 +21,15 @@
       width: 100%;
       margin-left: 50%;
       display: flex;
+      align-items: center;
+
+      &__name {
+        margin-left: 1rem;
+
+        &__created-at {
+          margin-top: 1rem;
+        }
+      }
 
       &__text{
         border: 0.3rem solid $dark-blue;
@@ -37,6 +45,14 @@
     &__other {
       margin-top: 1rem;
       display: flex;
+
+      &__name {
+        margin-right: 1rem;
+
+        &__created-at {
+          margin-top: 1rem;
+        }
+      }
 
       &__text {
         border: 0.3rem solid $dark-blue;
