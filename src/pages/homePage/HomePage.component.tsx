@@ -36,7 +36,7 @@ export const HomePageComponent = () => {
         </Link>
       )}
 
-      {currentTag === topic.tags.map((tag:Tag) => tag.nameFr).join() && (
+      {(currentTag === topic.tags.map((tag:Tag) => tag.nameFr).join() && currentTag) && (
       <Link to={`/${formatMessage(messages.homePage_Topic)}/${topic.id}`}>
         <button type="button" className="home-page__button-topic">
           <div className="home-page__button-topic__title">
