@@ -45,4 +45,48 @@
   }
 }
 
+@media (max-width:800px) {
+  .create-topic-page {
+    width : 100%;
+    margin-left : 1rem;
+    input {
+      width:20rem;
+    }
+
+    &__title {
+      margin-bottom :3rem;
+    }
+    &__content {
+      display: block ;
+      margin:0;
+
+      &__left {
+        margin: 0;
+      }
+
+      &__right {
+        margin: 0;
+        width: 41rem;
+  textarea {
+    width : 20rem;
+}
+        &__selector {
+          border: 0.3rem solid $dark-blue;
+          border-radius: 0.3rem;
+          width : 21rem;
+        }
+
+        &__footer {
+          display: block;
+          justify-content: space-between;
+          align-items: center;
+          float:none;
+          text-align: center;
+          width : 24rem;
+        }
+      }
+    }
+  }
+}
+
 
