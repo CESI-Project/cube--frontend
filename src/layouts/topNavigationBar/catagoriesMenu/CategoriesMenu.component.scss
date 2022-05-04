@@ -39,3 +39,17 @@
     }
   }
 }
+
+@media (max-width:800px) {
+  .categoriesMenu {
+    margin-left:-12rem;
+    width : 77%;
+    top : 23rem;
+
+  }
+.categoriesMenu button {
+  font-size : 1rem;
+  text-align: justify;
+}
+
+}

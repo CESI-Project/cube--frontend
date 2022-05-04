@@ -15,9 +15,7 @@
     width: 100%;
 
     img {
-      min-width: 14rem;
-      height: 32rem;
-      margin-right: 1rem;
+      width : 30rem;
     }
 
     &__text {
@@ -53,6 +51,32 @@
 
     textarea {
       width: 75%;
+    }
+  }
+}
+@media (max-width:800px) {
+  .topic-page {
+
+width : 100%;
+  &__main {
+    display: block;
+  }
+  &__main img {
+    width : 21.5rem;
+  }
+    &__main__text {
+      width : 80%;
+      margin-bottom: 2rem;
+
+    }
+    &__footer {
+      display: block;
+  text-align : center;
+  margin:0;
+
+    }
+    &__footer__view-counter {
+    width:100%;
     }
   }
 }
