@@ -1,10 +1,9 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { Comment } from '../../../models/Comment';
 import './CommentZone.component.scss';
 import { User } from '../../../models/User';
 import { ButtonComponent } from '../../../components/button/button.component';
 import { SubCommentZoneContainer } from './subCommentZone/SubCommentZone.container';
-import { deleteComment } from '../../../services/comment.service';
 import { TextareaComponent } from '../../../components/textarea/textarea.component';
 
 interface CommentZoneComponentProps {

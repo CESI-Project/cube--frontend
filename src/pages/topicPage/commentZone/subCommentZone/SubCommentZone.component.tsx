@@ -95,9 +95,16 @@ export const SubCommentZoneComponent: FC<SubCommentZoneComponentProps> = ({ comm
   return (
     <div className="sub-comment">
       <hr />
+      {!showComment && (
+        <button className="sub-comment__button" type="button" onClick={onShowComment}>
+          &#10225;
+        </button>
+      )}
+      {showComment && (
       <button className="sub-comment__button" type="button" onClick={onShowComment}>
-        &#10225;
+        &#10224;
       </button>
+      )}
       {showComment && (
       <div>
         { listSubComment }
