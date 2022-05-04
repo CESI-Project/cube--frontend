@@ -157,7 +157,7 @@ export const DashboardPageComponent = () => {
         </div>
       </div>
       )}
-      {(currentUser?.roles?.join() === 'ROLE_USER' || currentUser?.roles?.join() === 'ROLE_SUPERADMIN') && (
+      {(currentUser?.roles?.join() === 'ROLE_ADMIN' || currentUser?.roles?.join() === 'ROLE_SUPERADMIN') && (
       <div className="dashboard-page__wrapper">
         <div className="dashboard-page__wrapper__table">
           <h2>
