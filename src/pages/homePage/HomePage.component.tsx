@@ -5,6 +5,7 @@ import { Topic } from '../../models/Topic';
 import './HomePage.component.scss';
 import { useUserContext } from '../../context/user.context';
 import { Tag } from '../../models/Tag';
+import image from '../../assets/images/image.jpeg';
 
 const messages = defineMessages({
   homePage_Topic: {
@@ -20,7 +21,7 @@ export const HomePageComponent = () => {
 
   const listTopics = topics.map((topic: Topic) => (
     <div key={topic.id}>
-      {!currentTag && (
+      {(!currentTag && topic.id !== 3) && (
         <Link to={`/${formatMessage(messages.homePage_Topic)}/${topic.id}`}>
           <button type="button" className="home-page__button-topic">
             <div className="home-page__button-topic__title">
@@ -36,7 +37,7 @@ export const HomePageComponent = () => {
         </Link>
       )}
 
-      {(currentTag === topic.tags.map((tag:Tag) => tag.nameFr).join() && currentTag) && (
+      {(currentTag === topic.tags.map((tag:Tag) => tag.nameFr).join() && currentTag && topic.id !== 3) && (
       <Link to={`/${formatMessage(messages.homePage_Topic)}/${topic.id}`}>
         <button type="button" className="home-page__button-topic">
           <div className="home-page__button-topic__title">
@@ -44,6 +45,38 @@ export const HomePageComponent = () => {
           </div>
           <div className="home-page__button-topic__picture">
             <img src={topic.picture} alt={`Image :${topic.title}`} />
+          </div>
+          <div className="home-page__button-topic__view">
+            {topic.view}
+          </div>
+        </button>
+      </Link>
+      )}
+
+      {(!currentTag && topic.id === 3) && (
+      <Link to={`/${formatMessage(messages.homePage_Topic)}/${topic.id}`}>
+        <button type="button" className="home-page__button-topic">
+          <div className="home-page__button-topic__title">
+            {topic.title}
+          </div>
+          <div className="home-page__button-topic__picture">
+            <img src={image} alt={`Image :${topic.title}`} />
+          </div>
+          <div className="home-page__button-topic__view">
+            {topic.view}
+          </div>
+        </button>
+      </Link>
+      )}
+
+      {(currentTag === topic.tags.map((tag:Tag) => tag.nameFr).join() && currentTag && topic.id === 3) && (
+      <Link to={`/${formatMessage(messages.homePage_Topic)}/${topic.id}`}>
+        <button type="button" className="home-page__button-topic">
+          <div className="home-page__button-topic__title">
+            {topic.title}
+          </div>
+          <div className="home-page__button-topic__picture">
+            <img src={image} alt={`Image :${topic.title}`} />
           </div>
           <div className="home-page__button-topic__view">
             {topic.view}

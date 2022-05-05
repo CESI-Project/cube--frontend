@@ -35,7 +35,7 @@ export const CommentZoneContainer: FC<CommentZoneContainerProps> = (
   const onSubComment = () => {
     const subComment: SubComment = {
       text: subCommentText,
-      createdAt: '2022-02-10',
+      createdAt: '2022-03-16',
       commentId: currentComment,
       userId: currentUser?.id,
     };

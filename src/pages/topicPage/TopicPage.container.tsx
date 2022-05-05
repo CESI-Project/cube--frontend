@@ -38,7 +38,7 @@ export const TopicPageContainer = () => {
       text: commentText,
       userId: currentUser?.id || 1,
       topicId: topic.id,
-      createdAt: '2022-02-12',
+      createdAt: '2022-03-16',
     };
     mutateComment(comment);
     setIsComment(false);
