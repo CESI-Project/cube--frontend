@@ -31,10 +31,14 @@ const messages = defineMessages(
       defaultMessage: 'Search',
       id: 'topNavBar.searchBar',
     },
-      topNavBar_DashboardUrl: {
-        defaultMessage: 'Dashboard',
-          id: 'topNavBar.DashboardUrl',
-      },
+    topNavBar_DashboardUrl: {
+      defaultMessage: 'Dashboard',
+      id: 'topNavBar.DashboardUrl',
+    },
+    topNavBar_SettingsUrl: {
+      defaultMessage: 'settings',
+      id: 'topNavBar.SettingsUrl',
+    },
   },
 );
 
@@ -70,7 +74,7 @@ export const TopNavigationBarComponent = () => {
                 </Link>
               </li>
               <li>
-                <Link to={formatMessage(messages.topNavBar_Settings).toLowerCase()}>
+                <Link to={formatMessage(messages.topNavBar_SettingsUrl).toLowerCase()}>
                   {formatMessage(messages.topNavBar_Settings)}
                 </Link>
               </li>
@@ -93,7 +97,7 @@ export const TopNavigationBarComponent = () => {
           <Link to={formatMessage(messages.topNavBar_CreateTopicUrl).toLowerCase()}>
             {formatMessage(messages.topNavBar_CreateTopic)}
           </Link>
-          <Link to={formatMessage(messages.topNavBar_Settings).toLowerCase()}>
+          <Link to={formatMessage(messages.topNavBar_SettingsUrl).toLowerCase()}>
             {formatMessage(messages.topNavBar_Settings)}
           </Link>
         </div>

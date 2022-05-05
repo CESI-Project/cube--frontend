@@ -10,6 +10,7 @@ import { SignupPageContainer } from './pages/signupPage/SignupPage.container';
 import { DashboardPageContainer } from './pages/dashboardPage/DashboardPage.container';
 import { UserInfoProvider } from './context/UserContext.provider';
 import { CreateTopicPageContainer } from './pages/createtopicPage/CreateTopicPage.container';
+import {SettingsPageContainer} from "./pages/settingsPage/SettingsPage.container";
 
 function App() {
   return (
@@ -31,6 +32,8 @@ function App() {
           <Route path="/tableaudebord" element={<DashboardPageContainer />} />
           <Route path="/createtopic" element={<CreateTopicPageContainer />} />
           <Route path="/creersujet" element={<CreateTopicPageContainer />} />
+          <Route path="/settings" element={<SettingsPageContainer />} />
+          <Route path="/parametres" element={<SettingsPageContainer />} />
         </Routes>
       </UserInfoProvider>
     </div>
