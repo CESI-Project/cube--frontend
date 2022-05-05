@@ -1,6 +1,8 @@
 @import "assets/styles/core/fonts";
 @import "assets/styles/core/colors";
-
+body {
+  background-color: $light-white;
+}
 .App {
   font-family: 'made-tommy_medium', sans-serif;
   background-color: $light-white;

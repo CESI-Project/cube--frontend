@@ -1,10 +1,11 @@
 {
   "topNavBar.Home": "Accueil",
   "categoriesMenu.Categories": "Catégories",
-  "topNavBar.Favorites": "Favoris",
+  "topNavBar.Dashboard": "Tableau de bord",
   "topNavBar.CreateTopic": "Créer un sujet",
   "topNavBar.Settings": "Paramètres",
   "topNavBar.CreateTopicUrl": "creersujet",
+  "topNavBar.DashboardUrl":  "tableaudebord",
   "headerBar.searchBar": "Recherche",
   "topNavBar.searchBar": "Recherche",
   "headerBar.logIn": "Se connecter",
