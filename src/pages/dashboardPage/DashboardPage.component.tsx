@@ -144,6 +144,7 @@ export const DashboardPageComponent = () => {
           <div className="dashboard-page__wrapper__table__table-content">
             <table>
               <tbody>
+                {/* a changer , mtn ces mes topics */}
                 {listFavorites}
               </tbody>
             </table>

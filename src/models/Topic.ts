@@ -7,6 +7,7 @@ export interface Topic {
     picture?: any;
     view?: number;
     isValidated?: boolean;
+    userId?: number;
     comment?: string;
     favorite?: string[];
     tags: Tag[];
