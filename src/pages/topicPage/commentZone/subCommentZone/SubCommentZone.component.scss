@@ -15,7 +15,6 @@
   }
 
   &__content {
-
     &__self {
       margin-top: 1rem;
       width: 100%;
@@ -31,7 +30,11 @@
         }
       }
 
-      &__text{
+      button {
+        margin-right: 1rem;
+      }
+
+      &__text {
         border: 0.3rem solid $dark-blue;
         border-radius: 0.8rem;
         padding: 1rem;

@@ -3,20 +3,18 @@ import { useSubCommentsByComment } from '../../../../hooks/reactQuery/useSubComm
 import { SubComment } from '../../../../models/SubComment';
 import './SubCommentZone.component.scss';
 import { User } from '../../../../models/User';
+import { ButtonComponent } from '../../../../components/button/button.component';
 
 interface SubCommentZoneComponentProps {
   commentId: number | undefined;
   currentUser: User | undefined;
+  onDeleteSubComment: (id: number | undefined) => void;
+  subComments: SubComment[];
+  showComment: boolean;
+  onShowComment: () => void;
 }
 
-export const SubCommentZoneComponent: FC<SubCommentZoneComponentProps> = ({ commentId, currentUser }) => {
-  const { subComments, refetch } = useSubCommentsByComment(commentId);
-  const [showComment, isShowComment] = useState<boolean>(false);
-
-  const onShowComment = () => {
-    refetch();
-    isShowComment(!showComment);
-  };
+export const SubCommentZoneComponent: FC<SubCommentZoneComponentProps> = ({ onShowComment, showComment, subComments, onDeleteSubComment, commentId, currentUser,}) => {
 
   const listSubComment = subComments.map((subComment: SubComment) => (
     <div key={subComment.id}>
@@ -24,6 +22,9 @@ export const SubCommentZoneComponent: FC<SubCommentZoneComponentProps> = ({ comm
       <div className="sub-comment__content">
         {subComment.userId === currentUser?.id ? (
           <div className="sub-comment__content__self">
+            <ButtonComponent type="button" designType="empty" onClick={() => { onDeleteSubComment(subComment.id); }}>
+                Delete
+              </ButtonComponent>
             <div className="sub-comment__content__self__text">
               {subComment.text}
             </div>
