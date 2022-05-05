@@ -71,3 +71,19 @@
     }
   }
 }
+
+@media (max-width:800px) {
+  .dashboard-page {
+    margin: 0;
+    width: 100%;
+    &__wrapper {
+      display: block;
+      margin:0;
+
+      &__table {
+        width:100%;
+        height: auto;
+      }
+    }
+  }
+}

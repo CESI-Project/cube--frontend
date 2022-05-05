@@ -27,8 +27,8 @@ function App() {
           <Route path="/connexion" element={<ConnectionPageContainer />} />
           <Route path="/signup" element={<SignupPageContainer />} />
           <Route path="/inscription" element={<SignupPageContainer />} />
-          <Route path="/favorites" element={<DashboardPageContainer />} />
-          <Route path="/favoris" element={<DashboardPageContainer />} />
+          <Route path="/dashboard" element={<DashboardPageContainer />} />
+          <Route path="/tableaudebord" element={<DashboardPageContainer />} />
           <Route path="/createtopic" element={<CreateTopicPageContainer />} />
           <Route path="/creersujet" element={<CreateTopicPageContainer />} />
         </Routes>

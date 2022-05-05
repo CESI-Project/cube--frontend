@@ -11,9 +11,9 @@ const messages = defineMessages(
       defaultMessage: 'Home',
       id: 'topNavBar.Home',
     },
-    topNavBar_Favorites: {
-      defaultMessage: 'Favorites',
-      id: 'topNavBar.Favorites',
+    topNavBar_Dashboard: {
+      defaultMessage: 'Dashboard',
+      id: 'topNavBar.Dashboard',
     },
     topNavBar_CreateTopic: {
       defaultMessage: 'Create topic',
@@ -31,6 +31,10 @@ const messages = defineMessages(
       defaultMessage: 'Search',
       id: 'topNavBar.searchBar',
     },
+      topNavBar_DashboardUrl: {
+        defaultMessage: 'Dashboard',
+          id: 'topNavBar.DashboardUrl',
+      },
   },
 );
 
@@ -56,8 +60,8 @@ export const TopNavigationBarComponent = () => {
                 <CategoriesMenuContainer />
               </li>
               <li>
-                <Link to={formatMessage(messages.topNavBar_Favorites).toLowerCase()}>
-                  {formatMessage(messages.topNavBar_Favorites)}
+                <Link to={formatMessage(messages.topNavBar_Dashboard).toLowerCase()}>
+                  {formatMessage(messages.topNavBar_Dashboard)}
                 </Link>
               </li>
               <li>
@@ -81,8 +85,8 @@ export const TopNavigationBarComponent = () => {
             {formatMessage(messages.topNavBar_Home)}
           </Link>
           <CategoriesMenuContainer />
-          <Link to={formatMessage(messages.topNavBar_Favorites).toLowerCase()}>
-            {formatMessage(messages.topNavBar_Favorites)}
+          <Link to={formatMessage(messages.topNavBar_DashboardUrl).toLowerCase()}>
+            {formatMessage(messages.topNavBar_Dashboard)}
           </Link>
         </div>
         <div className="topNavBar__right">
