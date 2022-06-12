@@ -3,7 +3,7 @@ import { BACKEND_URI } from './index';
 import { SubComment } from '../models/SubComment';
 import { authHeader } from '../context/authHeader';
 
-export const getSubCommentByComment = async (id: number | undefined) => axios.get(`${BACKEND_URI}/responseComment/${id}`, { headers: authHeader() }).then((response) => response.data);
+export const getSubCommentByComment = async (commentId: number | undefined) => axios.get(`${BACKEND_URI}/responseComment/${commentId}`, { headers: authHeader() }).then((response) => response.data);
 
 export const postCreationSubComment = async ({
   text, createdAt, commentId, userId,

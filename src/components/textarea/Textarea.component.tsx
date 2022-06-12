@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import './textarea.component.scss';
+import './Textarea.component.scss';
 
 interface CommentComponentProps {
   cols: number;

@@ -1,27 +1,50 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
+import { useIntl } from 'react-intl';
 import { SubCommentZoneComponent } from './SubCommentZone.component';
 import { User } from '../../../../models/User';
 import { deleteSubComment } from '../../../../services/subcomment.service';
-import { useSubCommentsByComment } from '../../../../hooks/reactQuery/useSubCommentsByComment';
+import { SubComment } from '../../../../models/SubComment';
+import { TypeUser } from '../../../../components/comment/Comment.component';
+import { useUserById } from '../../../../hooks/reactQuery/useUserById';
 
 interface SubCommentZoneContainerProps {
+  subComment: SubComment;
+  typeUser: TypeUser;
+  refetchAllSubComments: () => void;
   commentId: number | undefined;
-  currentUser: User | undefined;
 }
 
-
-export const SubCommentZoneContainer: FC<SubCommentZoneContainerProps> = ({ commentId, currentUser }) => {
-  const { subComments, refetch } = useSubCommentsByComment(commentId);
-  const [showComment, isShowComment] = useState<boolean>(false);
-
-  const onShowComment = () => {
-    refetch();
-    isShowComment(!showComment);
-  };
+export const SubCommentZoneContainer: FC<SubCommentZoneContainerProps> = ({
+  subComment, typeUser, refetchAllSubComments, commentId,
+}) => {
+  const date = new Date(String(subComment.createdAt));
+  const formatDateSubComment = `${date.getFullYear()}/${date.getMonth()}/${date.getDate()} - ${date.getHours()}:${date.getMinutes()}`;
+  const { user }: User = useUserById(subComment.userId);
+  const { formatMessage } = useIntl();
 
   const onDeleteSubComment = (id: number | undefined) => {
     deleteSubComment(id);
-    setTimeout(refetch, 100);
+    setTimeout(refetchAllSubComments, 100);
   };
-  return (<SubCommentZoneComponent onShowComment={onShowComment} subComments={subComments} showComment={showComment} onDeleteSubComment={onDeleteSubComment} commentId={commentId} currentUser={currentUser} />);
+
+  let subCommentClassName = 'sub-comment';
+  if (typeUser === 'self') {
+    subCommentClassName += '__self';
+  }
+  if (typeUser === 'other') {
+    subCommentClassName += '__other';
+  }
+
+  return (
+    <SubCommentZoneComponent
+      subComment={subComment}
+      onDeleteSubComment={onDeleteSubComment}
+      commentId={commentId}
+      typeUser={typeUser}
+      formatDateSubComment={formatDateSubComment}
+      user={user}
+      formatMessage={formatMessage}
+      subCommentClassName={subCommentClassName}
+    />
+  );
 };

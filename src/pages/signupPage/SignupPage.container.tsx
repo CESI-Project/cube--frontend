@@ -22,12 +22,12 @@ export const SignupPageContainer = () => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
     const username = formData.get('username') as string;
-    const birthDate = formData.get('birth-date') as string;
+    const age = formData.get('age') as string;
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
 
     const user: User = {
-      userName: username, birthDate, email, password,
+      userName: username, age, email, password,
     };
 
     mutate(user);
@@ -39,6 +39,10 @@ export const SignupPageContainer = () => {
   }
 
   return (
-    <SignupPageComponent isError={isError} onCreationAccount={onCreationAccount} />
+    <SignupPageComponent
+      isError={isError}
+      onCreationAccount={onCreationAccount}
+      formatMessage={formatMessage}
+    />
   );
 };

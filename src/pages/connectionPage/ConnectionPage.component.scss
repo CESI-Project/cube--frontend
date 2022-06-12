@@ -1,37 +1,33 @@
 @import "src/assets/styles/core/colors";
 
-.connectionPage {
+.connection-page {
   width: 100%;
   text-align: center;
-  height: 40.5rem;
   margin-top: 10rem;
 
-  &__error-input {
-    color: red;
-  }
-
   h1 {
-    font-size : 3rem;
-    font-weight :bold;
-  }
-
-  h1, h2 {
-    color : $dark-blue;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1.25rem;
   }
 
   &__wrapper {
-    margin-top : 3rem;
+    margin-top: 3rem;
+
+    &__error-input {
+      color: red;
+    }
 
     h2 {
-      margin-top : 3rem;
+      margin-top: 1.875rem;
     }
 
     input {
-      margin-top : 0.5rem;
+      margin-top: 0.3125rem;
     }
 
     &__connection-button {
-      margin-top : 3rem;
+      margin-top: 3.125rem;
     }
   }
 }

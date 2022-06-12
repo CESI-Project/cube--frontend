@@ -32,6 +32,10 @@ export const ConnectionPageContainer = () => {
   }
 
   return (
-    <ConnectionPageComponent isError={isError} onConnection={onConnection} />
+    <ConnectionPageComponent
+      isError={isError}
+      onConnection={onConnection}
+      formatMessage={formatMessage}
+    />
   );
 };

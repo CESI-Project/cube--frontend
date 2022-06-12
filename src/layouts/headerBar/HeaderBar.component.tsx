@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
 import { defineMessages, useIntl } from 'react-intl';
 import fullLogo from '../../assets/images/fullLogo.svg';
-import bellIcon from '../../assets/images/bellIcon.svg';
-import { ButtonComponent } from '../../components/button/button.component';
+import { ButtonComponent } from '../../components/button/Button.component';
 import './HeaderBar.component.scss';
-import { InputComponent } from '../../components/input/input.component';
 import { useUserContext } from '../../context/user.context';
+import { BurgerMenuComponent } from './burgerMenu/BurgerMenu.component';
+import { FC } from 'react';
+import { User } from '../../models/User';
+import { BurgerMenuContainer } from './burgerMenu/BurgerMenu.container';
 
 const messages = defineMessages(
   {
@@ -29,20 +31,33 @@ const messages = defineMessages(
       defaultMessage: 'signup',
       id: 'headerBar.urlSignUp',
     },
+    headerBar_logOut: {
+      defaultMessage: 'Log Out',
+      id: 'headerBar.logOut',
+    },
   },
 );
 
-export const HeaderBarComponent = () => {
-  const { formatMessage } = useIntl();
-  const { isAuthenticated, currentUser, logout } = useUserContext();
+interface HeaderBarComponentProps {
+  formatMessage: (message: { defaultMessage: string; id: string }) => string;
+  isAuthenticated: boolean;
+  currentUser: User | undefined;
+  logOut: () => void;
+}
 
-  return (
-    <div className="headerBar">
-      <img src={fullLogo} alt="Full Logo" className="headerBar__logo" />
-      <div className="headerBar__right">
-        <img src={bellIcon} alt="Bell Icon" className="headerBar__right__icon" />
-        <InputComponent name="search-bar" type="search" placeholder={formatMessage(messages.headerBar_searchBar)} inputsize="small" />
-        {!isAuthenticated && (
+export const HeaderBarComponent: FC<HeaderBarComponentProps> = ({
+  formatMessage,
+  isAuthenticated,
+  currentUser,
+  logOut,
+}) => (
+  <div className="header-bar">
+    <div className="header-bar__left">
+      <BurgerMenuContainer />
+      <img src={fullLogo} alt="Full Logo" className="header-bar__left__logo" />
+    </div>
+    <div className="header-bar__right">
+      {!isAuthenticated && (
         <>
           <Link to={formatMessage(messages.headerBar_urlLogIn)}>
             <ButtonComponent type="button" designType="empty" onClick={() => {}}>
@@ -55,18 +70,17 @@ export const HeaderBarComponent = () => {
             </ButtonComponent>
           </Link>
         </>
-        )}
-        {isAuthenticated && (
-        <div className="headerBar__right__button">
-          <div className="headerBar__right__button__account">
+      )}
+      {isAuthenticated && (
+        <>
+          <div className="header-bar__right__account">
             {currentUser?.username}
           </div>
-          <ButtonComponent type="button" designType="full" onClick={logout}>
-            Log Out
+          <ButtonComponent type="button" designType="full" onClick={logOut}>
+            {formatMessage(messages.headerBar_logOut)}
           </ButtonComponent>
-        </div>
-        )}
-      </div>
+        </>
+      )}
     </div>
-  );
-};
+  </div>
+);

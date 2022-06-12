@@ -1,72 +1,63 @@
 @import "src/assets/styles/core/colors";
 
 .sub-comment {
-  width: 85%;
-  text-align: center;
+  border: 1px solid black;
+  background-color: darkgrey;
 
-  &__button {
-    border: none;
-    background-color: $light-white;
-    font-size: 1.5rem;
-    width: 1.5rem;
-    height: 1.5rem;
-    color: $dark-blue;
-    cursor: pointer;
+  &__self {
+    display: flex;
+    margin: 1.825rem;
+    align-items: center;
+    justify-content: right;
+
+    button {
+      margin-right: 1.825rem;
+    }
+
+    &__text {
+      border: 0.1875rem solid $light-blue;
+      border-radius: 0.9375rem;
+      padding: 1rem;
+      height: 10rem;
+      width: 50%;
+      background-color: $light-blue;
+      color: white;
+    }
+
+    &__side {
+      margin: 1rem;
+
+      &__created-at {
+        margin-top: 1rem;
+      }
+    }
   }
 
-  &__content {
-    &__self {
-      margin-top: 1rem;
-      width: 100%;
-      margin-left: 50%;
-      display: flex;
-      align-items: center;
+  &__other {
+    display: flex;
+    align-items: center;
+    margin: 1.825rem;
 
-      &__name {
-        margin-left: 1rem;
+    button {
+      margin-left: 1rem;
+    }
 
-        &__created-at {
-          margin-top: 1rem;
-        }
-      }
+    &__side {
+      margin: 1rem;
 
-      button {
-        margin-right: 1rem;
-      }
-
-      &__text {
-        border: 0.3rem solid $dark-blue;
-        border-radius: 0.8rem;
-        padding: 1rem;
-        height: 10rem;
-        width: 50%;
-        background-color: $dark-blue;
-        color: $light-white;
+      &__created-at {
+        margin-top: 1rem;
       }
     }
 
-    &__other {
-      margin-top: 1rem;
-      display: flex;
-      align-items: center;
-
-      &__name {
-        margin-right: 1rem;
-
-        &__created-at {
-          margin-top: 1rem;
-        }
-      }
-
-      &__text {
-        border: 0.3rem solid $dark-blue;
-        border-radius: 0.8rem;
-        background-color: $light-white;
-        padding: 1rem;
-        color: $dark-blue;
-        height: 10rem;
-        width: 50%;
-      }
+    &__text {
+      border: 0.1875rem solid black;
+      border-radius: 0.9375rem;
+      background-color: white;
+      padding: 1rem;
+      color: black;
+      height: 10rem;
+      width: 45%;
     }
   }
 }

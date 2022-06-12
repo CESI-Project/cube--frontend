@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
+import { useIntl } from 'react-intl';
 import { TopicPageComponent } from './TopicPage.component';
 import { Topic } from '../../models/Topic';
 import { useTopicById } from '../../hooks/reactQuery/useTopicById';
@@ -9,7 +10,7 @@ import { useAddFavorite } from '../../hooks/reactQuery/useAddFavorite';
 import { useUserContext } from '../../context/user.context';
 import { Comment } from '../../models/Comment';
 import { useViewByTopic } from '../../hooks/reactQuery/useViewByTopic';
-// import { useIsFavorite } from '../../hooks/reactQuery/useIsFavorite';
+import { CommentZoneContainer } from './commentZone/CommentZone.container';
 
 export const TopicPageContainer = () => {
   const { id } = useParams();
@@ -24,9 +25,12 @@ export const TopicPageContainer = () => {
   const { mutate: mutateFavorite } = useAddFavorite();
   const { mutate: mutateView } = useViewByTopic();
   const { currentUser } = useUserContext();
+  const { formatMessage } = useIntl();
+
+  const dateNow = new Date();
 
   const createComment = () => (
-    setIsComment(true)
+    setIsComment(!isComment)
   );
 
   const onChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -36,9 +40,9 @@ export const TopicPageContainer = () => {
   const onComment = () => {
     const comment:Comment = {
       text: commentText,
-      userId: currentUser?.id || 1,
+      userId: currentUser?.id || 0,
       topicId: topic.id,
-      createdAt: '2022-03-16',
+      createdAt: dateNow,
     };
     mutateComment(comment);
     setIsComment(false);
@@ -52,11 +56,35 @@ export const TopicPageContainer = () => {
     mutateFavorite({ userId: currentUser?.id, topicId: topic.id });
   };
 
-  const bla = { topicId: topic.id, userId: currentUser?.id };
+  // @ts-ignore
+  const viewTopic = { topicId: parseInt(id, 10), userId: currentUser?.id };
 
   useEffect(() => (
-    mutateView(bla)
+    mutateView(viewTopic)
   ), []);
+
+  const commentMapping = comments.map((comment: Comment) => {
+    if (comment.userId === currentUser?.id) {
+      return (
+        <CommentZoneContainer
+          key={comment.id}
+          comment={comment}
+          typeUser="self"
+          currentUser={currentUser}
+          refetchAllComments={refetch}
+        />
+      );
+    }
+    return (
+      <CommentZoneContainer
+        key={comment.id}
+        comment={comment}
+        typeUser="other"
+        currentUser={currentUser}
+        refetchAllComments={refetch}
+      />
+    );
+  });
 
   return (
     <TopicPageComponent
@@ -64,13 +92,13 @@ export const TopicPageContainer = () => {
       createComment={createComment}
       onChange={onChange}
       onComment={onComment}
-      comments={comments}
       isComment={isComment}
       currentUser={currentUser}
       onShare={onShare}
       onFavorite={onFavorite}
-      refetchAllComments={refetch}
       isLiked={isLiked}
+      formatMessage={formatMessage}
+      commentMapping={commentMapping}
     />
   );
 };

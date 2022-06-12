@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import './input.component.scss';
+import './Input.component.scss';
 
 type InputType = 'search' | 'email' | 'password' | 'text';
 type InputSize = 'small' | 'medium' | 'large';

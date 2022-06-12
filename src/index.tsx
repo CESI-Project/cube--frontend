@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import './index.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
@@ -8,16 +8,18 @@ import App from './App';
 import Francais from './languages/fr-FR.json';
 
 const queryClient = new QueryClient();
-
 const localLanguage: string = navigator.language;
-
 let language;
 
 if (localLanguage === 'fr-FR') {
   language = Francais;
 }
 
-ReactDOM.render(
+const rootElement = document.getElementById('root');
+if (rootElement === null) throw new Error('Root container missing in index.html');
+const root = createRoot(rootElement);
+
+root.render(
   <React.StrictMode>
     <IntlProvider locale={localLanguage} messages={language}>
       <BrowserRouter>
@@ -27,5 +29,4 @@ ReactDOM.render(
       </BrowserRouter>
     </IntlProvider>
   </React.StrictMode>,
-  document.getElementById('root'),
 );

@@ -1,0 +1,22 @@
+@import "src/assets/styles/core/colors";
+
+input {
+  background-color: white;
+  height: 2.5rem;
+  border-radius: 0.9375rem;
+  border: 0.1875rem solid black;
+  font-size: 1.125rem;
+  padding: 0 0 0 0.5rem;
+}
+
+.small {
+  width: 20rem;
+}
+
+.medium {
+  width: 40rem;
+}
+
+.large {
+  width: 60rem;
+}

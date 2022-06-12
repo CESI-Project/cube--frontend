@@ -1,33 +1,29 @@
 @import "src/assets/styles/core/colors";
 
-.signupPage {
+.signup-page {
   width: 100%;
   text-align: center;
-  margin-top: 3rem;
-  height: 48.5rem;
+  margin-top: 10rem;
 
   h1 {
-    font-size : 3rem;
-    font-weight :bold;
-  }
-
-  h1, h2 {
-    color : $dark-blue;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1.25rem;
   }
 
   &__wrapper {
-    margin-top : 1.5rem;
+    margin-top: 3rem;
 
     h2 {
-      margin-top : 1.5rem;
+      margin-top: 1.875rem;
     }
 
     input {
-      margin-top : 0.5rem;
+      margin-top: 0.3125rem;
     }
 
     &__signup-button {
-      margin-top : 2rem;
+      margin-top: 3.125rem;
     }
   }
 }

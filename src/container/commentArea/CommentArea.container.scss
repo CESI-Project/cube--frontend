@@ -1,0 +1,15 @@
+.comment-area {
+  display: flex;
+  margin-top: 1.875rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  textarea {
+    width: 75%;
+  }
+
+  button {
+    margin-left: 1.875rem;
+  }
+}

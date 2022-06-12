@@ -1,0 +1,57 @@
+@import "src/assets/styles/core/colors";
+
+.burger-menu {
+  &__button {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    background: white;
+    border: none;
+    margin: 0;
+    padding: 0;
+
+    img {
+      height: 1.8rem;
+    }
+  }
+
+  &__overlay {
+    z-index: 1;
+    display: flex;
+    overflow-x: scroll;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 16.25rem;
+    height: 100%;
+    background: white;
+    box-shadow: 3px 0 4px rgb(0 0 0 / 25%);
+
+    &__navigation {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 6rem;
+
+      a {
+        margin: 3.125rem 1.825rem 0;
+        color: $light-blue;
+        text-decoration: none;
+      }
+    }
+
+    &__arrow {
+      position: fixed;
+      bottom: 0;
+
+      &__button {
+        cursor: pointer;
+        background: white;
+        border: none;
+        margin: 1.825rem 0;
+        padding: 0;
+        width: 16.25rem;
+      }
+    }
+  }
+}

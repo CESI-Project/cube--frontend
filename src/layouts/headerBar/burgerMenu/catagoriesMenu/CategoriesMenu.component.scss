@@ -1,0 +1,42 @@
+@import "src/assets/styles/core/colors";
+
+.categories-button {
+  color: $light-blue;
+  background-color: white;
+  margin: 3.125rem 1.825rem 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  font-size: 1.125rem;
+  text-align: left;
+}
+
+.categories-menu {
+  margin: 1.825rem 1.825rem 0;
+
+  &__family-tag {
+    margin-top: 1rem;
+    margin-left: 0.5rem;
+
+    &__button {
+      margin: 0;
+      padding: 0;
+      border: none;
+      background-color: white;
+      color: $light-blue;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    &__tag-button {
+      margin: 0.5rem 0 0 1rem;
+      padding: 0;
+      border: none;
+      background-color: white;
+      color: $light-blue;
+      font-size: 0.8rem;
+      cursor: pointer;
+      text-align: left;
+    }
+  }
+}

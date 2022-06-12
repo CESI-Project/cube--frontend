@@ -1,8 +1,8 @@
 import './SettingsPage.component.scss';
-import React from 'react';
+import React, { FC } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
-import { InputComponent } from '../../components/input/input.component';
-import { ButtonComponent } from '../../components/button/button.component';
+import { InputComponent } from '../../components/input/Input.component';
+import { ButtonComponent } from '../../components/button/Button.component';
 
 const messages = defineMessages({
   settingsPage_mailInput: {
@@ -58,40 +58,40 @@ const messages = defineMessages({
     id: 'settingsPage.passwordTitle',
   },
   settingsPage_submitSignUp: {
-    defaultMessage: 'Submit change',
+    defaultMessage: 'Edit',
     id: 'settingsPage.submitSignUp',
   },
 });
 
-export const SettingsPageComponent = () => {
-  const { formatMessage } = useIntl();
+interface SettingsPageComponentProps {
+  formatMessage: (message: { defaultMessage: string; id: string }) => string;
+}
 
-  return (
-    <div className="settingsPage">
-      <h1>{formatMessage(messages.settingsPage_signupTitle)}</h1>
-      <form className="settingsPage__wrapper" onSubmit={() => {}}>
-        <div className="settingsPage__wrapper__mail-input">
-          <h2>{formatMessage(messages.settingsPage_mailTitle)}</h2>
-          <InputComponent type="email" name="email" inputsize="small" placeholder={formatMessage(messages.settingsPage_mailInput)} />
-        </div>
-        <div className="settingsPage__wrapper__username-input">
-          <h2>{formatMessage(messages.settingsPage_usernameTitle)}</h2>
-          <InputComponent type="text" name="username" inputsize="small" placeholder={formatMessage(messages.settingsPage_usernameInput)} />
-        </div>
-        <div className="settingsPage__wrapper__birth-date-input">
-          <h2>{formatMessage(messages.settingsPage_birthDateTitle)}</h2>
-          <InputComponent type="text" name="birth-date" inputsize="small" placeholder={formatMessage(messages.settingsPage_birthDateInput)} />
-        </div>
-        <div className="settingsPage__wrapper__password-input">
-          <h2>{formatMessage(messages.settingsPage_passwordTitle)}</h2>
-          <InputComponent type="password" name="password" inputsize="small" placeholder={formatMessage(messages.settingsPage_passwordInput)} />
-        </div>
-        <div className="settingsPage__wrapper__signup-button">
-          <ButtonComponent type="submit" designType="full" onClick={() => {}}>
-            {formatMessage(messages.settingsPage_submitSignUp)}
-          </ButtonComponent>
-        </div>
-      </form>
-    </div>
-  );
-};
+export const SettingsPageComponent: FC<SettingsPageComponentProps> = ({ formatMessage }) => (
+  <div className="settings-page">
+    <h1>{formatMessage(messages.settingsPage_signupTitle)}</h1>
+    <form className="settings-page__wrapper" onSubmit={() => {}}>
+      <div className="settings-page__wrapper__mail-input">
+        <h2>{formatMessage(messages.settingsPage_mailTitle)}</h2>
+        <InputComponent type="email" name="email" inputsize="small" placeholder={formatMessage(messages.settingsPage_mailInput)} />
+      </div>
+      <div className="settings-page__wrapper__username-input">
+        <h2>{formatMessage(messages.settingsPage_usernameTitle)}</h2>
+        <InputComponent type="text" name="username" inputsize="small" placeholder={formatMessage(messages.settingsPage_usernameInput)} />
+      </div>
+      <div className="settings-page__wrapper__birth-date-input">
+        <h2>{formatMessage(messages.settingsPage_birthDateTitle)}</h2>
+        <InputComponent type="text" name="birth-date" inputsize="small" placeholder={formatMessage(messages.settingsPage_birthDateInput)} />
+      </div>
+      <div className="settings-page__wrapper__password-input">
+        <h2>{formatMessage(messages.settingsPage_passwordTitle)}</h2>
+        <InputComponent type="password" name="password" inputsize="small" placeholder={formatMessage(messages.settingsPage_passwordInput)} />
+      </div>
+      <div className="settings-page__wrapper__signup-button">
+        <ButtonComponent type="submit" designType="full" onClick={() => {}}>
+          {formatMessage(messages.settingsPage_submitSignUp)}
+        </ButtonComponent>
+      </div>
+    </form>
+  </div>
+);

@@ -1,7 +1,7 @@
 export interface Comment {
     id?: number;
     text: string;
-    createdAt: string;
+    createdAt: Date;
     topicId: number;
     userId: number;
 }

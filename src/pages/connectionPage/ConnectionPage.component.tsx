@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
-import { defineMessages, useIntl } from 'react-intl';
+import { defineMessages } from 'react-intl';
 import './ConnectionPage.component.scss';
-import { InputComponent } from '../../components/input/input.component';
-import { ButtonComponent } from '../../components/button/button.component';
+import { InputComponent } from '../../components/input/Input.component';
+import { ButtonComponent } from '../../components/button/Button.component';
 
 const messages = defineMessages({
   connectionPage_usernameInput: {
@@ -38,38 +38,35 @@ const messages = defineMessages({
 interface ConnectionPageComponentProps {
   isError: boolean;
   onConnection: (e: React.FormEvent<HTMLFormElement>) => void;
+  formatMessage: (message: { defaultMessage: string; id: string }) => string;
 }
 
 export const ConnectionPageComponent: FC<ConnectionPageComponentProps> = ({
-  isError, onConnection,
-}) => {
-  const { formatMessage } = useIntl();
-
-  return (
-    <div className="connectionPage">
-      <h1>{formatMessage(messages.connectionPage_connectionTitle)}</h1>
-      <form className="connectionPage__wrapper" onSubmit={onConnection}>
-        {isError && (
-          <div className="connectionPage__error-input">
-            {formatMessage(messages.connectionPage_errorInput)}
-          </div>
-        )}
-        <div>
-          <h2>
-            {formatMessage(messages.connectionPage_usernameTitle)}
-          </h2>
-          <InputComponent name="username" type="text" inputsize="small" placeholder={formatMessage(messages.connectionPage_usernameInput)} />
-        </div>
-        <div>
-          <h2>{formatMessage(messages.connectionPage_passwordTitle)}</h2>
-          <InputComponent name="password" type="password" inputsize="small" placeholder={formatMessage(messages.connectionPage_passwordInput)} />
-        </div>
-        <div className="connectionPage__wrapper__connection-button">
-          <ButtonComponent type="submit" designType="full" onClick={() => {}}>
-            {formatMessage(messages.connectionPage_submitConnection)}
-          </ButtonComponent>
-        </div>
-      </form>
-    </div>
-  );
-};
+  isError, onConnection, formatMessage,
+}) => (
+  <div className="connection-page">
+    <h1>{formatMessage(messages.connectionPage_connectionTitle)}</h1>
+    <form className="connection-page__wrapper" onSubmit={onConnection}>
+      {isError && (
+      <div className="connection-page__wrapper__error-input">
+        {formatMessage(messages.connectionPage_errorInput)}
+      </div>
+      )}
+      <div>
+        <h2>
+          {formatMessage(messages.connectionPage_usernameTitle)}
+        </h2>
+        <InputComponent name="username" type="text" inputsize="small" placeholder={formatMessage(messages.connectionPage_usernameInput)} />
+      </div>
+      <div>
+        <h2>{formatMessage(messages.connectionPage_passwordTitle)}</h2>
+        <InputComponent name="password" type="password" inputsize="small" placeholder={formatMessage(messages.connectionPage_passwordInput)} />
+      </div>
+      <div className="connection-page__wrapper__connection-button">
+        <ButtonComponent type="submit" designType="full" onClick={() => {}}>
+          {formatMessage(messages.connectionPage_submitConnection)}
+        </ButtonComponent>
+      </div>
+    </form>
+  </div>
+);

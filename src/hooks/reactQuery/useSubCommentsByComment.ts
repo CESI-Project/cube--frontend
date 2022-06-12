@@ -1,10 +1,13 @@
 import { useQuery } from 'react-query';
 import { getSubCommentByComment } from '../../services/subcomment.service';
 
-export const useSubCommentsByComment = (id: number | undefined) => {
+export const useSubCommentsByComment = (commentId: number | undefined) => {
   const { data, refetch } = useQuery(
-    'all-sub-comment-by-coment',
-    () => getSubCommentByComment(id),
+    `all-sub-comment-by-coment-${commentId}`,
+    () => getSubCommentByComment(commentId),
+    {
+      enabled: !!commentId,
+    },
   );
 
   return { subComments: data || [], refetch };

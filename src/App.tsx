@@ -1,7 +1,6 @@
 import './App.scss';
 import { Route, Routes } from 'react-router-dom';
 import React from 'react';
-import { TopNavigationBarContainer } from './layouts/topNavigationBar/TopNavigationBar.container';
 import { HeaderBarContainer } from './layouts/headerBar/HeaderBar.container';
 import { HomePageContainer } from './pages/homePage/HomePage.container';
 import { TopicPageContainer } from './pages/topicPage/TopicPage.container';
@@ -10,14 +9,13 @@ import { SignupPageContainer } from './pages/signupPage/SignupPage.container';
 import { DashboardPageContainer } from './pages/dashboardPage/DashboardPage.container';
 import { UserInfoProvider } from './context/UserContext.provider';
 import { CreateTopicPageContainer } from './pages/createtopicPage/CreateTopicPage.container';
-import {SettingsPageContainer} from "./pages/settingsPage/SettingsPage.container";
+import { SettingsPageContainer } from './pages/settingsPage/SettingsPage.container';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <UserInfoProvider>
         <HeaderBarContainer />
-        <TopNavigationBarContainer />
         <Routes>
           <Route path="/" element={<HomePageContainer />} />
           <Route path="/home" element={<HomePageContainer />} />

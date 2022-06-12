@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { ButtonComponent } from './button.component';
+import { ButtonComponent } from './Button.component';
 
 // ToDo: Improve Style Test
 

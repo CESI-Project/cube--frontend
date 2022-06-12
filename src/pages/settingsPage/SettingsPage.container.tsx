@@ -1,9 +1,10 @@
+import { useIntl } from 'react-intl';
 import { SettingsPageComponent } from './SettingsPage.component';
 
 export const SettingsPageContainer = () => {
-  const a = () => {};
+  const { formatMessage } = useIntl();
 
   return (
-    <SettingsPageComponent />
+    <SettingsPageComponent formatMessage={formatMessage} />
   );
 };

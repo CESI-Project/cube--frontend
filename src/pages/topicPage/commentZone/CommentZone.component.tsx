@@ -1,158 +1,109 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
+import { defineMessages } from 'react-intl';
 import { Comment } from '../../../models/Comment';
 import './CommentZone.component.scss';
 import { User } from '../../../models/User';
-import { ButtonComponent } from '../../../components/button/button.component';
-import { SubCommentZoneContainer } from './subCommentZone/SubCommentZone.container';
-import { TextareaComponent } from '../../../components/textarea/textarea.component';
+import { ButtonComponent } from '../../../components/button/Button.component';
+import { TypeUser } from '../../../components/comment/Comment.component';
+import { CommentAreaContainer } from '../../../container/commentArea/CommentArea.container';
+
+const messages = defineMessages({
+  comment_buttonAnswer: {
+    defaultMessage: 'Answer',
+    id: 'comment.buttonAnswer',
+  },
+  comment_buttonDelete: {
+    defaultMessage: 'Delete',
+    id: 'comment.buttonDelete',
+  },
+});
 
 interface CommentZoneComponentProps {
-  comments: Comment[];
-  currentUser: User | undefined;
+  comment: Comment;
   onDeleteComment: (id: number | undefined) => void;
-  setCurrentComment: (prevState: number | undefined) => void;
   onSubComment: () => void;
   isSubComment: boolean;
-  setIsSubComment: (prevState: boolean) => void;
   onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   currentResponse: number | undefined;
-  setCurrentResponse: (prevState: number | undefined) => void;
+  typeUser: TypeUser;
+  formatDateComment: string;
+  user: User;
+  formatMessage: (message: { defaultMessage: string; id: string }) => string;
+  commentClassName: string;
+  subCommentMapping: ReactNode;
+  onSubCommentWrapper: (id: number | undefined) => void;
 }
 
 export const CommentZoneComponent: FC<CommentZoneComponentProps> = ({
-  comments,
-  currentUser,
+  comment,
   onDeleteComment,
   onSubComment,
   isSubComment,
-  setIsSubComment,
   onChange,
-  setCurrentComment,
-  setCurrentResponse,
   currentResponse,
-}) => {
-  const onSubCommentWrapper = (commentId: number | undefined) => {
-    setCurrentResponse(commentId);
-    setCurrentComment(commentId);
-    setIsSubComment(!isSubComment);
-  };
-  const listComments = comments.map((comment: Comment) => (
-    <div key={comment.id} className="comment-zone__comment">
-      {currentUser !== undefined && (
-      <div>
-        {comment.userId === currentUser.id ? (
-          <div className="comment-zone__comment__self">
-            <div className="comment-zone__comment__self__main">
-              <ButtonComponent type="button" designType="empty" onClick={() => { onSubCommentWrapper(comment.id); }}>
-                Repondre
-              </ButtonComponent>
-              <ButtonComponent type="button" designType="empty" onClick={() => { onDeleteComment(comment.id); }}>
-                Delete
-              </ButtonComponent>
-              <div className="comment-zone__comment__self__main__text">
-                {comment.text}
-              </div>
-              <div className="comment-zone__comment__self__main__right">
-                { comment.userId === 1 && (
-                <div>
-                  JeanPierre
-                </div>
-                )}
-                { comment.userId === 2 && (
-                <div>
-                  HenryLocal
-                </div>
-                )}
-                { comment.userId === 3 && (
-                <div>
-                  Superman
-                </div>
-                )}
-                { comment.userId === 4 && (
-                <div>
-                  testman
-                </div>
-                )}
-                <div className="comment-zone__comment__self__main__right__created-at">
-                  {comment.createdAt}
-                </div>
-              </div>
-            </div>
-            <SubCommentZoneContainer commentId={comment.id} currentUser={currentUser} />
-            {(isSubComment && currentResponse === comment.id) && (
-            <div className="topic-page__create-comment">
-              <div>
-                <TextareaComponent cols={150} rows={10} onChange={onChange} />
-              </div>
-              <div>
-                <ButtonComponent type="button" designType="full" onClick={() => { onSubComment(); }}>
-                  Commenter
-                </ButtonComponent>
-              </div>
-            </div>
-            )}
+  formatDateComment,
+  typeUser,
+  user,
+  formatMessage,
+  commentClassName,
+  subCommentMapping,
+  onSubCommentWrapper,
+}) => (
+  <div key={comment.id}>
+    {typeUser === 'self' && (
+      <div className="comment">
+        <div className={commentClassName}>
+          <ButtonComponent type="button" designType="empty" onClick={() => { onSubCommentWrapper(comment.id); }}>
+            {formatMessage(messages.comment_buttonAnswer)}
+          </ButtonComponent>
+          <ButtonComponent type="button" designType="empty" onClick={() => { onDeleteComment(comment.id); }}>
+            {formatMessage(messages.comment_buttonDelete)}
+          </ButtonComponent>
+          <div className={`${commentClassName}__text`}>
+            {comment.text}
           </div>
-        ) : (
-          <div className="comment-zone__comment__other">
-            <div className="comment-zone__comment__other__main">
-              <div className="comment-zone__comment__other__main__left">
-                { comment.userId === 1 && (
-                <div>
-                  JeanPierre
-                </div>
-                )}
-                { comment.userId === 2 && (
-                <div>
-                  HenryLocal
-                </div>
-                )}
-                { comment.userId === 3 && (
-                <div>
-                  Superman
-                </div>
-                )}
-                { comment.userId === 4 && (
-                <div>
-                  testman
-                </div>
-                )}
-                <div className="comment-zone__comment__other__main__left__created-at">
-                  {comment.createdAt}
-                </div>
-              </div>
-              <div className="comment-zone__comment__other__main__text">
-                {comment.text}
-              </div>
-              <ButtonComponent type="button" designType="empty" onClick={() => { onSubCommentWrapper(comment.id); }}>
-                Repondre
-              </ButtonComponent>
-              <ButtonComponent type="button" designType="empty" onClick={() => { onDeleteComment(comment.id); }}>
-                Delete
-              </ButtonComponent>
+          <div className={`${commentClassName}__side`}>
+            { user.userName }
+            <div className={`${commentClassName}__side__created-at`}>
+              { formatDateComment }
             </div>
-            <SubCommentZoneContainer commentId={comment.id} currentUser={currentUser} />
-            {(isSubComment && currentResponse === comment.id) && (
-            <div className="topic-page__create-comment">
-              <div>
-                <TextareaComponent cols={150} rows={10} onChange={onChange} />
-              </div>
-              <div>
-                <ButtonComponent type="button" designType="full" onClick={() => { onSubComment(); }}>
-                  Commenter
-                </ButtonComponent>
-              </div>
-            </div>
-            )}
           </div>
+        </div>
+        {(isSubComment && currentResponse === comment.id) && (
+          <CommentAreaContainer
+            onChange={onChange}
+            onComment={onSubComment}
+            message={formatMessage(messages.comment_buttonAnswer)}
+          />
         )}
+        { subCommentMapping }
       </div>
-      )}
-    </div>
-  ));
-
-  return (
-    <div className="comment-zone">
-      {listComments}
-    </div>
-  );
-};
+    )}
+    {typeUser === 'other' && (
+      <div className="comment">
+        <div className={commentClassName}>
+          <div className={`${commentClassName}__side`}>
+            { user.userName }
+            <div className={`${commentClassName}__side__created-at`}>
+              { formatDateComment }
+            </div>
+          </div>
+          <div className={`${commentClassName}__text`}>
+            {comment.text}
+          </div>
+          <ButtonComponent type="button" designType="empty" onClick={() => { onSubCommentWrapper(comment.id); }}>
+            {formatMessage(messages.comment_buttonAnswer)}
+          </ButtonComponent>
+        </div>
+        {(isSubComment && currentResponse === comment.id) && (
+        <CommentAreaContainer
+          onChange={onChange}
+          onComment={onSubComment}
+          message={formatMessage(messages.comment_buttonAnswer)}
+        />
+        )}
+        { subCommentMapping }
+      </div>
+    )}
+  </div>
+);

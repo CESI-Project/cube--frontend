@@ -26,7 +26,7 @@ export const UserInfoProvider: FC<UserContextProviderProps> = ({ children }) => 
     }
   };
 
-  const logout = () => {
+  const logOut = () => {
     setCurrentUser(undefined);
     setIsAuthenticated(false);
     localStorage.removeItem('user');
@@ -40,7 +40,7 @@ export const UserInfoProvider: FC<UserContextProviderProps> = ({ children }) => 
     currentUser,
     setCurrentUser,
     checkLogin,
-    logout,
+    logOut,
     isAuthenticated,
     setIsAuthenticated,
     currentTag,

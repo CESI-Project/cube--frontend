@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react';
-import './button.component.scss';
+import './Button.component.scss';
 
 type ButtonType = 'submit' | 'reset' | 'button';
 type DesignType = 'empty' | 'full';

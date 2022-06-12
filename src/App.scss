@@ -1,10 +1,13 @@
 @import "assets/styles/core/fonts";
 @import "assets/styles/core/colors";
+
 body {
-  background-color: $light-white;
+  background-color: white;
 }
-.App {
-  font-family: 'made-tommy_medium', sans-serif;
-  background-color: $light-white;
+
+.app {
+  font-family: "made-tommy_medium", sans-serif;
+  background-color: white;
   overflow: hidden;
+  font-size: 1.125rem;
 }
