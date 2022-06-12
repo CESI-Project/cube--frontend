@@ -23,20 +23,20 @@ export const CreateTopicPageContainer = () => {
   const { familyTags } = useAllFamilyTags();
   const { tags } = useAllTags(familyTags.map((familyTag: FamilyTag) => familyTag.id));
   const [changeTopicText, setChangeTopicText] = useState<string>('');
-  const [changeTopicTags, setChangeTopicTags] = useState<string[]>();
+  const [changeTopicTags, setChangeTopicTags] = useState<Tag[]>();
   const { mutate, isSuccess } = useCreateTopic();
   const { formatMessage } = useIntl();
 
   const tagList: any = [];
 
-  tags.map((tag: Tag) => tagList.push({ value: tag.nameFr, label: tag.nameFr }));
+  tags.map((tag: Tag) => tagList.push({ id: tag.id, value: tag.nameEn, label: tag.nameFr }));
 
   const onChangeTopicText = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setChangeTopicText(event.target.value);
   };
 
-  const onChangeTopicTags = (topicTags: OnChangeValue<TagOptionType, true>) => {
-    setChangeTopicTags((topicTags as TagOptionType[]).map((tag: TagOptionType) => tag.value));
+  const onChangeTopicTags = (topicTags: OnChangeValue<Tag, true>) => {
+    setChangeTopicTags(topicTags.map((tag: Tag) => tag));
   };
 
   const onCreateTopic = (e: React.FormEvent<HTMLFormElement>) => {
@@ -44,15 +44,9 @@ export const CreateTopicPageContainer = () => {
     const formData = new FormData(e.target as HTMLFormElement);
     const topicTitle = formData.get('topicTitle') as string;
 
-    // ToDo
     const topic: Topic = {
       title: topicTitle,
-      tags: {
-        id: 2,
-        nameFr: 'Enfance',
-        nameEn: 'Childhood',
-        familyTagId: 1,
-      },
+      tags: changeTopicTags,
       text: changeTopicText,
     };
 

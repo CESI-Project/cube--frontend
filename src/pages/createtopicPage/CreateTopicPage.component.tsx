@@ -6,6 +6,7 @@ import { InputComponent } from '../../components/input/Input.component';
 import { ButtonComponent } from '../../components/button/Button.component';
 import { TextareaComponent } from '../../components/textarea/Textarea.component';
 import { TagOptionType } from './CreateTopicPage.container';
+import { Tag } from '../../models/Tag';
 
 const messages = defineMessages({
   createTopicPage_nameTitle: {
@@ -46,7 +47,7 @@ interface CreateTopicPageComponentProps {
   onCreateTopic: (e: React.FormEvent<HTMLFormElement>) => void;
   tagList: any;
   onChangeTopicText: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  onChangeTopicTags: (tags: OnChangeValue<TagOptionType, true>) => void;
+  onChangeTopicTags: (tags: OnChangeValue<Tag, true>) => void;
   formatMessage: (message: { defaultMessage: string; id: string }) => string;
 }
 

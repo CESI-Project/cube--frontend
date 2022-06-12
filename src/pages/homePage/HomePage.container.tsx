@@ -20,7 +20,7 @@ export const HomePageContainer = () => {
 
   const listTopics = topics.map((topic: Topic) => (
     <div key={topic.id}>
-      {(!currentTag) && (
+      {!currentTag && (
         <Link to={`/${formatMessage(messages.homePage_Topic)}/${topic.id}`}>
           <button type="button" className="home-page__button-topic">
             <img src={topic.picture} alt={topic.title} />
@@ -28,7 +28,7 @@ export const HomePageContainer = () => {
         </Link>
       )}
 
-      {(currentTag === topic.tags.map((tag:Tag) => tag.nameFr).join() && currentTag) && (
+      {topic.tags.map((tag:Tag) => tag.nameFr).includes(currentTag) && (
         <Link to={`/${formatMessage(messages.homePage_Topic)}/${topic.id}`}>
           <button type="button" className="home-page__button-topic">
             <img src={topic.picture} alt={topic.title} />

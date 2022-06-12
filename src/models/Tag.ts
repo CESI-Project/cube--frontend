@@ -1,7 +1,7 @@
 import { Topic } from './Topic';
 
 export interface Tag {
-    id: number;
+    id?: number;
     nameEn: string;
     nameFr: string;
     familyTagId: number;
