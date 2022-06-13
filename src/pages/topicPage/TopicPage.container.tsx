@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import { useIntl } from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
+import { toast } from 'react-toastify';
 import { TopicPageComponent } from './TopicPage.component';
 import { Topic } from '../../models/Topic';
 import { useTopicById } from '../../hooks/reactQuery/useTopicById';
@@ -11,6 +12,13 @@ import { useUserContext } from '../../context/user.context';
 import { Comment } from '../../models/Comment';
 import { useViewByTopic } from '../../hooks/reactQuery/useViewByTopic';
 import { CommentZoneContainer } from './commentZone/CommentZone.container';
+
+const messages = defineMessages({
+  topicPage_connectionNotification: {
+    defaultMessage: 'You should be logged in to comment',
+    id: 'topicPage.connectionNotification',
+  },
+});
 
 export const TopicPageContainer = () => {
   const { id } = useParams();
@@ -29,9 +37,12 @@ export const TopicPageContainer = () => {
 
   const dateNow = new Date();
 
-  const createComment = () => (
-    setIsComment(!isComment)
-  );
+  const createComment = () => {
+    if (currentUser !== undefined) {
+      setIsComment(!isComment);
+    }
+    toast.error(formatMessage(messages.topicPage_connectionNotification));
+  };
 
   const onChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setCommentText(event.target.value);

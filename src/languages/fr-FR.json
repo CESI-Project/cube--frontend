@@ -19,6 +19,7 @@
   "topicPage.commentButton": "Commenter",
   "topicPage.viewCounter": "Compteur de vues : ",
   "topicPage.answerButton": "Répondre",
+  "topicPage.connectionNotification": "Vous devez être connecté pour commenter",
   "connectionPage.usernameInput": "Votre pseudo",
   "connectionPage.passwordInput": "Votre mot de passe",
   "connectionPage.connectionTitle" : "Se connecter",
@@ -55,6 +56,7 @@
   "createTopicPage.select": "Selectionner...",
   "createTopic.redirectLink": "accueil",
   "createTopic.privateTopic": "Le sujet est privée",
+  "createTopic.connectionNotification": "Vous devez être connecté pour créer un sujet",
   "dashboardPage.title": "Mon tableau de bord",
   "dashboardPage.delete": "Supprimer",
   "dashboardPage.favoritesTitle": "Mes favoris",
@@ -73,6 +75,7 @@
   "dashboardPage.moderatorCheckbox": "Modo",
   "dashboardPage.adminCheckbox": "Admin",
   "dashboardPage.superAdminCheckbox": "Super Admin",
+  "dashboardPage.connectionNotification": "Connectez vous pour acceder au tableau de bord",
   "settingsPage.signupTitle": "Paramètres",
   "settingsPage.mailTitle": "Votre adresse mail",
   "settingsPage.mailInput": "votre.adresse@mail.com",
@@ -90,6 +93,7 @@
   "settingsPage.usernameInput": "John33",
   "settingsPage.submitSignUp": "Modifier",
   "settingsPage.errorInput": "Vos informations sont incorrectes ou déjà utilisées",
+  "settingsPage.connectionNotification": "Connectez vous pour acceder aux paramètres",
   "comment.buttonDelete": "Supprimer",
   "comment.buttonAnswer": "Répondre"
 }

@@ -10,5 +10,5 @@ export interface Topic {
     userId?: number;
     comment?: string;
     favorite?: string[];
-    tags: Tag[];
+    tags: Tag[] | undefined;
 }

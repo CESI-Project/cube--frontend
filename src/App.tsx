@@ -10,11 +10,13 @@ import { DashboardPageContainer } from './pages/dashboardPage/DashboardPage.cont
 import { UserInfoProvider } from './context/UserContext.provider';
 import { CreateTopicPageContainer } from './pages/createtopicPage/CreateTopicPage.container';
 import { SettingsPageContainer } from './pages/settingsPage/SettingsPage.container';
+import { NotifyComponent } from './components/notify/Notify.component';
 
 function App() {
   return (
     <div className="app">
       <UserInfoProvider>
+        <NotifyComponent />
         <HeaderBarContainer />
         <Routes>
           <Route path="/" element={<HomePageContainer />} />

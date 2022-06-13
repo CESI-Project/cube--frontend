@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { OnChangeValue } from 'react-select';
 import { defineMessages, useIntl } from 'react-intl';
 import { Navigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { CreateTopicPageComponent } from './CreateTopicPage.component';
 import { useAllFamilyTags } from '../../hooks/reactQuery/useAllFamilyTags';
 import { useAllTags } from '../../hooks/reactQuery/useAllTags';
@@ -9,23 +10,36 @@ import { FamilyTag } from '../../models/FamilyTag';
 import { useCreateTopic } from '../../hooks/reactQuery/useCreateTopic';
 import { Tag } from '../../models/Tag';
 import { Topic } from '../../models/Topic';
+import { useUserContext } from '../../context/user.context';
 
 const messages = defineMessages({
   createTopic_redirectLink: {
     defaultMessage: 'home',
     id: 'createTopic.redirectLink',
   },
+  createTopic_connectionNotification: {
+    defaultMessage: 'Please login to create a topic',
+    id: 'createTopic.connectionNotification',
+  },
 });
 
 export type TagOptionType = { label: string, value: string }
 
 export const CreateTopicPageContainer = () => {
+  const { currentUser } = useUserContext();
+  const { formatMessage } = useIntl();
+  if (currentUser === undefined) {
+    toast.error(formatMessage(messages.createTopic_connectionNotification));
+    return (
+      <Navigate to="/home" replace />
+    );
+  }
+
   const { familyTags } = useAllFamilyTags();
   const { tags } = useAllTags(familyTags.map((familyTag: FamilyTag) => familyTag.id));
   const [changeTopicText, setChangeTopicText] = useState<string>('');
   const [changeTopicTags, setChangeTopicTags] = useState<Tag[]>();
   const { mutate, isSuccess } = useCreateTopic();
-  const { formatMessage } = useIntl();
 
   const tagList: any = [];
 

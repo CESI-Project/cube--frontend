@@ -1,5 +1,7 @@
 import { defineMessages, useIntl } from 'react-intl';
 import React from 'react';
+import { Navigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { DashboardPageComponent } from './DashboardPage.component';
 import { useUserContext } from '../../context/user.context';
 import { useAllFavoritesByUser } from '../../hooks/reactQuery/useAllFavoritesByUser';
@@ -25,11 +27,22 @@ const messages = defineMessages({
     defaultMessage: 'Deactivated',
     id: 'dashboardPage.deactivated',
   },
+  dashboardPage_connectionNotification: {
+    defaultMessage: 'Please login to see your dashboard',
+    id: 'dashboardPage.connectionNotification',
+  },
 });
 
 export const DashboardPageContainer = () => {
-  const { formatMessage } = useIntl();
   const { currentUser } = useUserContext();
+  const { formatMessage } = useIntl();
+  if (currentUser === undefined) {
+    toast.error(formatMessage(messages.dashboardPage_connectionNotification));
+    return (
+      <Navigate to="/home" replace />
+    );
+  }
+
   const { favorites } = useAllFavoritesByUser(currentUser?.id);
   const { views } = useViewByUser(currentUser?.id);
   const { topics } = useAllTopics();
