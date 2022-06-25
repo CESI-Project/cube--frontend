@@ -30,7 +30,7 @@ export const CommentZoneContainer: FC<CommentZoneContainerProps> = ({
   const [currentComment, setCurrentComment] = useState<number>();
   const [isSubComment, setIsSubComment] = useState<boolean>(false);
   const [currentResponse, setCurrentResponse] = useState<number>();
-  const { user }: User = useUserById(comment.userId);
+  const { user } = useUserById(comment.userId);
   const { formatMessage } = useIntl();
 
   const dateNow = new Date();

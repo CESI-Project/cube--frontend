@@ -15,9 +15,9 @@ export const postConnection = async ({ userName, password }: postConncetionProps
 });
 
 export const postCreationAccount = async ({
-  userName, birthDate, email, password, roles = ['user'],
+  userName, email, password, roles = ['user'],
 }: User) => axios.post(`${BACKEND_URI}/user/auth/sign-up`, {
-  username: userName, birthDate, email, password, roles,
+  username: userName, email, password, roles,
 }).then((response) => {
   if (response.data.accessToken) {
     localStorage.setItem('user', JSON.stringify(response.data));

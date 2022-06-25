@@ -19,7 +19,7 @@ export const SubCommentZoneContainer: FC<SubCommentZoneContainerProps> = ({
 }) => {
   const date = new Date(String(subComment.createdAt));
   const formatDateSubComment = `${date.getFullYear()}/${date.getMonth()}/${date.getDate()} - ${date.getHours()}:${date.getMinutes()}`;
-  const { user }: User = useUserById(subComment.userId);
+  const { user } = useUserById(subComment.userId);
   const { formatMessage } = useIntl();
 
   const onDeleteSubComment = (id: number | undefined) => {

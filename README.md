@@ -1,4 +1,4 @@
-# Cube Front-End
+# Cube Front-End + Mobile
 
 ## Prerequisites
 
@@ -34,6 +34,41 @@ Run the project
 
 ```shell
 npm run start
+```
+
+### Mobile
+
+Set your Path 
+
+```shell
+export ANDROID_HOME=$HOME/Android/Sdk
+export ANDROID_SDK_ROOT=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+```
+
+Use Java v11 :
+```shell
+sudo update-java-alternatives --set /usr/lib/jvm/java-1.11.0-openjdk-amd64
+```
+
+Install packages
+
+```shell
+npm ci
+```
+
+Build the project
+
+```shell
+npm run start
+```
+
+Run the project
+
+```shell
+npx cap sync
+npx cap run
 ```
 
 ## How to test

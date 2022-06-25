@@ -28,7 +28,7 @@ export const HomePageContainer = () => {
         </Link>
       )}
 
-      {topic.tags.map((tag:Tag) => tag.nameFr).includes(currentTag) && (
+      {topic.tags?.map((tag:Tag) => tag.nameFr).includes(currentTag) && (
         <Link to={`/${formatMessage(messages.homePage_Topic)}/${topic.id}`}>
           <button type="button" className="home-page__button-topic">
             <img src={topic.picture} alt={topic.title} />

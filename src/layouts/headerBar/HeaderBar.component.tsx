@@ -1,10 +1,8 @@
 import { Link } from 'react-router-dom';
-import { defineMessages, useIntl } from 'react-intl';
+import { defineMessages } from 'react-intl';
 import fullLogo from '../../assets/images/fullLogo.svg';
 import { ButtonComponent } from '../../components/button/Button.component';
 import './HeaderBar.component.scss';
-import { useUserContext } from '../../context/user.context';
-import { BurgerMenuComponent } from './burgerMenu/BurgerMenu.component';
 import { FC } from 'react';
 import { User } from '../../models/User';
 import { BurgerMenuContainer } from './burgerMenu/BurgerMenu.container';
@@ -74,7 +72,10 @@ export const HeaderBarComponent: FC<HeaderBarComponentProps> = ({
       {isAuthenticated && (
         <>
           <div className="header-bar__right__account">
-            {currentUser?.username}
+            {
+              // @ts-ignore
+              currentUser?.username
+            }
           </div>
           <ButtonComponent type="button" designType="full" onClick={logOut}>
             {formatMessage(messages.headerBar_logOut)}
