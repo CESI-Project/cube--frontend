@@ -4,15 +4,16 @@ import './Input.component.scss';
 type InputType = 'search' | 'email' | 'password' | 'text';
 type InputSize = 'small' | 'medium' | 'large';
 
-export interface InputPros {
+interface InputProps {
     type: InputType;
     inputsize: InputSize;
-    placeholder: string;
-    name: string
+    placeholder?: string;
+    name: string;
+    defaultValue?: string;
 }
 
-export const InputComponent: FC<InputPros> = ({
-  type, placeholder, inputsize, name,
+export const InputComponent: FC<InputProps> = ({
+  type, placeholder, inputsize, name, defaultValue,
 }) => {
   let inputClassName = 'input';
 
@@ -33,6 +34,12 @@ export const InputComponent: FC<InputPros> = ({
       type={type}
       placeholder={placeholder}
       data-inputsize={inputsize}
+      defaultValue={defaultValue}
     />
   );
+};
+
+InputComponent.defaultProps = {
+  placeholder: undefined,
+  defaultValue: undefined,
 };

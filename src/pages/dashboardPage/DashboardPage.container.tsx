@@ -71,7 +71,7 @@ export const DashboardPageContainer = () => {
         {topic.title}
       </td>
       <td className="dashboard-page__table__table-content__right">
-        <ButtonComponent type="button" designType="empty" onClick={() => {}}>
+        <ButtonComponent type="button" designType="empty">
           {formatMessage(messages.dashboardPage_delete)}
         </ButtonComponent>
       </td>

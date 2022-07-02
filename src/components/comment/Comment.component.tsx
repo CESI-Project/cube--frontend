@@ -53,7 +53,7 @@ export const CommentComponent: FC<CommentComponentProps> = ({
             {formatMessage(messages.comment_buttonAnswer)}
           </ButtonComponent>
         )}
-        <ButtonComponent type="button" designType="empty" onClick={() => {}}>
+        <ButtonComponent type="button" designType="empty">
           {formatMessage(messages.comment_buttonDelete)}
         </ButtonComponent>
         <div className={`${commentClassName}__text`}>
@@ -79,7 +79,7 @@ export const CommentComponent: FC<CommentComponentProps> = ({
           {comment.text}
         </div>
         {!subComment && (
-          <ButtonComponent type="button" designType="empty" onClick={() => {}}>
+          <ButtonComponent type="button" designType="empty">
             {formatMessage(messages.comment_buttonAnswer)}
           </ButtonComponent>
         )}

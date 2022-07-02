@@ -8,9 +8,10 @@ import { ConnectionPageContainer } from './pages/connectionPage/ConnectionPage.c
 import { SignupPageContainer } from './pages/signupPage/SignupPage.container';
 import { DashboardPageContainer } from './pages/dashboardPage/DashboardPage.container';
 import { UserInfoProvider } from './context/UserContext.provider';
-import { CreateTopicPageContainer } from './pages/createtopicPage/CreateTopicPage.container';
+import { CreateTopicPageContainer } from './pages/createTopicPage/CreateTopicPage.container';
 import { SettingsPageContainer } from './pages/settingsPage/SettingsPage.container';
 import { NotifyComponent } from './components/notify/Notify.component';
+import { EditTopicPageContainer } from './pages/editTopicPage/EditTopicPage.container';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="/creersujet" element={<CreateTopicPageContainer />} />
           <Route path="/settings" element={<SettingsPageContainer />} />
           <Route path="/parametres" element={<SettingsPageContainer />} />
+          <Route path="/edittopic/:id" element={<EditTopicPageContainer />} />
         </Routes>
       </UserInfoProvider>
     </div>

@@ -95,5 +95,17 @@
   "settingsPage.errorInput": "Vos informations sont incorrectes ou déjà utilisées",
   "settingsPage.connectionNotification": "Connectez vous pour acceder aux paramètres",
   "comment.buttonDelete": "Supprimer",
-  "comment.buttonAnswer": "Répondre"
+  "comment.buttonAnswer": "Répondre",
+  "editTopicPage.editButton": "Modifier",
+  "editTopicPage.nameTitle": "Nom du sujet",
+  "editTopicPage.imageInput": "Parcourir...",
+  "editTopicPage.title": "Modifier un sujet",
+  "editTopicPage.tags": "Mots-clés",
+  "editTopicPage.messageTitle": "Message",
+  "editTopicPage.language": "Langue",
+  "editTopicPage.button": "Valider",
+  "editTopicPage.select": "Selectionner...",
+  "editTopicPage.redirectLink": "accueil",
+  "editTopicPage.privateTopic": "Le sujet est privée",
+  "editTopicPage.connectionNotification": "Vous devez être connecté pour créer un sujet"
 }

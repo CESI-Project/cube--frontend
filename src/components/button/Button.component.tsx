@@ -8,7 +8,7 @@ interface ButtonProps {
     type: ButtonType;
     designType: DesignType;
     children: ReactNode;
-    onClick: () => void;
+    onClick?: () => void;
 }
 
 export const ButtonComponent: FC<ButtonProps> = ({
@@ -29,4 +29,8 @@ export const ButtonComponent: FC<ButtonProps> = ({
       {children}
     </button>
   );
+};
+
+ButtonComponent.defaultProps = {
+  onClick: undefined,
 };

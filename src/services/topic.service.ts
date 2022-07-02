@@ -13,3 +13,7 @@ export const postCreationTopic = async ({
 export const getMyTopics = async (userId: number | undefined) => axios.get(`${BACKEND_URI}/topic/user/${userId}/myTopic`).then((response) => response.data);
 
 export const getTotalTopics = async () => axios.get(`${BACKEND_URI}/topic/admin/count`).then((response) => response.data);
+
+export const putEditTopic = async ({
+  title, tags, text, id,
+}: Topic) => axios.put(`${BACKEND_URI}/topic/${id}`, { title, text, tags }).then((response) => response.data);

@@ -1,6 +1,7 @@
 import { defineMessages } from 'react-intl';
 import './TopicPage.component.scss';
 import React, { FC, ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 import { ButtonComponent } from '../../components/button/Button.component';
 import { Topic } from '../../models/Topic';
 import { Comment } from '../../models/Comment';
@@ -27,6 +28,14 @@ const messages = defineMessages({
   topicPage_answerButton: {
     defaultMessage: 'Answer',
     id: 'topicPage.answerButton',
+  },
+  topicPage_editButton: {
+    defaultMessage: 'Edit',
+    id: 'topicPage.editButton',
+  },
+  topicPage_editLink: {
+    defaultMessage: 'edittopic',
+    id: 'topicPage.editLink',
   },
 });
 
@@ -61,6 +70,15 @@ export const TopicPageComponent: FC<TopicPageComponentProps> = ({
   <div className="topic-page">
     <div className="topic-page__title">
       {topic.title}
+      <div>
+        {currentUser !== undefined && (
+        <Link to={`/${formatMessage(messages.topicPage_editLink)}/${topic.id}`}>
+          <ButtonComponent type="button" designType="empty">
+            {formatMessage(messages.topicPage_editButton)}
+          </ButtonComponent>
+        </Link>
+        )}
+      </div>
     </div>
     <div className="topic-page__main">
       <img src={topic.picture} alt={topic.title} />

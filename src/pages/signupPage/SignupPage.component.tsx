@@ -80,7 +80,7 @@ export const SignupPageComponent: FC<SignupPageComponentProps> = ({
     <h1>{formatMessage(messages.signupPage_signupTitle)}</h1>
     <form className="signup-page__wrapper" onSubmit={onCreationAccount}>
       {isError && (
-        <div className="connectionPage__error-input">
+        <div className="signup-page__wrapper__error-input">
           {formatMessage(messages.signupPage_errorInput)}
         </div>
       )}
@@ -101,7 +101,7 @@ export const SignupPageComponent: FC<SignupPageComponentProps> = ({
         <InputComponent type="password" name="password" inputsize="small" placeholder={formatMessage(messages.signupPage_passwordInput)} />
       </div>
       <div className="signup-page__wrapper__signup-button">
-        <ButtonComponent type="submit" designType="full" onClick={() => {}}>
+        <ButtonComponent type="submit" designType="full">
           {formatMessage(messages.signupPage_submitSignUp)}
         </ButtonComponent>
       </div>

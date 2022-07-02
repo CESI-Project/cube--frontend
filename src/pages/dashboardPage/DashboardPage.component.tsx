@@ -164,7 +164,7 @@ export const DashboardPageComponent: FC<DashboardPageComponentProps> = ({
             </div>
           </div>
           <div className="dashboard-page__wrapper__table__table-content__button">
-            <ButtonComponent type="submit" designType="full" onClick={() => {}}>
+            <ButtonComponent type="submit" designType="full">
               {formatMessage(messages.dashboardPage_submitConnection)}
             </ButtonComponent>
           </div>

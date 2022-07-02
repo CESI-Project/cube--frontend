@@ -88,7 +88,7 @@ export const SettingsPageComponent: FC<SettingsPageComponentProps> = ({ formatMe
         <InputComponent type="password" name="password" inputsize="small" placeholder={formatMessage(messages.settingsPage_passwordInput)} />
       </div>
       <div className="settings-page__wrapper__signup-button">
-        <ButtonComponent type="submit" designType="full" onClick={() => {}}>
+        <ButtonComponent type="submit" designType="full">
           {formatMessage(messages.settingsPage_submitSignUp)}
         </ButtonComponent>
       </div>

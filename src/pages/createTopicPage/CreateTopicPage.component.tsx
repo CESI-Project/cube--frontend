@@ -82,7 +82,7 @@ export const CreateTopicPageComponent: FC<CreateTopicPageComponentProps> = ({
         <h2>{formatMessage(messages.createTopicPage_messageTitle)}</h2>
         <TextareaComponent cols={84} rows={20} onChange={onChangeTopicText} />
         <div className="create-topic-page__content__right__footer">
-          <ButtonComponent type="submit" designType="full" onClick={() => {}}>
+          <ButtonComponent type="submit" designType="full">
             {formatMessage(messages.createTopicPage_button)}
           </ButtonComponent>
         </div>
