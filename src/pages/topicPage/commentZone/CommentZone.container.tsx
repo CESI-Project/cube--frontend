@@ -16,6 +16,7 @@ interface CommentZoneContainerProps {
     typeUser: TypeUser;
     currentUser: User | undefined;
     refetchAllComments: () => void;
+    subComments: SubComment[];
 }
 
 export const CommentZoneContainer: FC<CommentZoneContainerProps> = ({
@@ -23,9 +24,10 @@ export const CommentZoneContainer: FC<CommentZoneContainerProps> = ({
   typeUser,
   currentUser,
   refetchAllComments,
+  subComments,
 }) => {
   const { mutate } = useCreateSubComment();
-  const { subComments, refetch } = useSubCommentsByComment(comment.id);
+  const { refetch } = useSubCommentsByComment(comment.id);
   const [subCommentText, setSubCommentText] = useState<string>('');
   const [currentComment, setCurrentComment] = useState<number>();
   const [isSubComment, setIsSubComment] = useState<boolean>(false);
@@ -66,7 +68,7 @@ export const CommentZoneContainer: FC<CommentZoneContainerProps> = ({
     commentClassName += '__other';
   }
 
-  const subCommentMapping = subComments.map((subComment: SubComment) => {
+  const subCommentMapping = subComments.map((subComment) => {
     if (subComment.userId === currentUser?.id) {
       return (
         <SubCommentZoneContainer

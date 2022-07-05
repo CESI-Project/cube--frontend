@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { toast } from 'react-toastify';
 import { TopicPageComponent } from './TopicPage.component';
-import { Topic } from '../../models/Topic';
 import { useTopicById } from '../../hooks/reactQuery/useTopicById';
 import { useCreateComment } from '../../hooks/reactQuery/useCreateComment';
 import { useAllComments } from '../../hooks/reactQuery/useAllComments';
@@ -23,9 +22,9 @@ const messages = defineMessages({
 export const TopicPageContainer = () => {
   const { id } = useParams();
   // @ts-ignore
-  const { topic } = useTopicById(parseInt(id, 10));
+  const { topic, comments, subComments } = useTopicById(parseInt(id, 10));
   // @ts-ignore
-  const { comments, refetch } = useAllComments(parseInt(id, 10));
+  const { refetch } = useAllComments(parseInt(id, 10));
   const [isComment, setIsComment] = useState(false);
   const [commentText, setCommentText] = useState('');
   const [isLiked, setIsLiked] = useState(false);
@@ -80,6 +79,7 @@ export const TopicPageContainer = () => {
         <CommentZoneContainer
           key={comment.id}
           comment={comment}
+          subComments={subComments}
           typeUser="self"
           currentUser={currentUser}
           refetchAllComments={refetch}
@@ -90,6 +90,7 @@ export const TopicPageContainer = () => {
       <CommentZoneContainer
         key={comment.id}
         comment={comment}
+        subComments={subComments}
         typeUser="other"
         currentUser={currentUser}
         refetchAllComments={refetch}
