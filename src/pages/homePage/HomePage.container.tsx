@@ -24,6 +24,9 @@ export const HomePageContainer = () => {
         <Link to={`/${formatMessage(messages.homePage_Topic)}/${topic.id}`}>
           <button type="button" className="home-page__button-topic">
             <img src={topic.picture} alt={topic.title} />
+            <p>
+              {topic.title}
+            </p>
           </button>
         </Link>
       )}
@@ -32,6 +35,9 @@ export const HomePageContainer = () => {
         <Link to={`/${formatMessage(messages.homePage_Topic)}/${topic.id}`}>
           <button type="button" className="home-page__button-topic">
             <img src={topic.picture} alt={topic.title} />
+            <p>
+              {topic.title}
+            </p>
           </button>
         </Link>
       )}
