@@ -70,7 +70,7 @@ export const CommentZoneContainer: FC<CommentZoneContainerProps> = ({
     if (subComment.userId === currentUser?.id) {
       return (
         <SubCommentZoneContainer
-          key={comment.id}
+          key={subComment.id}
           subComment={subComment}
           typeUser="self"
           refetchAllSubComments={refetch}
@@ -80,7 +80,7 @@ export const CommentZoneContainer: FC<CommentZoneContainerProps> = ({
     }
     return (
       <SubCommentZoneContainer
-        key={comment.id}
+        key={subComment.id}
         subComment={subComment}
         typeUser="other"
         refetchAllSubComments={refetch}
