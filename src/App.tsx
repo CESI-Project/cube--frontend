@@ -12,6 +12,7 @@ import { CreateTopicPageContainer } from './pages/createTopicPage/CreateTopicPag
 import { SettingsPageContainer } from './pages/settingsPage/SettingsPage.container';
 import { NotifyComponent } from './components/notify/Notify.component';
 import { EditTopicPageContainer } from './pages/editTopicPage/EditTopicPage.container';
+import { GamePageComponent } from './pages/gamePage/GamePage.component';
 
 function App() {
   return (
@@ -37,6 +38,8 @@ function App() {
           <Route path="/parametres" element={<SettingsPageContainer />} />
           <Route path="/edittopic/:id" element={<EditTopicPageContainer />} />
           <Route path="/modifiertopic/:id" element={<EditTopicPageContainer />} />
+          <Route path="/game" element={<GamePageComponent />} />
+          <Route path="/jeu" element={<GamePageComponent />} />
         </Routes>
       </UserInfoProvider>
     </div>

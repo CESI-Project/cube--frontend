@@ -36,6 +36,10 @@ const messages = defineMessages(
       defaultMessage: 'settings',
       id: 'topNavBar.settingsUrl',
     },
+    topNavBar_game: {
+      defaultMessage: 'Game',
+      id: 'topNavBar.game',
+    },
   },
 );
 
@@ -68,6 +72,9 @@ export const BurgerMenuComponent: FC<BurgerMenuComponentProps> = ({
         </Link>
         <Link to={formatMessage(messages.topNavBar_createTopicUrl)}>
           {formatMessage(messages.topNavBar_createTopic)}
+        </Link>
+        <Link to={formatMessage(messages.topNavBar_game).toLowerCase()}>
+          {formatMessage(messages.topNavBar_game)}
         </Link>
         <Link to={formatMessage(messages.topNavBar_settingsUrl)}>
           {formatMessage(messages.topNavBar_settings)}

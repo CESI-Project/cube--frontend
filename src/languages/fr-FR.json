@@ -6,6 +6,7 @@
   "topNavBar.settingsUrl": "parametres",
   "topNavBar.createTopicUrl": "creersujet",
   "topNavBar.dashboardUrl":  "tableaudebord",
+  "topNavBar.game": "Jeu",
   "categoriesMenu.categories": "Catégories",
   "headerBar.searchBar": "Recherche",
   "headerBar.logIn": "Se connecter",
