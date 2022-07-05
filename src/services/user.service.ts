@@ -32,3 +32,5 @@ export const getTotalUsers = async () => axios.get(`${BACKEND_URI}/user/admin/co
 export const getAllUsers = async (id: number | undefined) => axios.get(`${BACKEND_URI}/user/admin/${id}`).then((response) => response.data);
 
 export const putDeactivatedUser = async (id: number | undefined) => axios.put(`${BACKEND_URI}/user/${id}/desactivation`).then((response) => response.data);
+
+export const putActivatedUser = async (id: number | undefined) => axios.put(`${BACKEND_URI}/user/${id}/activation`).then((response) => response.data);

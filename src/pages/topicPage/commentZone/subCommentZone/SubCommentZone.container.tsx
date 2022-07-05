@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { useIntl } from 'react-intl';
 import { SubCommentZoneComponent } from './SubCommentZone.component';
-import { User } from '../../../../models/User';
 import { deleteSubComment } from '../../../../services/subcomment.service';
 import { SubComment } from '../../../../models/SubComment';
 import { TypeUser } from '../../../../components/comment/Comment.component';

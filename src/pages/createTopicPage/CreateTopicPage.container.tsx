@@ -29,7 +29,9 @@ export const CreateTopicPageContainer = () => {
   const { currentUser } = useUserContext();
   const { formatMessage } = useIntl();
   if (currentUser === undefined) {
-    toast.error(formatMessage(messages.createTopic_connectionNotification));
+    toast.error(formatMessage(messages.createTopic_connectionNotification), {
+      toastId: 1,
+    });
     return (
       <Navigate to="/home" replace />
     );

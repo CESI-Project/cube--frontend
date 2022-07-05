@@ -9,4 +9,5 @@ export interface User {
     comment?: Comment[];
     favorite?: string[];
     roles?: string[];
+    isActivated: boolean;
 }

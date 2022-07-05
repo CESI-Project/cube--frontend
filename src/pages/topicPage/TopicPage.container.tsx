@@ -40,7 +40,9 @@ export const TopicPageContainer = () => {
     if (currentUser !== undefined) {
       setIsComment(!isComment);
     }
-    toast.error(formatMessage(messages.topicPage_connectionNotification));
+    toast.error(formatMessage(messages.topicPage_connectionNotification), {
+      toastId: 1,
+    });
   };
 
   const onChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {

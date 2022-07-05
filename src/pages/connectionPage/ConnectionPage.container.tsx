@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { defineMessages, useIntl } from 'react-intl';
+import { toast } from 'react-toastify';
 import { ConnectionPageComponent } from './ConnectionPage.component';
 import { useConnection } from '../../hooks/reactQuery/useConnection';
 import { useUserContext } from '../../context/user.context';
@@ -10,10 +11,16 @@ const messages = defineMessages({
     defaultMessage: 'home',
     id: 'login.redirectLink',
   },
+  login_toastMessage: {
+    defaultMessage: 'Your account is desactivated!',
+    id: 'login.toastMessage',
+  },
 });
 
 export const ConnectionPageContainer = () => {
-  const { mutate, isError, isSuccess } = useConnection();
+  const {
+    mutate, isError, isSuccess, error,
+  } = useConnection();
   const { setIsAuthenticated } = useUserContext();
   const { formatMessage } = useIntl();
 
@@ -29,6 +36,15 @@ export const ConnectionPageContainer = () => {
   if (isSuccess) {
     setIsAuthenticated(true);
     return <Navigate to={`/${formatMessage(messages.login_redirectLink)}`} replace />;
+  }
+
+  if (isError) {
+    // @ts-ignore
+    if (error.response.data === 'User account desactivated!') {
+      toast.error(formatMessage(messages.login_toastMessage), {
+        toastId: 1,
+      });
+    }
   }
 
   return (

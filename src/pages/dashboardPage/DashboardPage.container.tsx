@@ -1,6 +1,6 @@
 import { defineMessages, useIntl } from 'react-intl';
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { DashboardPageComponent } from './DashboardPage.component';
 import { useUserContext } from '../../context/user.context';
@@ -17,6 +17,8 @@ import { ButtonComponent } from '../../components/button/Button.component';
 import { deleteFavorite } from '../../services/favorite.service';
 import { Topic } from '../../models/Topic';
 import { User } from '../../models/User';
+import { useValidationTopic } from '../../hooks/reactQuery/useValidationTopic';
+import { useActivatedAccount } from '../../hooks/reactQuery/useActivatedAccount';
 
 const messages = defineMessages({
   dashboardPage_delete: {
@@ -27,9 +29,25 @@ const messages = defineMessages({
     defaultMessage: 'Deactivated',
     id: 'dashboardPage.deactivated',
   },
+  dashboardPage_activated: {
+    defaultMessage: 'Activated',
+    id: 'dashboardPage.activated',
+  },
   dashboardPage_connectionNotification: {
     defaultMessage: 'Please login to see your dashboard',
     id: 'dashboardPage.connectionNotification',
+  },
+  dashboardPage_approvedButton: {
+    defaultMessage: 'Approved',
+    id: 'dashboardPage.approvedButton',
+  },
+  dashboardPage_nothing: {
+    defaultMessage: 'Nothing Here',
+    id: 'dashboardPage.nothing',
+  },
+  dashboardPage_topicLink: {
+    defaultMessage: 'topic',
+    id: 'dashboardPage.topicLink',
   },
 });
 
@@ -37,7 +55,9 @@ export const DashboardPageContainer = () => {
   const { currentUser } = useUserContext();
   const { formatMessage } = useIntl();
   if (currentUser === undefined) {
-    toast.error(formatMessage(messages.dashboardPage_connectionNotification));
+    toast.error(formatMessage(messages.dashboardPage_connectionNotification), {
+      toastId: 1,
+    });
     return (
       <Navigate to="/home" replace />
     );
@@ -50,7 +70,9 @@ export const DashboardPageContainer = () => {
   const { totalViews } = useTotalViews();
   const { totalUsers } = useTotalUsers();
   const { allUsers } = useAllUsers(currentUser?.id);
-  const { mutate } = useDeactivatedAccount();
+  const { mutate: deactivatedAccount } = useDeactivatedAccount();
+  const { mutate: activateAccount } = useActivatedAccount();
+  const { mutate: validationTopic } = useValidationTopic();
 
   const listFavorites = favorites.map((favorite: Favorite) => (
     <tr className="dashboard-page__table__item" key={favorite.id}>
@@ -78,15 +100,40 @@ export const DashboardPageContainer = () => {
     </tr>
   ));
 
+  const listTopicsWaitingState = topics.map((topic: Topic) => (
+    <div>
+      {topic.isValidated === false && (
+        <tr className="dashboard-page__table__item" key={topic.id}>
+          <td>
+            <Link to={`/${formatMessage(messages.dashboardPage_topicLink)}/${topic.id}`}>
+              {topic.title}
+            </Link>
+          </td>
+          <td className="dashboard-page__table__table-content__right">
+            <ButtonComponent type="button" designType="empty" onClick={() => { validationTopic(topic.id); }}>
+              {formatMessage(messages.dashboardPage_approvedButton)}
+            </ButtonComponent>
+          </td>
+        </tr>
+      )}
+    </div>
+  ));
+
   const listUsers = allUsers.map((user: User) => (
     <tr className="dashboard-page__table__item" key={user.id}>
       <td>
         {user.userName}
       </td>
       <td className="dashboard-page__table__table-content__right">
-        <ButtonComponent type="button" designType="empty" onClick={() => { mutate(user.id); }}>
-          {formatMessage(messages.dashboardPage_deactivated)}
-        </ButtonComponent>
+        {(user.isActivated ? (
+          <ButtonComponent type="button" designType="empty" onClick={() => { deactivatedAccount(user.id); }}>
+            {formatMessage(messages.dashboardPage_deactivated)}
+          </ButtonComponent>
+        ) : (
+          <ButtonComponent type="button" designType="empty" onClick={() => { activateAccount(user.id); }}>
+            {formatMessage(messages.dashboardPage_activated)}
+          </ButtonComponent>
+        ))}
       </td>
     </tr>
   ));
@@ -98,6 +145,7 @@ export const DashboardPageContainer = () => {
       listFavorites={listFavorites}
       listTopics={listTopics}
       listUsers={listUsers}
+      listTopicsWaitingState={listTopicsWaitingState}
       totalTopic={totalTopic}
       totalUsers={totalUsers}
       totalViews={totalViews}

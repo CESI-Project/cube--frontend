@@ -78,6 +78,7 @@ interface DashboardPageComponentProps {
   listFavorites: ReactNode;
   listTopics: ReactNode;
   listUsers: ReactNode;
+  listTopicsWaitingState: ReactNode;
   totalTopic: number;
   totalViews: number;
   totalUsers: number;
@@ -90,6 +91,7 @@ export const DashboardPageComponent: FC<DashboardPageComponentProps> = ({
   listFavorites,
   listTopics,
   listUsers,
+  listTopicsWaitingState,
   totalTopic,
   totalViews,
   totalUsers,
@@ -119,7 +121,12 @@ export const DashboardPageComponent: FC<DashboardPageComponentProps> = ({
       </div>
     </div>
     )}
-    {(currentUser?.roles?.join() === 'ROLE_ADMIN' || currentUser?.roles?.join() === 'ROLE_SUPERADMIN') && (
+    {(currentUser?.roles?.join() === 'ROLE_USER' || currentUser?.roles?.join() === 'ROLE_MODERATOR' || currentUser?.roles?.join() === 'ROLE_ADMIN' || currentUser?.roles?.join() === 'ROLE_SUPERADMIN') && (
+    <div>
+      {listTopicsWaitingState}
+    </div>
+    )}
+    {(currentUser?.roles?.join() === 'ROLE_USER' || currentUser?.roles?.join() === 'ROLE_SUPERADMIN') && (
     <div className="dashboard-page__wrapper">
       <div className="dashboard-page__wrapper__table">
         <h2>

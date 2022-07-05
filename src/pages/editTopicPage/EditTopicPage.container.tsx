@@ -31,7 +31,9 @@ export const EditTopicPageContainer = () => {
   const { topic }:Topic = useTopicById(parseInt(id, 10));
   const { formatMessage } = useIntl();
   if (currentUser === undefined) {
-    toast.error(formatMessage(messages.editTopicPage_connectionNotification));
+    toast.error(formatMessage(messages.editTopicPage_connectionNotification), {
+      toastId: 1,
+    });
     return (
       <Navigate to="/home" replace />
     );

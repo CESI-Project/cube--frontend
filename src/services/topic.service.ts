@@ -17,3 +17,5 @@ export const getTotalTopics = async () => axios.get(`${BACKEND_URI}/topic/admin/
 export const putEditTopic = async ({
   title, tags, text, id,
 }: Topic) => axios.put(`${BACKEND_URI}/topic/${id}`, { title, text, tags }).then((response) => response.data);
+
+export const putValidationTopic = async (id: number | undefined) => axios.put(`${BACKEND_URI}/topic/${id}/validation`).then((response) => response.data);
