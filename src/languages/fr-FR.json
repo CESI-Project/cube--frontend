@@ -20,6 +20,8 @@
   "topicPage.viewCounter": "Compteur de vues : ",
   "topicPage.answerButton": "Répondre",
   "topicPage.connectionNotification": "Vous devez être connecté pour commenter",
+  "topicPage.editButton": "Modifier",
+  "topicPage.editLink": "modifiertopic",
   "connectionPage.usernameInput": "Votre pseudo",
   "connectionPage.passwordInput": "Votre mot de passe",
   "connectionPage.connectionTitle" : "Se connecter",

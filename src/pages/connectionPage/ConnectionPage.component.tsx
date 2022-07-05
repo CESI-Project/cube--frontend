@@ -63,7 +63,7 @@ export const ConnectionPageComponent: FC<ConnectionPageComponentProps> = ({
         <InputComponent name="password" type="password" inputsize="small" placeholder={formatMessage(messages.connectionPage_passwordInput)} />
       </div>
       <div className="connection-page__wrapper__connection-button">
-        <ButtonComponent type="submit" designType="full" }>
+        <ButtonComponent type="submit" designType="full">
           {formatMessage(messages.connectionPage_submitConnection)}
         </ButtonComponent>
       </div>

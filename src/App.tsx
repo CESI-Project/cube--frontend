@@ -36,6 +36,7 @@ function App() {
           <Route path="/settings" element={<SettingsPageContainer />} />
           <Route path="/parametres" element={<SettingsPageContainer />} />
           <Route path="/edittopic/:id" element={<EditTopicPageContainer />} />
+          <Route path="/modifiertopic/:id" element={<EditTopicPageContainer />} />
         </Routes>
       </UserInfoProvider>
     </div>

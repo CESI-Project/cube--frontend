@@ -58,12 +58,12 @@ export const HeaderBarComponent: FC<HeaderBarComponentProps> = ({
       {!isAuthenticated && (
         <>
           <Link to={formatMessage(messages.headerBar_urlLogIn)}>
-            <ButtonComponent type="button" designType="empty" }>
+            <ButtonComponent type="button" designType="empty">
               {formatMessage(messages.headerBar_logIn)}
             </ButtonComponent>
           </Link>
           <Link to={formatMessage(messages.headerBar_urlSignUp)}>
-            <ButtonComponent type="button" designType="full" }>
+            <ButtonComponent type="button" designType="full">
               {formatMessage(messages.headerBar_signUp)}
             </ButtonComponent>
           </Link>

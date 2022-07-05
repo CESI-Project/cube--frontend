@@ -7,5 +7,9 @@ export const useTopicById = (id: number) => {
     () => getTopicById(id),
   );
 
-  return { topic: data || [], refetch };
+  const jsonData = data || [];
+  const { topic } = jsonData;
+  const { commentsAndSubComments } = jsonData;
+
+  return { topic: topic || [], comments: commentsAndSubComments || [], refetch };
 };

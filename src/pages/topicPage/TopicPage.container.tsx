@@ -23,7 +23,7 @@ const messages = defineMessages({
 export const TopicPageContainer = () => {
   const { id } = useParams();
   // @ts-ignore
-  const { topic }:Topic = useTopicById(parseInt(id, 10));
+  const { topic } = useTopicById(parseInt(id, 10));
   // @ts-ignore
   const { comments, refetch } = useAllComments(parseInt(id, 10));
   const [isComment, setIsComment] = useState(false);
