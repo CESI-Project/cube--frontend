@@ -75,11 +75,11 @@ export const DashboardPageContainer = () => {
   const { mutate: validationTopic } = useValidationTopic();
 
   const listFavorites = favorites.map((favorite: Favorite) => (
-    <tr className="dashboard-page__table__item" key={favorite.id}>
+    <tr key={favorite.id}>
       <td>
         {favorite.topicId}
       </td>
-      <td className="dashboard-page__table__right">
+      <td>
         <ButtonComponent type="button" designType="empty" onClick={() => { deleteFavorite(favorite.topicId); }}>
           {formatMessage(messages.dashboardPage_delete)}
         </ButtonComponent>
@@ -88,11 +88,11 @@ export const DashboardPageContainer = () => {
   ));
 
   const listTopics = topics.map((topic: Topic) => (
-    <tr className="dashboard-page__table__item" key={topic.id}>
+    <tr key={topic.id}>
       <td>
         {topic.title}
       </td>
-      <td className="dashboard-page__table__table-content__right">
+      <td>
         <ButtonComponent type="button" designType="empty">
           {formatMessage(messages.dashboardPage_delete)}
         </ButtonComponent>
@@ -101,30 +101,30 @@ export const DashboardPageContainer = () => {
   ));
 
   const listTopicsWaitingState = topics.map((topic: Topic) => (
-    <div>
+    <tbody key={topic.id}>
       {topic.isValidated === false && (
-        <tr className="dashboard-page__table__item" key={topic.id}>
+        <tr>
           <td>
             <Link to={`/${formatMessage(messages.dashboardPage_topicLink)}/${topic.id}`}>
               {topic.title}
             </Link>
           </td>
-          <td className="dashboard-page__table__table-content__right">
+          <td>
             <ButtonComponent type="button" designType="empty" onClick={() => { validationTopic(topic.id); }}>
               {formatMessage(messages.dashboardPage_approvedButton)}
             </ButtonComponent>
           </td>
         </tr>
       )}
-    </div>
+    </tbody>
   ));
 
   const listUsers = allUsers.map((user: User) => (
-    <tr className="dashboard-page__table__item" key={user.id}>
+    <tr key={user.id}>
       <td>
         {user.userName}
       </td>
-      <td className="dashboard-page__table__table-content__right">
+      <td>
         {(user.isActivated ? (
           <ButtonComponent type="button" designType="empty" onClick={() => { deactivatedAccount(user.id); }}>
             {formatMessage(messages.dashboardPage_deactivated)}

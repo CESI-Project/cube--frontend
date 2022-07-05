@@ -1,74 +1,93 @@
 @import "src/assets/styles/core/colors";
 
 .dashboard-page {
+  display: flex;
   width: 100%;
   text-align: center;
   margin-top: 10rem;
+  flex-direction: column;
+  align-items: center;
 
-  &__title {
+  h1 {
     font-size: 3rem;
     font-weight: bold;
     margin-bottom: 1.25rem;
   }
 
-  &__wrapper {
+  h2 {
+    margin-top: 1.875rem;
+    margin-bottom: 0.3125rem;
+  }
+
+  input {
+    margin-top: 0.3125rem;
+  }
+
+  &__row-table {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     width: 100%;
-    justify-content: space-between;
 
-    &__right {
-      margin: 5rem 18% 0 0;
-      font-size: 2rem;
+    &__table {
+      margin-top: 1.875rem;
+      text-align: center;
 
-      p {
-        margin-top: 2rem;
+      &__button {
+        margin-top: 1.875rem;
+      }
+
+      table {
+        width: 100%;
+        border: 0.1rem solid $light-blue;
+        border-radius: 0.9375rem;
+        border-collapse: collapse;
+      }
+
+      td {
+        padding: 1rem;
+        text-align: right;
+      }
+
+      tr:nth-of-type(odd) {
+        background-color: $light-blue;
+        color: white;
+      }
+    }
+  }
+
+  &__creation-account {
+    margin-top: 3.125rem;
+
+    &__title {
+      font-weight: bold;
+    }
+
+    &__button {
+      margin-top: 3.125rem;
+
+      button {
+        width: 15rem;
       }
     }
 
-    &__table {
-      width: 50%;
-      height: 40rem;
-      overflow-y: scroll;
+    &__checkbox {
+      margin: 1.875rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
 
-      h2 {
-        font-size: 1.5rem;
-        margin: 1rem 0;
-      }
+  &__stats {
+    margin-top: 3.125rem;
 
-      &__table-content {
-        width: 100%;
-        margin-top: 1rem;
-        text-align: center;
+    &__title {
+      font-weight: bold;
+    }
 
-        &__button {
-          margin-top: 1rem;
-        }
-
-        &__checkbox {
-          margin: 1rem 25%;
-          display: flex;
-          align-items: center;
-
-          input {
-            margin-left: 0.5rem;
-          }
-        }
-
-        table {
-          width: 100%;
-          border: 0.1rem solid $light-blue;
-        }
-
-        td {
-          padding: 1rem;
-          text-align: right;
-        }
-
-        tr:nth-of-type(odd) {
-          background-color: $light-blue;
-          color: white;
-        }
-      }
+    p {
+      margin-top: 2rem;
     }
   }
 }
