@@ -15,9 +15,20 @@ export const postConnection = async ({ userName, password }: postConncetionProps
 });
 
 export const postCreationAccount = async ({
-  userName, email, password, roles = ['user'],
+  userName, email, password, role = ['user'], age,
 }: User) => axios.post(`${BACKEND_URI}/user/auth/sign-up`, {
-  username: userName, email, password, roles,
+  username: userName, email, password, role, age,
+}).then((response) => {
+  if (response.data.accessToken) {
+    localStorage.setItem('user', JSON.stringify(response.data));
+  }
+  return response.data;
+});
+
+export const postCreationSpecialAccount = async ({
+  userName, email = `admin.${userName}@gmail.com`, password, role, age = '99',
+}: User) => axios.post(`${BACKEND_URI}/user/auth/sign-up`, {
+  username: userName, email, password, role, age,
 }).then((response) => {
   if (response.data.accessToken) {
     localStorage.setItem('user', JSON.stringify(response.data));

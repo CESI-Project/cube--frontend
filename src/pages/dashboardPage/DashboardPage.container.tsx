@@ -1,6 +1,6 @@
 import { defineMessages, useIntl } from 'react-intl';
-import React from 'react';
-import { Navigate, Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, Navigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { DashboardPageComponent } from './DashboardPage.component';
 import { useUserContext } from '../../context/user.context';
@@ -19,6 +19,8 @@ import { Topic } from '../../models/Topic';
 import { User } from '../../models/User';
 import { useValidationTopic } from '../../hooks/reactQuery/useValidationTopic';
 import { useActivatedAccount } from '../../hooks/reactQuery/useActivatedAccount';
+import { useCreationSpecialAccount } from '../../hooks/reactQuery/useCreationSpecialAccount';
+import { useCreationAccount } from '../../hooks/reactQuery/useCreationAccount';
 
 const messages = defineMessages({
   dashboardPage_delete: {
@@ -63,6 +65,7 @@ export const DashboardPageContainer = () => {
     );
   }
 
+  const { mutate, isSuccess } = useCreationSpecialAccount();
   const { favorites } = useAllFavoritesByUser(currentUser?.id);
   const { views } = useViewByUser(currentUser?.id);
   const { topics } = useAllTopics();
@@ -73,6 +76,7 @@ export const DashboardPageContainer = () => {
   const { mutate: deactivatedAccount } = useDeactivatedAccount();
   const { mutate: activateAccount } = useActivatedAccount();
   const { mutate: validationTopic } = useValidationTopic();
+  const [roleValue, setRoleValue] = useState<string>();
 
   const listFavorites = favorites.map((favorite: Favorite) => (
     <tr key={favorite.id}>
@@ -138,6 +142,32 @@ export const DashboardPageContainer = () => {
     </tr>
   ));
 
+  const onChangeRoleValue = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRoleValue(event.target.value);
+  };
+
+  const onCreationSpecialAccount = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const username = formData.get('username') as string;
+    const password = formData.get('password') as string;
+    const role = new Array(roleValue as string);
+
+    const user: User = {
+      userName: username, password, role,
+    };
+
+    console.log(user);
+
+    mutate(user);
+  };
+
+  if (isSuccess) {
+    toast.success('Account created', {
+      toastId: 1,
+    });
+  }
+
   return (
     <DashboardPageComponent
       currentUser={currentUser}
@@ -150,6 +180,8 @@ export const DashboardPageContainer = () => {
       totalUsers={totalUsers}
       totalViews={totalViews}
       views={views}
+      onCreationSpecialAccount={onCreationSpecialAccount}
+      onChangeRoleValue={onChangeRoleValue}
     />
   );
 };

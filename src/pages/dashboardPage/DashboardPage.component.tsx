@@ -90,6 +90,7 @@ const messages = defineMessages({
 
 interface DashboardPageComponentProps {
   formatMessage: (message: { defaultMessage: string; id: string }) => string;
+  onCreationSpecialAccount: (e: React.FormEvent<HTMLFormElement>) => void;
   currentUser: User | undefined;
   listFavorites: ReactNode;
   listTopics: ReactNode;
@@ -99,6 +100,7 @@ interface DashboardPageComponentProps {
   totalViews: number;
   totalUsers: number;
   views: number;
+  onChangeRoleValue: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const DashboardPageComponent: FC<DashboardPageComponentProps> = ({
@@ -112,6 +114,8 @@ export const DashboardPageComponent: FC<DashboardPageComponentProps> = ({
   totalViews,
   totalUsers,
   views,
+  onCreationSpecialAccount,
+  onChangeRoleValue,
 }) => (
   <div className="dashboard-page">
     <h1>
@@ -182,15 +186,13 @@ export const DashboardPageComponent: FC<DashboardPageComponentProps> = ({
       </div>
       )}
     </div>
-    {(currentUser?.roles?.join() === 'ROLE_ADMIN' || currentUser?.roles?.join() === 'ROLE_SUPERADMIN') && (
-    <form className="dashboard-page__creation-account" onSubmit={() => {}}>
+    {currentUser?.roles?.join() === 'ROLE_SUPERADMIN' && (
+    <form className="dashboard-page__creation-account" onSubmit={onCreationSpecialAccount}>
       <h2 className="dashboard-page__creation-account__title">
         {formatMessage(messages.dashboardPage_creationAccountTitle)}
       </h2>
       <div>
-        <h2>
-          {formatMessage(messages.dashboardPage_usernameTitle)}
-        </h2>
+        <h2>{formatMessage(messages.dashboardPage_usernameTitle)}</h2>
         <InputComponent name="username" type="text" inputsize="small" placeholder={formatMessage(messages.dashboardPage_usernameInput)} />
       </div>
       <div>
@@ -198,11 +200,11 @@ export const DashboardPageComponent: FC<DashboardPageComponentProps> = ({
         <InputComponent name="password" type="password" inputsize="small" placeholder={formatMessage(messages.dashboardPage_passwordInput)} />
       </div>
       <div className="dashboard-page__creation-account__checkbox">
-        <input type="checkbox" name="private" onChange={() => {}} />
+        <input type="checkbox" name="private" value="mode" onChange={onChangeRoleValue} />
         {formatMessage(messages.dashboardPage_moderatorCheckbox)}
-        <input type="checkbox" name="private" onChange={() => {}} />
+        <input type="checkbox" name="private" value="admin" onChange={onChangeRoleValue} />
         {formatMessage(messages.dashboardPage_adminCheckbox)}
-        <input type="checkbox" name="private" onChange={() => {}} />
+        <input type="checkbox" name="private" value="superAdmin" onChange={onChangeRoleValue} />
         {formatMessage(messages.dashboardPage_superAdminCheckbox)}
       </div>
       <div className="dashboard-page__creation-account__button">
