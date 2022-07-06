@@ -19,12 +19,7 @@ export const postCreationAccount = async ({
   userName, email, password, role = ['user'], age,
 }: User) => axios.post(`${BACKEND_URI}/user/auth/sign-up`, {
   username: userName, email, password, role, age,
-}).then((response) => {
-  if (response.data.accessToken) {
-    localStorage.setItem('user', JSON.stringify(response.data));
-  }
-  return response.data;
-});
+}).then((response) => response.data);
 
 export const postCreationSpecialAccount = async ({
   // @ts-ignore
@@ -49,3 +44,9 @@ export const putDeactivatedUser = async (id: number | undefined) => axios.put(`$
 export const putActivatedUser = async (id: number | undefined) => axios.put(`${BACKEND_URI}/user/${id}/activation`).then((response) => response.data);
 
 export const getStatistics = async (id: number | undefined) => axios.get(`${BACKEND_URI}/user/${id}/dashboard`).then((response) => response.data);
+
+export const putModifyProfile = async ({
+  id, email, userName, age = '14', password,
+}: User) => axios.put(`${BACKEND_URI}/user/${id}/modifyProfil`, {
+  email, userName, age, password,
+}).then((response) => response.data);

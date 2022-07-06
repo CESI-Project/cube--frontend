@@ -20,7 +20,6 @@ import { User } from '../../models/User';
 import { useValidationTopic } from '../../hooks/reactQuery/useValidationTopic';
 import { useActivatedAccount } from '../../hooks/reactQuery/useActivatedAccount';
 import { useCreationSpecialAccount } from '../../hooks/reactQuery/useCreationSpecialAccount';
-import { useCreationAccount } from '../../hooks/reactQuery/useCreationAccount';
 import { useNewTag } from '../../hooks/reactQuery/useNewTag';
 import { Tag } from '../../models/Tag';
 import { useAllFamilyTags } from '../../hooks/reactQuery/useAllFamilyTags';
@@ -62,6 +61,10 @@ const messages = defineMessages({
   dashboardPage_successAlert: {
     defaultMessage: 'Account created successfully',
     id: 'dashboardPage.successAlert',
+  },
+  dashboardPage_successTagAlert: {
+    defaultMessage: 'Tag created successfully',
+    id: 'dashboardPage.successTagAlert',
   },
 });
 
@@ -211,7 +214,7 @@ export const DashboardPageContainer = () => {
   };
 
   if (successTag) {
-    toast.success('New tag Add', {
+    toast.success(formatMessage(messages.dashboardPage_successTagAlert), {
       toastId: 1,
     });
   }
