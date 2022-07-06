@@ -134,6 +134,10 @@ const messages = defineMessages({
     defaultMessage: 'Average response comments by topic : ',
     id: 'dashboardPage.averageReponseCommentsByTopicCounter',
   },
+  dashboardPage_downloadCSV: {
+    defaultMessage: 'Download CSV',
+    id: 'dashboardPage.downloadCSV',
+  },
 });
 
 interface DashboardPageComponentProps {
@@ -156,6 +160,7 @@ interface DashboardPageComponentProps {
   totalResponseComments: number;
   averageCommentsByTopic: number;
   averageResponseCommentsByTopic: number;
+  downloadCSV: () => void;
 }
 
 export const DashboardPageComponent: FC<DashboardPageComponentProps> = ({
@@ -178,6 +183,7 @@ export const DashboardPageComponent: FC<DashboardPageComponentProps> = ({
   totalResponseComments,
   averageCommentsByTopic,
   averageResponseCommentsByTopic,
+  downloadCSV,
 }) => (
   <div className="dashboard-page">
     <h1>
@@ -351,6 +357,11 @@ export const DashboardPageComponent: FC<DashboardPageComponentProps> = ({
             {formatMessage(messages.dashboardPage_averageReponseCommentsByTopicCounter)}
             {averageResponseCommentsByTopic}
           </p>
+          <div className="dashboard-page__creation-account__button">
+            <ButtonComponent type="submit" designType="full" onClick={downloadCSV}>
+              {formatMessage(messages.dashboardPage_downloadCSV)}
+            </ButtonComponent>
+          </div>
         </div>
       </div>
     </div>

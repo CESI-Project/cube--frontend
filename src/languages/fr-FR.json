@@ -101,6 +101,7 @@
   "dashboardPage.totalResponseCommentsCounter": "Total de réponses : ",
   "dashboardPage.totalTagsCounter": "Total de mots-clés : ",
   "dashboardPage.totalCommentsCounter": "Total de commentaires : ",
+  "dashboardPage.downloadCSV": "Télécharger en CSV",
   "settingsPage.signupTitle": "Paramètres",
   "settingsPage.mailTitle": "Votre adresse mail",
   "settingsPage.mailInput": "votre.adresse@mail.com",

@@ -5,11 +5,7 @@ import { toast } from 'react-toastify';
 import { DashboardPageComponent } from './DashboardPage.component';
 import { useUserContext } from '../../context/user.context';
 import { useAllFavoritesByUser } from '../../hooks/reactQuery/useAllFavoritesByUser';
-import { useViewByUser } from '../../hooks/reactQuery/useViewByUser';
 import { useAllTopics } from '../../hooks/reactQuery/useAllTopics';
-import { useTotalTopics } from '../../hooks/reactQuery/useTotalTopics';
-import { useTotalViews } from '../../hooks/reactQuery/useTotalViews';
-import { useTotalUsers } from '../../hooks/reactQuery/useTotalUsers';
 import { useAllUsers } from '../../hooks/reactQuery/useAllUsers';
 import { useDeactivatedAccount } from '../../hooks/reactQuery/useDeactivatedAccount';
 import { Favorite } from '../../models/Favorite';
@@ -227,6 +223,10 @@ export const DashboardPageContainer = () => {
     });
   }
 
+  const downloadCSV = () => {
+    window.open(`http://localhost:8080/api/v1/user/${currentUser.id}/dashboard/export`, '_blank');
+  };
+
   return (
     <DashboardPageComponent
       currentUser={currentUser}
@@ -248,6 +248,7 @@ export const DashboardPageContainer = () => {
       totalResponseComments={totalResponseComments}
       averageCommentsByTopic={averageCommentsByTopic}
       averageResponseCommentsByTopic={averageResponseCommentsByTopic}
+      downloadCSV={downloadCSV}
     />
   );
 };

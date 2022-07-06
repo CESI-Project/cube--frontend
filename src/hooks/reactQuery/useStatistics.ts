@@ -24,8 +24,6 @@ export const useStatistics = (id: number | undefined) => {
   const { averageResponseCommentsByTopic } = jsonData;
   const { totalTopicsByCategories } = jsonData;
 
-  console.log(data);
-
   return {
     myTopics: topics || [],
     myTotalViews: myTotalViews || [],
