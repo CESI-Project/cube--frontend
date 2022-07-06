@@ -61,7 +61,7 @@ npm ci
 Build the project
 
 ```shell
-npm run start
+npm run build
 ```
 
 Run the project

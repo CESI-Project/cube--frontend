@@ -56,6 +56,14 @@
     }
   }
 
+  &__forms {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 1.875rem;
+  }
+
   &__creation-account {
     margin-top: 3.125rem;
 

@@ -21,6 +21,14 @@ import { useValidationTopic } from '../../hooks/reactQuery/useValidationTopic';
 import { useActivatedAccount } from '../../hooks/reactQuery/useActivatedAccount';
 import { useCreationSpecialAccount } from '../../hooks/reactQuery/useCreationSpecialAccount';
 import { useCreationAccount } from '../../hooks/reactQuery/useCreationAccount';
+import { useNewTag } from '../../hooks/reactQuery/useNewTag';
+import { Tag } from '../../models/Tag';
+import { useAllFamilyTags } from '../../hooks/reactQuery/useAllFamilyTags';
+import { FamilyTag } from '../../models/FamilyTag';
+import { useAllTags } from '../../hooks/reactQuery/useAllTags';
+import { deleteTag } from '../../services/tag.service';
+import { deleteTopic } from '../../services/topic.service';
+import { useStatistics } from '../../hooks/reactQuery/useStatistics';
 
 const messages = defineMessages({
   dashboardPage_delete: {
@@ -51,6 +59,10 @@ const messages = defineMessages({
     defaultMessage: 'topic',
     id: 'dashboardPage.topicLink',
   },
+  dashboardPage_successAlert: {
+    defaultMessage: 'Account created successfully',
+    id: 'dashboardPage.successAlert',
+  },
 });
 
 export const DashboardPageContainer = () => {
@@ -65,7 +77,10 @@ export const DashboardPageContainer = () => {
     );
   }
 
-  const { mutate, isSuccess } = useCreationSpecialAccount();
+  const { mutate: accountMutate, isSuccess: successAccount } = useCreationSpecialAccount();
+  const { mutate: newTag, isSuccess: successTag } = useNewTag();
+  const { familyTags } = useAllFamilyTags();
+  const { tags } = useAllTags(familyTags.map((familyTag: FamilyTag) => familyTag.id));
   const { favorites } = useAllFavoritesByUser(currentUser?.id);
   const { views } = useViewByUser(currentUser?.id);
   const { topics } = useAllTopics();
@@ -73,6 +88,7 @@ export const DashboardPageContainer = () => {
   const { totalViews } = useTotalViews();
   const { totalUsers } = useTotalUsers();
   const { allUsers } = useAllUsers(currentUser?.id);
+  const { statistics } = useStatistics(currentUser?.id);
   const { mutate: deactivatedAccount } = useDeactivatedAccount();
   const { mutate: activateAccount } = useActivatedAccount();
   const { mutate: validationTopic } = useValidationTopic();
@@ -97,7 +113,7 @@ export const DashboardPageContainer = () => {
         {topic.title}
       </td>
       <td>
-        <ButtonComponent type="button" designType="empty">
+        <ButtonComponent type="button" designType="empty" onClick={() => { deleteTopic(topic.id); }}>
           {formatMessage(messages.dashboardPage_delete)}
         </ButtonComponent>
       </td>
@@ -142,6 +158,19 @@ export const DashboardPageContainer = () => {
     </tr>
   ));
 
+  const listTags = tags.map((tag: Tag) => (
+    <tr key={tag.id}>
+      <td>
+        {tag.nameFr}
+      </td>
+      <td>
+        <ButtonComponent type="button" designType="empty" onClick={() => { deleteTag(tag.id); }}>
+          {formatMessage(messages.dashboardPage_delete)}
+        </ButtonComponent>
+      </td>
+    </tr>
+  ));
+
   const onChangeRoleValue = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRoleValue(event.target.value);
   };
@@ -154,19 +183,40 @@ export const DashboardPageContainer = () => {
     const role = new Array(roleValue as string);
 
     const user: User = {
+      // @ts-ignore
       userName: username, password, role,
     };
 
-    console.log(user);
-
-    mutate(user);
+    accountMutate(user);
   };
 
-  if (isSuccess) {
-    toast.success('Account created', {
+  if (successAccount) {
+    toast.success(formatMessage(messages.dashboardPage_successAlert), {
       toastId: 1,
     });
   }
+
+  const onCreationTag = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const nameFr = formData.get('nameFr') as string;
+    const nameEn = formData.get('nameFr') as string;
+    const familyTagName = formData.get('familyTagName') as string;
+
+    const familyTagId = familyTags.find((familyTag: FamilyTag) => familyTag.nameFr === familyTagName)?.id;
+
+    const tag: Tag = { nameFr, nameEn, familyTagId };
+
+    newTag(tag);
+  };
+
+  if (successTag) {
+    toast.success('New tag Add', {
+      toastId: 1,
+    });
+  }
+
+  console.log(statistics);
 
   return (
     <DashboardPageComponent
@@ -182,6 +232,8 @@ export const DashboardPageContainer = () => {
       views={views}
       onCreationSpecialAccount={onCreationSpecialAccount}
       onChangeRoleValue={onChangeRoleValue}
+      onCreationTag={onCreationTag}
+      listTags={listTags}
     />
   );
 };

@@ -86,6 +86,34 @@ const messages = defineMessages({
     defaultMessage: 'Favorites Topic List :',
     id: 'dashboardPage.favoriteTopicTitle',
   },
+  dashboardPage_newTagTitle: {
+    defaultMessage: 'Add new tag',
+    id: 'dashboardPage.newTagTitle',
+  },
+  dashboardPage_tagNameTitle: {
+    defaultMessage: 'New tag name :',
+    id: 'dashboardPage.tagNameTitle',
+  },
+  dashboardPage_tagNameInput: {
+    defaultMessage: 'War',
+    id: 'dashboardPage.tagNameInput',
+  },
+  dashboardPage_familyTagNameTitle: {
+    defaultMessage: 'Tag family :',
+    id: 'dashboardPage.familyTagNameTitle',
+  },
+  dashboardPage_familyTagNameInput: {
+    defaultMessage: 'Social Security',
+    id: 'dashboardPage.familyTagNameInput',
+  },
+  dashboardPage_submitTag: {
+    defaultMessage: 'Create tag',
+    id: 'dashboardPage.submitTag',
+  },
+  dashboardPage_listTagTitle: {
+    defaultMessage: 'Tags List :',
+    id: 'dashboardPage.listTagTitle',
+  },
 });
 
 interface DashboardPageComponentProps {
@@ -96,11 +124,13 @@ interface DashboardPageComponentProps {
   listTopics: ReactNode;
   listUsers: ReactNode;
   listTopicsWaitingState: ReactNode;
+  listTags: ReactNode;
   totalTopic: number;
   totalViews: number;
   totalUsers: number;
   views: number;
   onChangeRoleValue: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onCreationTag: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
 export const DashboardPageComponent: FC<DashboardPageComponentProps> = ({
@@ -110,12 +140,14 @@ export const DashboardPageComponent: FC<DashboardPageComponentProps> = ({
   listTopics,
   listUsers,
   listTopicsWaitingState,
+  listTags,
   totalTopic,
   totalViews,
   totalUsers,
   views,
   onCreationSpecialAccount,
   onChangeRoleValue,
+  onCreationTag,
 }) => (
   <div className="dashboard-page">
     <h1>
@@ -185,35 +217,71 @@ export const DashboardPageComponent: FC<DashboardPageComponentProps> = ({
         </div>
       </div>
       )}
+      {(currentUser?.roles?.join() === 'ROLE_ADMIN' || currentUser?.roles?.join() === 'ROLE_SUPERADMIN') && (
+      <div>
+        <h2>
+          {formatMessage(messages.dashboardPage_listTagTitle)}
+        </h2>
+        <div className="dashboard-page__row-table__table">
+          <table>
+            <tbody>
+              {listTags}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      )}
     </div>
-    {currentUser?.roles?.join() === 'ROLE_SUPERADMIN' && (
-    <form className="dashboard-page__creation-account" onSubmit={onCreationSpecialAccount}>
-      <h2 className="dashboard-page__creation-account__title">
-        {formatMessage(messages.dashboardPage_creationAccountTitle)}
-      </h2>
-      <div>
-        <h2>{formatMessage(messages.dashboardPage_usernameTitle)}</h2>
-        <InputComponent name="username" type="text" inputsize="small" placeholder={formatMessage(messages.dashboardPage_usernameInput)} />
-      </div>
-      <div>
-        <h2>{formatMessage(messages.dashboardPage_passwordTitle)}</h2>
-        <InputComponent name="password" type="password" inputsize="small" placeholder={formatMessage(messages.dashboardPage_passwordInput)} />
-      </div>
-      <div className="dashboard-page__creation-account__checkbox">
-        <input type="checkbox" name="private" value="mode" onChange={onChangeRoleValue} />
-        {formatMessage(messages.dashboardPage_moderatorCheckbox)}
-        <input type="checkbox" name="private" value="admin" onChange={onChangeRoleValue} />
-        {formatMessage(messages.dashboardPage_adminCheckbox)}
-        <input type="checkbox" name="private" value="superAdmin" onChange={onChangeRoleValue} />
-        {formatMessage(messages.dashboardPage_superAdminCheckbox)}
-      </div>
-      <div className="dashboard-page__creation-account__button">
-        <ButtonComponent type="submit" designType="full">
-          {formatMessage(messages.dashboardPage_submitConnection)}
-        </ButtonComponent>
-      </div>
-    </form>
-    )}
+    <div className="dashboard-page__forms">
+      {currentUser?.roles?.join() === 'ROLE_SUPERADMIN' && (
+      <form className="dashboard-page__creation-account" onSubmit={onCreationSpecialAccount}>
+        <h2 className="dashboard-page__creation-account__title">
+          {formatMessage(messages.dashboardPage_creationAccountTitle)}
+        </h2>
+        <div>
+          <h2>{formatMessage(messages.dashboardPage_usernameTitle)}</h2>
+          <InputComponent name="username" type="text" inputsize="small" placeholder={formatMessage(messages.dashboardPage_usernameInput)} />
+        </div>
+        <div>
+          <h2>{formatMessage(messages.dashboardPage_passwordTitle)}</h2>
+          <InputComponent name="password" type="password" inputsize="small" placeholder={formatMessage(messages.dashboardPage_passwordInput)} />
+        </div>
+        <div className="dashboard-page__creation-account__checkbox">
+          <input type="checkbox" name="private" value="mode" onChange={onChangeRoleValue} />
+          {formatMessage(messages.dashboardPage_moderatorCheckbox)}
+          <input type="checkbox" name="private" value="admin" onChange={onChangeRoleValue} />
+          {formatMessage(messages.dashboardPage_adminCheckbox)}
+          <input type="checkbox" name="private" value="superAdmin" onChange={onChangeRoleValue} />
+          {formatMessage(messages.dashboardPage_superAdminCheckbox)}
+        </div>
+        <div className="dashboard-page__creation-account__button">
+          <ButtonComponent type="submit" designType="full">
+            {formatMessage(messages.dashboardPage_submitConnection)}
+          </ButtonComponent>
+        </div>
+      </form>
+      )}
+      {(currentUser?.roles?.join() === 'ROLE_ADMIN' || currentUser?.roles?.join() === 'ROLE_SUPERADMIN') && (
+      <form className="dashboard-page__creation-account" onSubmit={onCreationTag}>
+        <h2 className="dashboard-page__creation-account__title">
+          {formatMessage(messages.dashboardPage_newTagTitle)}
+        </h2>
+        <div>
+          <h2>{formatMessage(messages.dashboardPage_tagNameTitle)}</h2>
+          <InputComponent name="nameFr" type="text" inputsize="small" placeholder={formatMessage(messages.dashboardPage_tagNameInput)} />
+        </div>
+        <div>
+          <h2>{formatMessage(messages.dashboardPage_familyTagNameTitle)}</h2>
+          <InputComponent name="familyTagName" type="text" inputsize="small" placeholder={formatMessage(messages.dashboardPage_familyTagNameInput)} />
+        </div>
+        <div className="dashboard-page__creation-account__button">
+          <ButtonComponent type="submit" designType="full">
+            {formatMessage(messages.dashboardPage_submitTag)}
+          </ButtonComponent>
+        </div>
+      </form>
+      )}
+    </div>
     {(currentUser?.roles?.join() === 'ROLE_ADMIN' || currentUser?.roles?.join() === 'ROLE_SUPERADMIN') && (
     <div className="dashboard-page__stats">
       <h2 className="dashboard-page__stats__title">

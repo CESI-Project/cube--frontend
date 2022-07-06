@@ -19,3 +19,5 @@ export const putEditTopic = async ({
 }: Topic) => axios.put(`${BACKEND_URI}/topic/${id}`, { title, text, tags }).then((response) => response.data);
 
 export const putValidationTopic = async (id: number | undefined) => axios.put(`${BACKEND_URI}/topic/${id}/validation`).then((response) => response.data);
+
+export const deleteTopic = async (id: number | undefined) => axios.delete(`${BACKEND_URI}/topic/admin/${id}`).then((response) => response.data);

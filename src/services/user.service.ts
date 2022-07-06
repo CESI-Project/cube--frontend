@@ -15,6 +15,7 @@ export const postConnection = async ({ userName, password }: postConncetionProps
 });
 
 export const postCreationAccount = async ({
+  // @ts-ignore
   userName, email, password, role = ['user'], age,
 }: User) => axios.post(`${BACKEND_URI}/user/auth/sign-up`, {
   username: userName, email, password, role, age,
@@ -26,6 +27,7 @@ export const postCreationAccount = async ({
 });
 
 export const postCreationSpecialAccount = async ({
+  // @ts-ignore
   userName, email = `admin.${userName}@gmail.com`, password, role, age = '99',
 }: User) => axios.post(`${BACKEND_URI}/user/auth/sign-up`, {
   username: userName, email, password, role, age,
@@ -45,3 +47,5 @@ export const getAllUsers = async (id: number | undefined) => axios.get(`${BACKEN
 export const putDeactivatedUser = async (id: number | undefined) => axios.put(`${BACKEND_URI}/user/${id}/desactivation`).then((response) => response.data);
 
 export const putActivatedUser = async (id: number | undefined) => axios.put(`${BACKEND_URI}/user/${id}/activation`).then((response) => response.data);
+
+export const getStatistics = async (id: number | undefined) => axios.get(`${BACKEND_URI}/user/${id}/dashboard`).then((response) => response.data);

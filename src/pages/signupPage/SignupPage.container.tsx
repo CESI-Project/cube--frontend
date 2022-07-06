@@ -26,6 +26,7 @@ export const SignupPageContainer = () => {
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
 
+    // @ts-ignore
     const user: User = {
       userName: username, age, email, password,
     };
