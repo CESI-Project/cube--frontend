@@ -111,8 +111,28 @@ const messages = defineMessages({
     id: 'dashboardPage.submitTag',
   },
   dashboardPage_listTagTitle: {
-    defaultMessage: 'Tags List :',
+    defaultMessage: 'Tags List : ',
     id: 'dashboardPage.listTagTitle',
+  },
+  dashboardPage_totalCommentsCounter: {
+    defaultMessage: 'Total comments : ',
+    id: 'dashboardPage.totalCommentsCounter',
+  },
+  dashboardPage_totalTagsCounter: {
+    defaultMessage: 'Total tags : ',
+    id: 'dashboardPage.totalTagsCounter',
+  },
+  dashboardPage_totalResponseCommentsCounter: {
+    defaultMessage: 'Total response comments : ',
+    id: 'dashboardPage.totalResponseCommentsCounter',
+  },
+  dashboardPage_averageCommentsByTopicCounter: {
+    defaultMessage: 'Average comments by topic : ',
+    id: 'dashboardPage.averageCommentsByTopicCounter',
+  },
+  dashboardPage_averageReponseCommentsByTopicCounter: {
+    defaultMessage: 'Average response comments by topic : ',
+    id: 'dashboardPage.averageReponseCommentsByTopicCounter',
   },
 });
 
@@ -125,12 +145,17 @@ interface DashboardPageComponentProps {
   listUsers: ReactNode;
   listTopicsWaitingState: ReactNode;
   listTags: ReactNode;
-  totalTopic: number;
-  totalViews: number;
+  totalTopics: number;
+  totalTopicViews: number;
   totalUsers: number;
   views: number;
   onChangeRoleValue: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onCreationTag: (e: React.FormEvent<HTMLFormElement>) => void;
+  totalTags: number;
+  totalComments: number;
+  totalResponseComments: number;
+  averageCommentsByTopic: number;
+  averageResponseCommentsByTopic: number;
 }
 
 export const DashboardPageComponent: FC<DashboardPageComponentProps> = ({
@@ -141,13 +166,18 @@ export const DashboardPageComponent: FC<DashboardPageComponentProps> = ({
   listUsers,
   listTopicsWaitingState,
   listTags,
-  totalTopic,
-  totalViews,
+  totalTopics,
+  totalTopicViews,
   totalUsers,
   views,
   onCreationSpecialAccount,
   onChangeRoleValue,
   onCreationTag,
+  totalTags,
+  totalComments,
+  totalResponseComments,
+  averageCommentsByTopic,
+  averageResponseCommentsByTopic,
 }) => (
   <div className="dashboard-page">
     <h1>
@@ -291,15 +321,35 @@ export const DashboardPageComponent: FC<DashboardPageComponentProps> = ({
         <div>
           <p>
             {formatMessage(messages.dashboardPage_totalTopicCounter)}
-            {totalTopic}
+            {totalTopics}
           </p>
           <p>
             {formatMessage(messages.dashboardPage_totalViewCounter)}
-            {totalViews}
+            {totalTopicViews}
           </p>
           <p>
             {formatMessage(messages.dashboardPage_totalUserCounter)}
             {totalUsers}
+          </p>
+          <p>
+            {formatMessage(messages.dashboardPage_totalCommentsCounter)}
+            {totalComments}
+          </p>
+          <p>
+            {formatMessage(messages.dashboardPage_totalTagsCounter)}
+            {totalTags}
+          </p>
+          <p>
+            {formatMessage(messages.dashboardPage_totalResponseCommentsCounter)}
+            {totalResponseComments}
+          </p>
+          <p>
+            {formatMessage(messages.dashboardPage_averageCommentsByTopicCounter)}
+            {averageCommentsByTopic}
+          </p>
+          <p>
+            {formatMessage(messages.dashboardPage_averageReponseCommentsByTopicCounter)}
+            {averageResponseCommentsByTopic}
           </p>
         </div>
       </div>

@@ -85,13 +85,21 @@ export const DashboardPageContainer = () => {
   const { familyTags } = useAllFamilyTags();
   const { tags } = useAllTags(familyTags.map((familyTag: FamilyTag) => familyTag.id));
   const { favorites } = useAllFavoritesByUser(currentUser?.id);
-  const { views } = useViewByUser(currentUser?.id);
   const { topics } = useAllTopics();
-  const { totalTopic } = useTotalTopics();
-  const { totalViews } = useTotalViews();
-  const { totalUsers } = useTotalUsers();
   const { allUsers } = useAllUsers(currentUser?.id);
-  const { statistics } = useStatistics(currentUser?.id);
+  const {
+    myTopics,
+    myTotalViews,
+    totalUsers,
+    totalTopics,
+    totalTags,
+    totalComments,
+    totalResponseComments,
+    averageCommentsByTopic,
+    averageResponseCommentsByTopic,
+    totalTopicsByCategories,
+    totalTopicViews,
+  } = useStatistics(currentUser?.id);
   const { mutate: deactivatedAccount } = useDeactivatedAccount();
   const { mutate: activateAccount } = useActivatedAccount();
   const { mutate: validationTopic } = useValidationTopic();
@@ -219,8 +227,6 @@ export const DashboardPageContainer = () => {
     });
   }
 
-  console.log(statistics);
-
   return (
     <DashboardPageComponent
       currentUser={currentUser}
@@ -229,14 +235,19 @@ export const DashboardPageContainer = () => {
       listTopics={listTopics}
       listUsers={listUsers}
       listTopicsWaitingState={listTopicsWaitingState}
-      totalTopic={totalTopic}
+      totalTopics={totalTopics}
       totalUsers={totalUsers}
-      totalViews={totalViews}
-      views={views}
+      totalTopicViews={totalTopicViews}
+      views={myTotalViews}
       onCreationSpecialAccount={onCreationSpecialAccount}
       onChangeRoleValue={onChangeRoleValue}
       onCreationTag={onCreationTag}
       listTags={listTags}
+      totalTags={totalTags}
+      totalComments={totalComments}
+      totalResponseComments={totalResponseComments}
+      averageCommentsByTopic={averageCommentsByTopic}
+      averageResponseCommentsByTopic={averageResponseCommentsByTopic}
     />
   );
 };
