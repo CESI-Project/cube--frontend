@@ -48,5 +48,5 @@ export const getStatistics = async (id: number | undefined) => axios.get(`${BACK
 export const putModifyProfile = async ({
   id, email, userName, age = '14', password,
 }: User) => axios.put(`${BACKEND_URI}/user/${id}/modifyProfil`, {
-  email, userName, age, password,
+  id, email, userName, age, password,
 }).then((response) => response.data);
