@@ -66,7 +66,7 @@ export const CreateTopicPageComponent: FC<CreateTopicPageComponentProps> = ({
       <div className="create-topic-page__content__left">
         <input type="file" name="file" onChange={onChangeImage} />
         <div className="create-topic-page__content__left__checkbox">
-          <input type="checkbox" name="private" />
+          <input type="checkbox" name="isPrivate" />
           {formatMessage(messages.createTopic_privateTopic)}
         </div>
       </div>

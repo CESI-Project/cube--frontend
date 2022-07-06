@@ -50,3 +50,5 @@ export const putModifyProfile = async ({
 }: User) => axios.put(`${BACKEND_URI}/user/${id}/modifyProfil`, {
   id, email, userName, age, password,
 }).then((response) => response.data);
+
+export const getTopicViews = async (id: number | undefined) => axios.get(`${BACKEND_URI}/user/${id}/topicsView`).then((response) => response.data);

@@ -7,9 +7,11 @@ export const getAllTopics = async () => axios.get(`${BACKEND_URI}/topic`).then((
 export const getTopicById = async (id: number) => axios.get(`${BACKEND_URI}/topic/${id}`).then((response) => response.data);
 
 export const postCreationTopic = async ({
-  title, tags, text, picture,
+  title, tags, text, type, userId, picture,
 }: Topic) => {
-  const topic = { title, tags, text };
+  const topic = {
+    title, tags, text, type, userId,
+  };
   const json = JSON.stringify(topic);
   const blob = new Blob([json], { type: 'application/json' });
 

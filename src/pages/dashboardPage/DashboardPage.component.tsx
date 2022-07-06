@@ -138,6 +138,18 @@ const messages = defineMessages({
     defaultMessage: 'Download CSV',
     id: 'dashboardPage.downloadCSV',
   },
+  dashboardPage_listMyPrivateTopicTitle: {
+    defaultMessage: 'My private topic list :',
+    id: 'dashboardPage.listMyPrivateTopicTitle',
+  },
+  dashboardPage_listMyTopicTitle: {
+    defaultMessage: 'My topic list :',
+    id: 'dashboardPage.listMyTopicTitle',
+  },
+  dashboardPage_listTopicViewedTitle: {
+    defaultMessage: 'Topic viewed list :',
+    id: 'dashboardPage.listTopicViewedTitle',
+  },
 });
 
 interface DashboardPageComponentProps {
@@ -161,6 +173,9 @@ interface DashboardPageComponentProps {
   averageCommentsByTopic: number;
   averageResponseCommentsByTopic: number;
   downloadCSV: () => void;
+  listMyTopics: ReactNode;
+  listMyTopicsPrivate: ReactNode;
+  listTopicViews: ReactNode;
 }
 
 export const DashboardPageComponent: FC<DashboardPageComponentProps> = ({
@@ -184,34 +199,84 @@ export const DashboardPageComponent: FC<DashboardPageComponentProps> = ({
   averageCommentsByTopic,
   averageResponseCommentsByTopic,
   downloadCSV,
+  listMyTopics,
+  listMyTopicsPrivate,
+  listTopicViews,
 }) => (
   <div className="dashboard-page">
     <h1>
       {formatMessage(messages.dashboardPage_title)}
     </h1>
-    {(currentUser?.roles?.join() === 'ROLE_USER' || currentUser?.roles?.join() === 'ROLE_MODERATOR') && (
-    <div>
-      <h2>
-        {formatMessage(messages.dashboardPage_favoritesTopicTitle)}
-      </h2>
-      <div className="dashboard-page__row-table__table">
-        <table>
-          <tbody>
-            {listFavorites}
-          </tbody>
-        </table>
-      </div>
-      <div className="dashboard-page__row-table__table">
-        <h2 className="dashboard-page__stats__title">
-          {formatMessage(messages.dashboardPage_statsTitle)}
+    <div className="dashboard-page__row-table">
+      {currentUser?.roles?.join() === 'ROLE_USER' && (
+      <div>
+        <h2>
+          {formatMessage(messages.dashboardPage_favoritesTopicTitle)}
         </h2>
-        <p>
-          {formatMessage(messages.dashboardPage_viewCounterTitle)}
-          {views}
-        </p>
+        <div className="dashboard-page__row-table__table">
+          <table>
+            <tbody>
+              {listFavorites}
+            </tbody>
+          </table>
+        </div>
       </div>
+      )}
+      {currentUser?.roles?.join() === 'ROLE_USER' && (
+      <div>
+        <h2>
+          {formatMessage(messages.dashboardPage_listTopicViewedTitle)}
+        </h2>
+        <div className="dashboard-page__row-table__table">
+          <table>
+            <tbody>
+              {listTopicViews}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      )}
+      {(currentUser?.roles?.join() === 'ROLE_USER' || currentUser?.roles?.join() === 'ROLE_MODERATOR') && (
+      <div>
+        <h2>
+          {formatMessage(messages.dashboardPage_listMyPrivateTopicTitle)}
+        </h2>
+        <div className="dashboard-page__row-table__table">
+          <table>
+            {listMyTopicsPrivate}
+          </table>
+        </div>
+      </div>
+      )}
+      {(currentUser?.roles?.join() === 'ROLE_USER' || currentUser?.roles?.join() === 'ROLE_MODERATOR') && (
+      <div>
+        <h2>
+          {formatMessage(messages.dashboardPage_listMyTopicTitle)}
+        </h2>
+        <div className="dashboard-page__row-table__table">
+          <table>
+            <tbody>
+              {listMyTopics}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      )}
     </div>
+    {(currentUser?.roles?.join() === 'ROLE_USER') && (
+      <div>
+        <div className="dashboard-page__row-table__table">
+          <h2 className="dashboard-page__stats__title">
+            {formatMessage(messages.dashboardPage_statsTitle)}
+          </h2>
+          <p>
+            {formatMessage(messages.dashboardPage_viewCounterTitle)}
+            {views}
+          </p>
+        </div>
+      </div>
     )}
+
     <div className="dashboard-page__row-table">
       {(currentUser?.roles?.join() === 'ROLE_MODERATOR' || currentUser?.roles?.join() === 'ROLE_ADMIN' || currentUser?.roles?.join() === 'ROLE_SUPERADMIN') && (
         <div>
@@ -318,7 +383,7 @@ export const DashboardPageComponent: FC<DashboardPageComponentProps> = ({
       </form>
       )}
     </div>
-    {(currentUser?.roles?.join() === 'ROLE_ADMIN' || currentUser?.roles?.join() === 'ROLE_SUPERADMIN') && (
+    {(currentUser?.roles?.join() === 'ROLE_MODERATOR' || currentUser?.roles?.join() === 'ROLE_ADMIN' || currentUser?.roles?.join() === 'ROLE_SUPERADMIN') && (
     <div className="dashboard-page__stats">
       <h2 className="dashboard-page__stats__title">
         {formatMessage(messages.dashboardPage_statsTitle)}

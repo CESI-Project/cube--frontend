@@ -11,4 +11,5 @@ export interface Topic {
     comment?: string;
     favorite?: string[];
     tags: Tag[] | undefined;
+    type?: string;
 }

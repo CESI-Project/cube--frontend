@@ -24,6 +24,7 @@ import { useAllTags } from '../../hooks/reactQuery/useAllTags';
 import { deleteTag } from '../../services/tag.service';
 import { deleteTopic } from '../../services/topic.service';
 import { useStatistics } from '../../hooks/reactQuery/useStatistics';
+import { useTopicViews } from '../../hooks/reactQuery/useTopicViews';
 
 const messages = defineMessages({
   dashboardPage_delete: {
@@ -83,6 +84,7 @@ export const DashboardPageContainer = () => {
   const { favorites } = useAllFavoritesByUser(currentUser?.id);
   const { topics } = useAllTopics();
   const { allUsers } = useAllUsers(currentUser?.id);
+  const { topicViews } = useTopicViews(currentUser?.id);
   const {
     myTopics,
     myTotalViews,
@@ -114,6 +116,25 @@ export const DashboardPageContainer = () => {
     </tr>
   ));
 
+  const listTopicViews = topics.map((topic: Topic) => (
+    <tbody key={topic.id}>
+      {topicViews.map((item: number) => item).includes(topic.id) && (
+        <tr>
+          <td>
+            <Link to={`/${formatMessage(messages.dashboardPage_topicLink)}/${topic.id}`}>
+              {topic.title}
+            </Link>
+          </td>
+          <td>
+            <ButtonComponent type="button" designType="empty" onClick={() => { validationTopic(topic.id); }}>
+              {formatMessage(messages.dashboardPage_approvedButton)}
+            </ButtonComponent>
+          </td>
+        </tr>
+      )}
+    </tbody>
+  ));
+
   const listTopics = topics.map((topic: Topic) => (
     <tr key={topic.id}>
       <td>
@@ -140,6 +161,30 @@ export const DashboardPageContainer = () => {
             <ButtonComponent type="button" designType="empty" onClick={() => { validationTopic(topic.id); }}>
               {formatMessage(messages.dashboardPage_approvedButton)}
             </ButtonComponent>
+          </td>
+        </tr>
+      )}
+    </tbody>
+  ));
+
+  const listMyTopics = myTopics.map((topic: Topic) => (
+    <tr>
+      <td>
+        <Link to={`/${formatMessage(messages.dashboardPage_topicLink)}/${topic.id}`}>
+          {topic.title}
+        </Link>
+      </td>
+    </tr>
+  ));
+
+  const listMyTopicsPrivate = myTopics.map((topic: Topic) => (
+    <tbody key={topic.id}>
+      {topic.type === 'Privées' && (
+        <tr>
+          <td>
+            <Link to={`/${formatMessage(messages.dashboardPage_topicLink)}/${topic.id}`}>
+              {topic.title}
+            </Link>
           </td>
         </tr>
       )}
@@ -249,6 +294,9 @@ export const DashboardPageContainer = () => {
       averageCommentsByTopic={averageCommentsByTopic}
       averageResponseCommentsByTopic={averageResponseCommentsByTopic}
       downloadCSV={downloadCSV}
+      listMyTopics={listMyTopics}
+      listMyTopicsPrivate={listMyTopicsPrivate}
+      listTopicViews={listTopicViews}
     />
   );
 };

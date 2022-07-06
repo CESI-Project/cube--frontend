@@ -65,12 +65,22 @@ export const CreateTopicPageContainer = () => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
     const topicTitle = formData.get('topicTitle') as string;
+    const isPrivate = formData.get('isPrivate') as string;
+    let topicType: string;
+
+    if (isPrivate === 'on') {
+      topicType = 'Privées';
+    } else {
+      topicType = 'Publiques';
+    }
 
     const topic: Topic = {
       title: topicTitle,
       tags: changeTopicTags,
       text: changeTopicText,
       picture: changeTopicImage,
+      type: topicType,
+      userId: currentUser.id,
     };
 
     mutate(topic);
