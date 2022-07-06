@@ -41,6 +41,7 @@ export const CreateTopicPageContainer = () => {
   const { tags } = useAllTags(familyTags.map((familyTag: FamilyTag) => familyTag.id));
   const [changeTopicText, setChangeTopicText] = useState<string>('');
   const [changeTopicTags, setChangeTopicTags] = useState<Tag[]>();
+  const [changeTopicImage, setChangeTopicImage] = useState<any>();
   const { mutate, isSuccess } = useCreateTopic();
 
   const tagList: any = [];
@@ -55,6 +56,11 @@ export const CreateTopicPageContainer = () => {
     setChangeTopicTags(topicTags.map((tag: Tag) => tag));
   };
 
+  const onChangeImage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // @ts-ignore
+    setChangeTopicImage(event.target.files[0]);
+  };
+
   const onCreateTopic = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
@@ -64,6 +70,7 @@ export const CreateTopicPageContainer = () => {
       title: topicTitle,
       tags: changeTopicTags,
       text: changeTopicText,
+      picture: changeTopicImage,
     };
 
     mutate(topic);
@@ -80,6 +87,7 @@ export const CreateTopicPageContainer = () => {
       onChangeTopicText={onChangeTopicText}
       onChangeTopicTags={onChangeTopicTags}
       formatMessage={formatMessage}
+      onChangeImage={onChangeImage}
     />
   );
 };

@@ -7,8 +7,22 @@ export const getAllTopics = async () => axios.get(`${BACKEND_URI}/topic`).then((
 export const getTopicById = async (id: number) => axios.get(`${BACKEND_URI}/topic/${id}`).then((response) => response.data);
 
 export const postCreationTopic = async ({
-  title, tags, text,
-}: Topic) => axios.post(`${BACKEND_URI}/topic`, { title, text, tags }).then((response) => response.data);
+  title, tags, text, picture,
+}: Topic) => {
+  const topic = { title, tags, text };
+  const json = JSON.stringify(topic);
+  const blob = new Blob([json], { type: 'application/json' });
+
+  const data = new FormData();
+  data.append('topic', blob);
+  data.append('file', picture);
+
+  axios.post(`${BACKEND_URI}/topic/withImg`, data, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  }).then((response) => (response.data));
+};
 
 export const getMyTopics = async (userId: number | undefined) => axios.get(`${BACKEND_URI}/topic/user/${userId}/myTopic`).then((response) => response.data);
 

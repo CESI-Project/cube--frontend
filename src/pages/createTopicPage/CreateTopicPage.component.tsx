@@ -49,6 +49,7 @@ interface CreateTopicPageComponentProps {
   onChangeTopicText: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   onChangeTopicTags: (tags: OnChangeValue<Tag, true>) => void;
   formatMessage: (message: { defaultMessage: string; id: string }) => string;
+  onChangeImage: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const CreateTopicPageComponent: FC<CreateTopicPageComponentProps> = ({
@@ -57,14 +58,15 @@ export const CreateTopicPageComponent: FC<CreateTopicPageComponentProps> = ({
   onChangeTopicText,
   onChangeTopicTags,
   formatMessage,
+  onChangeImage,
 }) => (
   <div className="create-topic-page">
     <h1 className="create-topic-page__title">{formatMessage(messages.createTopicPage_title)}</h1>
     <form className="create-topic-page__content" onSubmit={onCreateTopic}>
       <div className="create-topic-page__content__left">
-        <input type="file" name="file" />
+        <input type="file" name="file" onChange={onChangeImage} />
         <div className="create-topic-page__content__left__checkbox">
-          <input type="checkbox" name="private" onChange={() => {}} />
+          <input type="checkbox" name="private" />
           {formatMessage(messages.createTopic_privateTopic)}
         </div>
       </div>
